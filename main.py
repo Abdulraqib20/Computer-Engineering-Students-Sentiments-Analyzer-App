@@ -16,10 +16,10 @@ from torch.nn.functional import softmax
 import torch
 
 import nltk
-nltk.download('punkt')
-nltk.download('stopwords')
-nltk.download('wordnet')
-nltk.download('omw-1.4')
+# nltk.download('punkt')
+# nltk.download('stopwords')
+# nltk.download('wordnet')
+# nltk.download('omw-1.4')
 
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
@@ -39,10 +39,78 @@ st.title(" ")
 
 # Add an introductory paragraph
 st.markdown("""
-This web application is a sentiment analysis tool developed by Raqib (popularly known as raqibcodes). It can be used to determine whether user-entered text has a Positive or Negative sentiment. The underlying text classification model was trained on feedback data collected from 300 level undergraduate Computer Engineering students at the University of Ilorin (who are Raqib's peers). Subsequently, the model underwent fine-tuning using BERT and KerasNLP techniques, resulting in an impressive accuracy score of 96%. The objective is to uncover sentiments expressed in the feedback and gain a comprehensive understanding of student perceptions and satisfaction regarding their educational experience.  
-To utilize the application, simply input your text, and it will promptly reveal the underlying sentiment.
-The app also has Exploratory Data Analysis capabilities.
+This web app is a sentiment analysis tool developed by raqibcodes. It has the capability of detecting whether user-entered text has an underlying Positive, Neutral or Negative sentiment. The text classification model was trained on Feedback survey data collected from 300 level Undergraduate Computer Engineering Students at the University of Ilorin (who are Raqib's peers). The model underwent fine-tuning using the BERT model, **bert_tiny_en_uncased_sst2** and KerasNLP techniques, resulting in an impressive accuracy score of **96%**. The data was subsequently evaluated using a **RoBERTa-based model** which is a transformer-based model and it also showed strong performances in analyzing sentiments accurately.
+To utilize this app, simply fill in the prompts in the checkboxes and then input your text, and it will promptly reveal the underlying sentiment.
+
+
+**Always **Rerun** the app before using it for the first time to clear cache!**
 """)
+
+show_objectives = st.sidebar.checkbox(" Objectives")
+if show_objectives:
+    st.sidebar.markdown("""
+    ## Objectives (Aims & Goals of this Project)
+
+ - **To uncover sentiments expressed in the feedback and gain a comprehensive understanding of student perceptions, satisfaction and identfying areas of improvement.**
+ -  **To ensure real-time analysis to provide immediate insights into prevailing student sentiments.**
+ - **Creating interactive visualizations for dynamic displays of sentiment trends over time.**
+ - **Extracting insights into teaching methodologies, lecturers and departmental courses.**
+ - **Identifying and highlighting specific challenges faced by students for targeted improvements.**
+ - **Facilitating interactive exploration of sentiment analysis results for deeper understanding.**
+ - **Establishing a continuous feedback loop for ongoing improvement in educational practices.**
+ - **Enabling lecturers to download sentiment analysis data for in-depth analysis.**
+ - **Ensuring privacy and ethical handling of student feedback data in compliance with regulations.**
+- **Aiding the lecturers in interpreting and utilizing sentiment analysis results.**
+    """)
+
+show_app_features = st.sidebar.checkbox("Show App Features")
+if show_app_features:
+    st.sidebar.markdown("""
+    ## App Features
+
+    1. **Sentiment Analysis Functionality**
+       - Utilizes a sentiment analysis model to score feedback text.
+       - Analyzes sentiments as positive, neutral, or negative.
+
+    2. **User Input Collection**
+       - Gathers user's feedback and related information based on the following:
+         - Course code ( The code for the Course)
+         - Previous experience (Whether the user has previous experience with the course, lecturer, etc)
+         - Gender (The gender of the user)
+         - Attendance (The attendance rate of the user)
+         - Course difficulty (Perceived difficulty of the course)
+         - Study hours per week (Number of hours devoted to studying per week for the course)
+         - Overall satisfaction (Metric used to evaluate user's satisfaction with the course, lecturer, teaching, etc)
+         - Department (Whether the user belongs to the department of Computer Engineering)
+         - Date and time of feedback submission (Date and time of feedback submission)
+
+    3. **Text Preprocessing**
+       - Preprocesses the user feedback text using Natural Language Processing techniques.
+
+    4. **Percentage Confidence**
+       - Percentage level of how confident the model is making the prediction.
+
+    5. **Interactive Visualization**
+       - Provides various interactive plots for visualizing sentiment analysis results and other key metrics.
+       - Displays sentiment distribution in various charts (bar chart, pie chart, word cloud).
+       - Presents feedback counts based on course difficulty, course code, and gender.
+       - Provides insights into word frequency and usage in feedback.
+       - Explores the distribution of study hours, word count, and overall satisfaction.
+
+    6. **Summary Statistics**
+       - Offers a sentiment summary with counts of positive, neutral, and negative feedback including the percentage confidence results.
+
+    8. **Interactive Exploration**
+       - Allows users to trigger the exploration of visualizations by clicking a button.
+
+    9. **Real-Time Feedback Data Access**
+        - The app allows users access to real-time feedback data after getting their prediction results.
+        - Users can download and view the data directly within the app.
+
+    10.  **Automatic Real-Time Saving**
+        - The app works in real-time, automatically saving prediction results and other insights generated.
+    """)
+
 
 # Initialize session state
 if 'course_code' not in st.session_state:
@@ -74,15 +142,16 @@ department_container = st.empty()
 
 # Unique identifier for each selectbox
 selectbox_keys = ['course_code', 'previous_exp', 'gender', 'attendance', 'difficulty', 'study_hours', 'satisfaction', 'department']
+
 # Get values from sideboxes
-course_code = course_code_container.selectbox("Course Code", ['Select Course Code', 'CPE 321', 'CPE 311', 'CPE 341', 'CPE 381', 'CPE 331', 'MEE 361', 'GSE 301'], key=selectbox_keys[0])
-previous_exp = previous_exp_container.selectbox("Previous Experience", ['Select Option', "Yes", "No"], key=selectbox_keys[1])
-gender = gender_container.selectbox("Gender", ['Select Gender', 'Male', 'Female'], key=selectbox_keys[2])
-attendance = attendance_container.selectbox("Attendance", ['Select Attendance', 'Regular', 'Irregular', 'Occasional'], key=selectbox_keys[3])
-difficulty = difficulty_container.selectbox("Course Difficulty", ['Select Difficulty', 'Easy', 'Difficult', 'Challenging', 'Moderate'], key=selectbox_keys[4])
-study_hours = st.select_slider("Study Hours (per week)", options=list(range(25)), key=selectbox_keys[5], value=None)
-satisfaction = st.select_slider("Overall Satisfaction", options=list(range(1, 11)), key=selectbox_keys[6], value=None)
-department = department_container.selectbox("Department", ['Select Option', "Yes", "No"], key=selectbox_keys[7])
+course_code = st.selectbox("Course Code", ['Select Course Code', 'CPE 321', 'CPE 311', 'CPE 341', 'CPE 381', 'CPE 331', 'MEE 361', 'GSE 301'], key=selectbox_keys[0])
+previous_exp = st.selectbox("Previous Experience", ['Select Option', "Yes", "No"], key=selectbox_keys[1])
+gender = st.selectbox("Gender", ['Select Gender', 'Male', 'Female'], key=selectbox_keys[2])
+attendance = st.selectbox("Attendance", ['Select Attendance', 'Regular', 'Irregular', 'Occasional'], key=selectbox_keys[3])
+difficulty = st.selectbox("Course Difficulty", ['Select Difficulty', 'Easy', 'Difficult', 'Challenging', 'Moderate'], key=selectbox_keys[4])
+study_hours = st.selectbox("Study Hours (per week)", options=['Select Study Hours'] + list(range(25)), key=selectbox_keys[5])
+satisfaction = st.selectbox("Overall Satisfaction", options=['Select Overall Satisfaction'] + list(range(1, 11)), key=selectbox_keys[6])
+department = st.selectbox("Department", ['Select Option', "Yes", "No"], key=selectbox_keys[7])
 
 # Load the exported data using st.cache
 # @st.cache_data()
@@ -157,13 +226,11 @@ X_preprocessed = [preprocess_text(text) for text in df['feedback']]
 
 # model name
 model_name = 'cardiffnlp/twitter-roberta-base-sentiment-latest'
-tokenizer = AutoTokenizer.from_pretrained('cardiffnlp/twitter-roberta-base-sentiment-latest')
-model = AutoModelForSequenceClassification.from_pretrained('cardiffnlp/twitter-roberta-base-sentiment-latest')
-# # load directory of saved model
-# save_directory = r"C:\Users\user\Desktop\MACHINE LEARNING\Sentiment Analysis\New folder"
-# # load model from the local directory
-# tokenizer = AutoTokenizer.from_pretrained(save_directory)
-# model = AutoModelForSequenceClassification.from_pretrained(save_directory)
+# load directory of saved model
+save_directory = r"C:\Users\user\Desktop\MACHINE LEARNING\Sentiment Analysis\New folder"
+# load model from the local directory
+tokenizer = AutoTokenizer.from_pretrained(save_directory)
+model = AutoModelForSequenceClassification.from_pretrained(save_directory)
 
 
 # calculate sentiment scoring
