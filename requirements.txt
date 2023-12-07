@@ -7,3 +7,4 @@ transformers
 torch
 beautifulsoup4
 nltk
+scikit-learn
