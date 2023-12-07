@@ -16,10 +16,10 @@ from torch.nn.functional import softmax
 import torch
 
 import nltk
-# nltk.download('punkt')
-# nltk.download('stopwords')
-# nltk.download('wordnet')
-# nltk.download('omw-1.4')
+nltk.download('punkt')
+nltk.download('stopwords')
+nltk.download('wordnet')
+nltk.download('omw-1.4')
 
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
@@ -157,11 +157,13 @@ X_preprocessed = [preprocess_text(text) for text in df['feedback']]
 
 # model name
 model_name = 'cardiffnlp/twitter-roberta-base-sentiment-latest'
-# load directory of saved model
-save_directory = r"C:\Users\user\Desktop\MACHINE LEARNING\Sentiment Analysis\New folder"
-# load model from the local directory
-tokenizer = AutoTokenizer.from_pretrained(save_directory)
-model = AutoModelForSequenceClassification.from_pretrained(save_directory)
+tokenizer = AutoTokenizer.from_pretrained('cardiffnlp/twitter-roberta-base-sentiment-latest')
+model = AutoModelForSequenceClassification.from_pretrained('cardiffnlp/twitter-roberta-base-sentiment-latest')
+# # load directory of saved model
+# save_directory = r"C:\Users\user\Desktop\MACHINE LEARNING\Sentiment Analysis\New folder"
+# # load model from the local directory
+# tokenizer = AutoTokenizer.from_pretrained(save_directory)
+# model = AutoModelForSequenceClassification.from_pretrained(save_directory)
 
 
 # calculate sentiment scoring
@@ -275,6 +277,13 @@ if st.button("Analyze Sentiment") and user_input:
                 
         # Display success message
         st.success("Sentiment analysis completed!")
+        # Add a download button for the CSV file
+        st.download_button(
+            label="Download Updated Dataset",
+            data=df.to_csv(index=False).encode(),
+            file_name='survey_data_updated.csv',
+            mime='text/csv'
+        )
 
 st.markdown(
     f"""
@@ -441,3 +450,17 @@ st.write(f"Average Confidence Percentage for Neutral Feedback: {average_confiden
 st.write(f"Average Confidence Percentage for Negative Feedback: {average_confidence_negative:.2f}%")
 
 
+# footer
+
+# line separator
+st.markdown('<hr style="border: 2px solid #ddd;">', unsafe_allow_html=True)
+
+# footer text
+st.markdown(
+    """
+    <div style="text-align: center; padding: 10px;">
+        Developed by <a href="https://github.com/Abdulraqib20" target="_blank">raqibcodes</a>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
