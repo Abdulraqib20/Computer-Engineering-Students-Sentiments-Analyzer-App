@@ -239,8 +239,8 @@ model_name = 'cardiffnlp/twitter-roberta-base-sentiment-latest'
 # load directory of saved model
 save_directory = r"C:\Users\user\Desktop\MACHINE LEARNING\Sentiment Analysis\New folder"
 # load model from the local directory
-tokenizer = AutoTokenizer.from_pretrained(save_directory)
-model = AutoModelForSequenceClassification.from_pretrained(save_directory)
+tokenizer = AutoTokenizer.from_pretrained('cardiffnlp/twitter-roberta-base-sentiment-latest')
+model = AutoModelForSequenceClassification.from_pretrained('cardiffnlp/twitter-roberta-base-sentiment-latest')
 
 
 # calculate sentiment scoring
