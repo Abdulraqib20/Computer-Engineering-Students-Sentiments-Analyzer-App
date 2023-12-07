@@ -16,10 +16,10 @@ from torch.nn.functional import softmax
 import torch
 
 import nltk
-# nltk.download('punkt')
-# nltk.download('stopwords')
-# nltk.download('wordnet')
-# nltk.download('omw-1.4')
+nltk.download('punkt')
+nltk.download('stopwords')
+nltk.download('wordnet')
+nltk.download('omw-1.4')
 
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
@@ -129,6 +129,16 @@ if 'satisfaction' not in st.session_state:
     st.session_state.satisfaction = None
 if 'department' not in st.session_state:
     st.session_state.department = None
+
+# Initialize variables to store sidebox values
+course_code = None
+previous_exp = None
+gender = None
+attendance = None
+difficulty = None
+study_hours = None
+satisfaction = None
+department = None
 
 # Create containers for sideboxes
 course_code_container = st.empty()
