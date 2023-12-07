@@ -113,22 +113,22 @@ if show_app_features:
 
 
 # Initialize session state
-if 'course_code' not in st.session_state:
-    st.session_state.course_code = None
-if 'previous_exp' not in st.session_state:
-    st.session_state.previous_exp = None
-if 'gender' not in st.session_state:
-    st.session_state.gender = None
-if 'attendance' not in st.session_state:
-    st.session_state.attendance = None
-if 'difficulty' not in st.session_state:
-    st.session_state.difficulty = None
-if 'study_hours' not in st.session_state:
-    st.session_state.study_hours = None
-if 'satisfaction' not in st.session_state:
-    st.session_state.satisfaction = None
-if 'department' not in st.session_state:
-    st.session_state.department = None
+#if 'course_code' not in st.session_state:
+    # st.session_state.course_code = None
+#if 'previous_exp' not in st.session_state:
+    #st.session_state.previous_exp = None
+#if 'gender' not in st.session_state:
+    #st.session_state.gender = None
+#if 'attendance' not in st.session_state:
+    #st.session_state.attendance = None
+#if 'difficulty' not in st.session_state:
+    #st.session_state.difficulty = None
+#if 'study_hours' not in st.session_state:
+    #st.session_state.study_hours = None
+#if 'satisfaction' not in st.session_state:
+    #st.session_state.satisfaction = None
+#if 'department' not in st.session_state:
+    #st.session_state.department = None
 
 # Initialize variables to store sidebox values
 course_code = None
