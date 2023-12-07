@@ -51,16 +51,16 @@ if show_objectives:
     st.sidebar.markdown("""
     ## Objectives (Aims & Goals of this Project)
 
- - **To uncover sentiments expressed in the feedback and gain a comprehensive understanding of student perceptions, satisfaction and identfying areas of improvement.**
- -  **To ensure real-time analysis to provide immediate insights into prevailing student sentiments.**
- - **Creating interactive visualizations for dynamic displays of sentiment trends over time.**
- - **Extracting insights into teaching methodologies, lecturers and departmental courses.**
- - **Identifying and highlighting specific challenges faced by students for targeted improvements.**
- - **Facilitating interactive exploration of sentiment analysis results for deeper understanding.**
- - **Establishing a continuous feedback loop for ongoing improvement in educational practices.**
- - **Enabling lecturers to download sentiment analysis data for in-depth analysis.**
- - **Ensuring privacy and ethical handling of student feedback data in compliance with regulations.**
-- **Aiding the lecturers in interpreting and utilizing sentiment analysis results.**
+ - To uncover sentiments expressed in the feedback and gain a comprehensive understanding of student perceptions, satisfaction and identfying areas of improvement.
+ - To ensure real-time analysis to provide immediate insights into prevailing student sentiments.
+ - Creating interactive visualizations for dynamic displays of sentiment trends over time.
+ - Extracting insights into teaching methodologies, lecturers and departmental courses.
+ - Identifying and highlighting specific challenges faced by students for targeted improvements.
+ - Facilitating interactive exploration of sentiment analysis results for deeper understanding.
+ - Establishing a continuous feedback loop for ongoing improvement in educational practices.
+ - Enabling lecturers to download sentiment analysis data for in-depth analysis.
+ - Ensuring privacy and ethical handling of student feedback data in compliance with regulations.
+- Aiding the lecturers in interpreting and utilizing sentiment analysis results.
     """)
 
 show_app_features = st.sidebar.checkbox("Show App Features")
