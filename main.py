@@ -426,8 +426,14 @@ if st.button("Explore Visualizations"):
    
 
         
-st.write(df)
+# Add a checkbox to show/hide the DataFrame
+show_df = st.checkbox("Show Data")
+
+# Display the DataFrame only if the checkbox is selected
+if show_df:
+    st.write(df)
 df['percentage_confidence'] = df['percentage_confidence'].apply(lambda x: float(x.strip('%')))
+
 # Sentiment Summary
 st.header("Sentiment Summary")
 positive_feedback_count = (df["sentiments_index"] == 3).sum()
