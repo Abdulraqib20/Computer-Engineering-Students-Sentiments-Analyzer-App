@@ -413,12 +413,24 @@ if st.button("Explore Visualizations"):
         # Generate Word Cloud
         wordcloud = WordCloud(width=800, height=400, background_color='white').generate(all_feedback)
     
-        # Display Word Cloud using Matplotlib
-        plt.figure(figsize=(10, 5))
-        plt.imshow(wordcloud, interpolation='bilinear')
-        plt.axis('off')
-        plt.title('Word Cloud of Overall Feedback Text')
-        st.pyplot(plt)
+        # Convert Word Cloud to DataFrame
+        wordcloud_df = pd.DataFrame.from_dict(wordcloud.words_, orient='index', columns=['frequency'])
+        wordcloud_df.reset_index(inplace=True)
+        wordcloud_df.columns = ['word', 'frequency']
+    
+        # Create Plotly Word Cloud
+        fig = px.scatter(wordcloud_df, x='frequency', y='word', size='frequency',
+                         color='frequency', text='word', title='Word Cloud of Overall Feedback Text')
+    
+        # Customize layout
+        fig.update_layout(
+            xaxis_title='Frequency',
+            yaxis_title='Word',
+            showlegend=False
+        )
+    
+        # Display Plotly Chart
+        st.plotly_chart(fig)
         
     with st.expander("Course Difficulty"):
         course_difficulty_counts = df['course difficulty'].value_counts()
