@@ -400,43 +400,13 @@ if st.button("Explore Visualizations"):
         st.plotly_chart(fig)
 
     # with st.expander("Word Cloud Visualization"):
-    #     all_feedback = ' '.join(df['processed_feedback'])
+    #     all_feedback = ' '.join(df['feedbacl'])
     #     wordcloud = WordCloud(width=800, height=400, background_color='white').generate(all_feedback)
     #     fig = px.imshow(wordcloud)
     #     fig.update_layout(title='Word Cloud of Overall Feedback Text')
     #     fig.update_xaxes(showticklabels=False)
     #     fig.update_yaxes(showticklabels=False)
     #     st.plotly_chart(fig)
-
-    with st.expander("Word Cloud Visualization"):
-        all_feedback = ' '.join(df['processed_feedback'])
-    
-        # Create Word Cloud
-        wordcloud_data = wordcloud2.process_text(all_feedback)
-    
-        # Create Plotly Figure
-        fig = go.Figure()
-    
-        # Add Word Cloud Trace
-        fig.add_trace(go.Scatter(
-            x=wordcloud_data['x'],
-            y=wordcloud_data['y'],
-            mode='text',
-            text=wordcloud_data['text'],
-            marker=dict(
-                opacity=0.3,
-                color='rgba(255, 0, 0, 0.3)',
-            )
-        ))
-    
-        # Customize layout
-        fig.update_layout(
-            title='Word Cloud of Overall Feedback Text',
-            showlegend=False
-        )
-    
-        # Display Plotly Chart
-        st.plotly_chart(fig)
         
     with st.expander("Course Difficulty"):
         course_difficulty_counts = df['course difficulty'].value_counts()
