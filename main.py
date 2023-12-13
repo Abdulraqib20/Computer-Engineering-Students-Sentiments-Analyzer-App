@@ -398,14 +398,39 @@ if st.button("Explore Visualizations"):
         fig.update_layout(title="Sentiments Distribution (Pie Chart)")
         st.plotly_chart(fig)
 
+    # with st.expander("Word Cloud Visualization"):
+    #     all_feedback = ' '.join(df['processed_feedback'])
+    #     wordcloud = WordCloud(width=800, height=400, background_color='white').generate(all_feedback)
+    #     fig = px.imshow(wordcloud)
+    #     fig.update_layout(title='Word Cloud of Overall Feedback Text')
+    #     fig.update_xaxes(showticklabels=False)
+    #     fig.update_yaxes(showticklabels=False)
+    #     st.plotly_chart(fig)
+
     with st.expander("Word Cloud Visualization"):
         all_feedback = ' '.join(df['processed_feedback'])
+    
+        # Generate Word Cloud
         wordcloud = WordCloud(width=800, height=400, background_color='white').generate(all_feedback)
-        fig = px.imshow(wordcloud)
-        fig.update_layout(title='Word Cloud of Overall Feedback Text')
-        fig.update_xaxes(showticklabels=False)
-        fig.update_yaxes(showticklabels=False)
-        st.plotly_chart(fig)
+    
+        # Convert Word Cloud to DataFrame
+        wordcloud_df = pd.DataFrame.from_dict(wordcloud.words_, orient='index', columns=['frequency'])
+        wordcloud_df.reset_index(inplace=True)
+        wordcloud_df.columns = ['word', 'frequency']
+    
+        # Create Altair Chart
+        chart = alt.Chart(wordcloud_df).mark_circle().encode(
+            alt.X('frequency:Q', scale=alt.Scale(type='log'), axis=None),
+            alt.Y('word:N', axis=alt.Axis(title='Word')),
+            size='frequency:Q',
+            color='frequency:Q',
+            tooltip=['word:N', 'frequency:Q']
+        ).properties(
+            title='Word Cloud of Overall Feedback Text'
+        ).interactive()
+    
+        # Display Altair Chart
+        st.altair_chart(chart)
         
     with st.expander("Course Difficulty"):
         course_difficulty_counts = df['course difficulty'].value_counts()
