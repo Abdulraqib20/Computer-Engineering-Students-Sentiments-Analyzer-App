@@ -408,24 +408,29 @@ if st.button("Explore Visualizations"):
     #     st.plotly_chart(fig)
 
     with st.expander("Word Cloud Visualization"):
-        all_feedback = ' '.join(df['feedback'])
+        all_feedback = ' '.join(df['processed_feedback'])
     
-        # Generate Word Cloud
-        wordcloud = WordCloud(width=800, height=400, background_color='white').generate(all_feedback)
+        # Create Word Cloud
+        wordcloud_data = wordcloud2.process_text(all_feedback)
     
-        # Convert Word Cloud to DataFrame
-        wordcloud_df = pd.DataFrame.from_dict(wordcloud.words_, orient='index', columns=['frequency'])
-        wordcloud_df.reset_index(inplace=True)
-        wordcloud_df.columns = ['word', 'frequency']
+        # Create Plotly Figure
+        fig = go.Figure()
     
-        # Create Plotly Word Cloud
-        fig = px.scatter(wordcloud_df, x='frequency', y='word', size='frequency',
-                         color='frequency', text='word', title='Word Cloud of Overall Feedback Text')
+        # Add Word Cloud Trace
+        fig.add_trace(go.Scatter(
+            x=wordcloud_data['x'],
+            y=wordcloud_data['y'],
+            mode='text',
+            text=wordcloud_data['text'],
+            marker=dict(
+                opacity=0.3,
+                color='rgba(255, 0, 0, 0.3)',
+            )
+        ))
     
         # Customize layout
         fig.update_layout(
-            xaxis_title='Frequency',
-            yaxis_title='Word',
+            title='Word Cloud of Overall Feedback Text',
             showlegend=False
         )
     
