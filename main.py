@@ -409,10 +409,16 @@ if st.button("Explore Visualizations"):
 
     with st.expander("Word Cloud Visualization"):
         all_feedback = ' '.join(df['processed_feedback'])
+    
+        # Generate Word Cloud
         wordcloud = WordCloud(width=800, height=400, background_color='white').generate(all_feedback)
     
-        # Display Word Cloud as Image
-        st.image(wordcloud.to_image())
+        # Display Word Cloud using Matplotlib
+        plt.figure(figsize=(10, 5))
+        plt.imshow(wordcloud, interpolation='bilinear')
+        plt.axis('off')
+        plt.title('Word Cloud of Overall Feedback Text')
+        st.pyplot(plt)
         
     with st.expander("Course Difficulty"):
         course_difficulty_counts = df['course difficulty'].value_counts()
