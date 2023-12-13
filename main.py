@@ -408,7 +408,7 @@ if st.button("Explore Visualizations"):
     #     st.plotly_chart(fig)
 
     with st.expander("Word Cloud Visualization"):
-        all_feedback = ' '.join(df['processed_feedback'])
+        all_feedback = ' '.join(df['feedback'])
     
         # Generate Word Cloud
         wordcloud = WordCloud(width=800, height=400, background_color='white').generate(all_feedback)
