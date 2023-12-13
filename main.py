@@ -407,32 +407,32 @@ if st.button("Explore Visualizations"):
     #     fig.update_yaxes(showticklabels=False)
     #     st.plotly_chart(fig)
 
-    with st.expander('Word Cloud of Feedback'):
-        all_messages = ' '.join(df['processed_feedback'].astype(str).tolist())
-        all_words = all_messages.split()
-        word_freq = collections.Counter(all_words)
+    # with st.expander('Word Cloud of Feedback'):
+    #     all_messages = ' '.join(df['processed_feedback'].astype(str).tolist())
+    #     all_words = all_messages.split()
+    #     word_freq = collections.Counter(all_words)
     
-        # Create a WordCloud
-        wordcloud = WordCloud(width=800, height=400, background_color='white', font_family="Open Sans").generate(all_messages)
+    #     # Create a WordCloud
+    #     wordcloud = WordCloud(width=800, height=400, background_color='white').generate(all_messages)
     
-        # Convert WordCloud to an image
-        image_array = wordcloud.to_array()
+    #     # Convert WordCloud to an image
+    #     image_array = wordcloud.to_array()
     
-        # Create a custom color scale
-        colorscale = px.colors.sequential.Viridis
+    #     # Create a custom color scale
+    #     colorscale = px.colors.sequential.Viridis
     
-        # Create a Plotly Express image chart
-        fig = px.imshow(image_array, color_continuous_scale=colorscale)
-        fig.update_layout(
-            title_text="Word Cloud",
-            xaxis=dict(showticklabels=False),
-            yaxis=dict(showticklabels=False),
-            coloraxis_showscale=False,
-            margin=dict(l=0, r=0, b=0, t=40)
-        )
+    #     # Create a Plotly Express image chart
+    #     fig = px.imshow(image_array, color_continuous_scale=colorscale)
+    #     fig.update_layout(
+    #         title_text="Word Cloud",
+    #         xaxis=dict(showticklabels=False),
+    #         yaxis=dict(showticklabels=False),
+    #         coloraxis_showscale=False,
+    #         margin=dict(l=0, r=0, b=0, t=40)
+    #     )
     
-        # Display the Word Cloud using Plotly Express
-        st.plotly_chart(fig)
+    #     # Display the Word Cloud using Plotly Express
+    #     st.plotly_chart(fig)
         
     with st.expander("Course Difficulty"):
         course_difficulty_counts = df['course difficulty'].value_counts()
