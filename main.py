@@ -4,6 +4,7 @@ import numpy as np
 from datetime import datetime
 import plotly.express as px
 from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
+import wordcloud2
 import re
 import string
 import requests
