@@ -8,4 +8,3 @@ torch==2.0.1
 beautifulsoup4==4.11.1
 nltk==3.7
 scikit-learn
-wordcloud2
