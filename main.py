@@ -391,12 +391,18 @@ if st.button("Explore Visualizations"):
         )
         st.plotly_chart(fig)
 
-    with st.expander("Pie Chart Distribution of Sentiments "):
         label_data = df['sentiments'].value_counts()
         fig = px.pie(label_data, values=label_data.values, names=label_data.index, hole=0.4)
         fig.update_traces(textposition='inside', textinfo='percent+label')
         fig.update_layout(title="Sentiments Distribution (Pie Chart)")
         st.plotly_chart(fig)
+
+    # with st.expander("Pie Chart Distribution of Sentiments "):
+    #     label_data = df['sentiments'].value_counts()
+    #     fig = px.pie(label_data, values=label_data.values, names=label_data.index, hole=0.4)
+    #     fig.update_traces(textposition='inside', textinfo='percent+label')
+    #     fig.update_layout(title="Sentiments Distribution (Pie Chart)")
+    #     st.plotly_chart(fig)
 
     # with st.expander("Word Cloud Visualization"):
     #     all_feedback = ' '.join(df['feedbacl'])
