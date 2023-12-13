@@ -397,21 +397,14 @@ if st.button("Explore Visualizations"):
         fig.update_layout(title="Sentiments Distribution (Pie Chart)")
         st.plotly_chart(fig)
 
-    # with st.expander("Pie Chart Distribution of Sentiments "):
-    #     label_data = df['sentiments'].value_counts()
-    #     fig = px.pie(label_data, values=label_data.values, names=label_data.index, hole=0.4)
-    #     fig.update_traces(textposition='inside', textinfo='percent+label')
-    #     fig.update_layout(title="Sentiments Distribution (Pie Chart)")
-    #     st.plotly_chart(fig)
-
-    # with st.expander("Word Cloud Visualization"):
-    #     all_feedback = ' '.join(df['feedbacl'])
-    #     wordcloud = WordCloud(width=800, height=400, background_color='white').generate(all_feedback)
-    #     fig = px.imshow(wordcloud)
-    #     fig.update_layout(title='Word Cloud of Overall Feedback Text')
-    #     fig.update_xaxes(showticklabels=False)
-    #     fig.update_yaxes(showticklabels=False)
-    #     st.plotly_chart(fig)
+    with st.expander("Word Cloud Visualization"):
+        all_feedback = ' '.join(df['feedback'])
+        wordcloud = WordCloud(width=800, height=400, background_color='white').generate(all_feedback)
+        fig = px.imshow(wordcloud)
+        fig.update_layout(title='Word Cloud of Overall Feedback Text')
+        fig.update_xaxes(showticklabels=False)
+        fig.update_yaxes(showticklabels=False)
+        st.plotly_chart(fig)
         
     with st.expander("Course Difficulty"):
         course_difficulty_counts = df['course difficulty'].value_counts()
