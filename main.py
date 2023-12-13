@@ -397,13 +397,40 @@ if st.button("Explore Visualizations"):
         fig.update_layout(title="Sentiments Distribution (Pie Chart)")
         st.plotly_chart(fig)
 
-    with st.expander("Word Cloud Visualization"):
-        all_feedback = ' '.join(df['feedback'])
-        wordcloud = WordCloud(width=800, height=400, background_color='white').generate(all_feedback)
-        fig = px.imshow(wordcloud)
-        fig.update_layout(title='Word Cloud of Overall Feedback Text')
-        fig.update_xaxes(showticklabels=False)
-        fig.update_yaxes(showticklabels=False)
+    # with st.expander("Word Cloud Visualization"):
+    #     all_feedback = ' '.join(df['feedback'])
+    #     wordcloud = WordCloud(width=800, height=400, background_color='white').generate(all_feedback)
+    #     fig = px.imshow(wordcloud)
+    #     fig.update_layout(title='Word Cloud of Overall Feedback Text')
+    #     fig.update_xaxes(showticklabels=False)
+    #     fig.update_yaxes(showticklabels=False)
+    #     st.plotly_chart(fig)
+
+    with st.expander('Word Cloud of Messages'):
+        all_messages = ' '.join(df['feedback'].astype(str).tolist())
+        all_words = all_messages.split()
+        word_freq = collections.Counter(all_words)
+    
+        # Create a WordCloud
+        wordcloud = WordCloud(width=800, height=400, background_color='white').generate(all_messages)
+    
+        # Convert WordCloud to an image
+        image_array = wordcloud.to_array()
+    
+        # Create a custom color scale
+        colorscale = px.colors.sequential.Viridis
+    
+        # Create a Plotly Express image chart
+        fig = px.imshow(image_array, color_continuous_scale=colorscale)
+        fig.update_layout(
+            title_text="Word Cloud",
+            xaxis=dict(showticklabels=False),
+            yaxis=dict(showticklabels=False),
+            coloraxis_showscale=False,
+            margin=dict(l=0, r=0, b=0, t=40)
+        )
+    
+        # Display the Word Cloud using Plotly Express
         st.plotly_chart(fig)
         
     with st.expander("Course Difficulty"):
