@@ -407,13 +407,13 @@ if st.button("Explore Visualizations"):
     #     fig.update_yaxes(showticklabels=False)
     #     st.plotly_chart(fig)
 
-    with st.expander('Word Cloud of Messages'):
-        all_messages = ' '.join(df['feedback'].astype(str).tolist())
+    with st.expander('Word Cloud of Feedback'):
+        all_messages = ' '.join(df['processed_feedback'].astype(str).tolist())
         all_words = all_messages.split()
         word_freq = collections.Counter(all_words)
     
         # Create a WordCloud
-        wordcloud = WordCloud(width=800, height=400, background_color='white').generate(all_messages)
+        wordcloud = WordCloud(width=800, height=400, background_color='white', font_family="Open Sans").generate(all_messages)
     
         # Convert WordCloud to an image
         image_array = wordcloud.to_array()
