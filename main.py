@@ -36,7 +36,7 @@ st.set_page_config(
 )
 
 st.title(" ")
-st.markdown("<h1 style='text-align: center;'>Sentiment Analysis App 🚀🚀</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center;'>Sentiment Analysis App 🚀</h1>", unsafe_allow_html=True)
 st.title(" ")
 
 st.markdown("""
