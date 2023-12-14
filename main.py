@@ -402,28 +402,28 @@ if st.button("Explore Visualizations"):
         fig.update_layout(title="Sentiments Distribution (Pie Chart)")
         st.plotly_chart(fig)
 
-    # Function to create a word cloud and return it as an image
-    def plot_wordcloud(text):
-        wordcloud = WordCloud(width=800, height=400, background_color='white').generate(text)
+    # # Function to create a word cloud and return it as an image
+    # def plot_wordcloud(text):
+    #     wordcloud = WordCloud(width=800, height=400, background_color='white').generate(text)
     
-        # Convert the word cloud to an image
-        plt.figure(figsize=(10, 5))
-        plt.imshow(wordcloud, interpolation='bilinear')
-        plt.axis('off')
+    #     # Convert the word cloud to an image
+    #     plt.figure(figsize=(10, 5))
+    #     plt.imshow(wordcloud, interpolation='bilinear')
+    #     plt.axis('off')
     
-        # Save the figure to a BytesIO buffer
-        image_stream = io.BytesIO()
-        plt.savefig(image_stream, format='png')
-        plt.close()
-        image_stream.seek(0)
+    #     # Save the figure to a BytesIO buffer
+    #     image_stream = io.BytesIO()
+    #     plt.savefig(image_stream, format='png')
+    #     plt.close()
+    #     image_stream.seek(0)
     
-        # Display the image in Streamlit
-        st.image(image_stream, caption="Word Cloud of Overall Feedback Text", use_column_width=True)
+    #     # Display the image in Streamlit
+    #     st.image(image_stream, caption="Word Cloud of Overall Feedback Text", use_column_width=True)
     
-    # Word Cloud Visualization
-    with st.expander("Word Cloud Visualization"):
-        all_feedback = ' '.join(df['processed_feedback'])
-        plot_wordcloud(all_feedback)
+    # # Word Cloud Visualization
+    # with st.expander("Word Cloud Visualization"):
+    #     all_feedback = ' '.join(df['processed_feedback'])
+    #     plot_wordcloud(all_feedback)
         
     with st.expander("Course Difficulty"):
         course_difficulty_counts = df['course difficulty'].value_counts()
