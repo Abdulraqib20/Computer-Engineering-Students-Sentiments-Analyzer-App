@@ -38,11 +38,20 @@ st.title(" ")
 st.markdown("<h1 style='text-align: center;'>Sentiment Analysis App</h1>", unsafe_allow_html=True)
 st.title(" ")
 
-# Add an introductory paragraph
+st.title(" ")
+st.markdown("<h1 style='text-align: center;'>Sentiment Analysis App 🚀🚀</h1>", unsafe_allow_html=True)
+st.title(" ")
+
 st.markdown("""
 This web app is a sentiment analysis tool developed by raqibcodes. It has the capability of detecting whether user-entered text has an underlying Positive, Neutral or Negative sentiment. The text classification model was trained on Feedback survey data collected from 300 level Undergraduate Computer Engineering Students at the University of Ilorin (who are Raqib's peers). The model underwent fine-tuning using the BERT model, **bert_tiny_en_uncased_sst2** and KerasNLP techniques, resulting in an impressive accuracy score of **96%**. The data was subsequently evaluated using a **RoBERTa-based model** which is a transformer-based model and it also showed strong performances in analyzing sentiments accurately.
-To utilize this app, simply fill in the prompts in the checkboxes and then input your text, and it will promptly reveal the underlying sentiment.
-This web app not only provides sentiment analysis capabilities but also offers an intuitive visualization experience. Users can interact with various charts, including bar charts, pie charts, and word clouds, to gain deeper insights into sentiment trends. The app's interactive features enable users to explore feedback counts based on course difficulty, course code, and gender. Additionally, users can access real-time feedback data, download it for further analysis, and view visualizations that automatically update as new data is generated. This interactive and dynamic approach enhances the user experience, allowing for a more comprehensive understanding of sentiment patterns. 
+""")
+
+st.markdown("""
+To utilize this app, simply fill in the prompts in the boxes and then input your text, and it will promptly reveal the underlying sentiment.
+""")
+
+st.markdown("""
+This web app not only provides sentiment analysis capabilities but also offers an intuitive visualization experience. Users can interact with various charts, including bar charts, pie charts, and word clouds, to gain deeper insights into sentiment trends. The app's interactive features enable users to explore feedback counts based on course difficulty, course code, and gender. Additionally, users can access real-time feedback data, download it for further analysis, and view visualizations that automatically update as new data is generated. This interactive and dynamic approach enhances the user experience, allowing for a more comprehensive understanding of sentiment patterns.
 """)
 
 show_objectives = st.sidebar.checkbox(" Objectives")
@@ -313,8 +322,8 @@ if st.button("Analyze Sentiment") and user_input:
         result = sentiment_score(user_input_processed, model, tokenizer, label_mapping={1: 'Negative', 2: 'Neutral', 3: 'Positive'})
         st.subheader("Sentiment Analysis Result:")
         st.write(f"Predicted Sentiment: {result.get('predicted_label', 'N/A')}")
-        st.write(f"Sentiment Index: {result.get('predicted_index', 'N/A')}")
-        st.write(f"Confidence Percentage: {result.get('confidence_percentage', 'N/A')}")
+        # st.write(f"Sentiment Index: {result.get('predicted_index', 'N/A')}")
+        st.write(f"Percentage Confidence of Prediction: {result.get('confidence_percentage', 'N/A')}")
 
         # Update the DataFrame with the new feedback
         new_feedback = pd.DataFrame({
@@ -396,41 +405,10 @@ if st.button("Explore Visualizations"):
         fig.update_layout(title="Sentiments Distribution (Pie Chart)")
         st.plotly_chart(fig)
 
-    # with st.expander("Word Cloud Visualization"):
-    #     all_feedback = ' '.join(df['feedback'])
-    #     wordcloud = WordCloud(width=800, height=400, background_color='white').generate(all_feedback)
-    #     fig = px.imshow(wordcloud)
-    #     fig.update_layout(title='Word Cloud of Overall Feedback Text')
-    #     fig.update_xaxes(showticklabels=False)
-    #     fig.update_yaxes(showticklabels=False)
-    #     st.plotly_chart(fig)
-
-    # with st.expander('Word Cloud of Feedback'):
-    #     all_messages = ' '.join(df['processed_feedback'].astype(str).tolist())
-    #     all_words = all_messages.split()
-    #     word_freq = collections.Counter(all_words)
-    
-    #     # Create a WordCloud
-    #     wordcloud = WordCloud(width=800, height=400, background_color='white').generate(all_messages)
-    
-    #     # Convert WordCloud to an image
-    #     image_array = wordcloud.to_array()
-    
-    #     # Create a custom color scale
-    #     colorscale = px.colors.sequential.Viridis
-    
-    #     # Create a Plotly Express image chart
-    #     fig = px.imshow(image_array, color_continuous_scale=colorscale)
-    #     fig.update_layout(
-    #         title_text="Word Cloud",
-    #         xaxis=dict(showticklabels=False),
-    #         yaxis=dict(showticklabels=False),
-    #         coloraxis_showscale=False,
-    #         margin=dict(l=0, r=0, b=0, t=40)
-    #     )
-    
-    #     # Display the Word Cloud using Plotly Express
-    #     st.plotly_chart(fig)
+    with st.expander("Word Cloud Visualization"):
+        all_feedback = ' '.join(df['processed_feedback'])
+        wordcloud = WordCloud(width=800, height=400, background_color='white').generate(all_feedback)
+        st.image(wordcloud.to_image())
         
     with st.expander("Course Difficulty"):
         course_difficulty_counts = df['course difficulty'].value_counts()
