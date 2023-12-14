@@ -42,9 +42,7 @@ st.title(" ")
 st.markdown("""
 This web app is a sentiment analysis tool developed by raqibcodes. It has the capability of detecting whether user-entered text has an underlying Positive, Neutral or Negative sentiment. The text classification model was trained on Feedback survey data collected from 300 level Undergraduate Computer Engineering Students at the University of Ilorin (who are Raqib's peers). The model underwent fine-tuning using the BERT model, **bert_tiny_en_uncased_sst2** and KerasNLP techniques, resulting in an impressive accuracy score of **96%**. The data was subsequently evaluated using a **RoBERTa-based model** which is a transformer-based model and it also showed strong performances in analyzing sentiments accurately.
 To utilize this app, simply fill in the prompts in the checkboxes and then input your text, and it will promptly reveal the underlying sentiment.
-
-
-**Always **Rerun** the app before using it for the first time to clear cache!**
+This web app not only provides sentiment analysis capabilities but also offers an intuitive visualization experience. Users can interact with various charts, including bar charts, pie charts, and word clouds, to gain deeper insights into sentiment trends. The app's interactive features enable users to explore feedback counts based on course difficulty, course code, and gender. Additionally, users can access real-time feedback data, download it for further analysis, and view visualizations that automatically update as new data is generated. This interactive and dynamic approach enhances the user experience, allowing for a more comprehensive understanding of sentiment patterns. 
 """)
 
 show_objectives = st.sidebar.checkbox(" Objectives")
