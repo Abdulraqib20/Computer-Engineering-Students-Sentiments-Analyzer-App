@@ -525,8 +525,8 @@ if st.button("Explore Visualizations"):
 show_df = st.checkbox("Show Data")
 
 # Display the DataFrame only if the checkbox is selected
-if show_df:
-    st.write(df)
+# if show_df:
+#     st.write(df)
 df['percentage_confidence'] = df['percentage_confidence'].apply(lambda x: float(x.strip('%')))
 
 # Sentiment Summary
