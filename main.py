@@ -752,32 +752,64 @@ st.markdown(
 # footer text
 st.title(" ")
 st.title(" ")
+
 st.markdown(
     """
-    <footer style="
-        display: flex; 
-        justify-content: center; 
-        align-items: center; 
-        padding: 20px; /* Increased padding for more breathing space */
-        background: linear-gradient(to right, #007bff, #28a745); /* Gradient for visual interest */
-        color: white; 
-        font-size: 18px; /* Slightly larger font size */
-        border-radius: 10px; 
-        margin-top: 30px; /* More spacing above the footer */
-    ">
+    <style>
+        footer {
+            display: flex; 
+            justify-content: center;
+            align-items: center;
+            padding: 25px; /* More padding for a comfortable feel */
+            background: linear-gradient(to right, #ff69b4, #9400d3); /* Vibrant pink/purple gradient */
+            color: white;
+            font-size: 18px;
+            border-radius: 15px; /* Softer rounded corners */
+            margin-top: 40px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+        }
+
+        footer p {
+            margin: 0; /* Remove default margin for better control */
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            position: relative; /* For positioning the pseudo-element */
+            transition: all 0.3s ease; /* Smoother transitions for all properties */
+        }
+
+        footer a::after {
+            content: "";
+            position: absolute;
+            bottom: -4px; /* Adjust position of underline */
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #fff; /* White underline */
+            transform: scaleX(0); /* Initially hidden */
+            transform-origin: left; /* Animate from the left */
+            transition: transform 0.3s ease; /* Smooth transition */
+        }
+
+        footer a:hover::after {
+            transform: scaleX(1); /* Show underline on hover */
+        }
+
+        footer a:hover {
+            color: #f5f5f5; /* Slightly lighter color on hover */
+            letter-spacing: 1px; /* Subtle letter spacing increase on hover */
+        }
+    </style>
+
+    <footer>
         <p>
             Made with ❤️ by&nbsp;
-            <a href="https://github.com/Abdulraqib20" target="_blank" style="
-                color: #fff; /* White link color */
-                text-decoration: none;
-                font-weight: bold;
-                border-bottom: 2px solid #fff; /* Subtle underline on hover */
-                transition: border-bottom 0.3s ease; /* Smooth transition for underline */
-            ">
-                raqibcodes
-            </a>
+            <a href="https://github.com/Abdulraqib20" target="_blank">raqibcodes</a>
         </p>
     </footer>
     """,
-    unsafe_allow_html=True
+    unsafe_allow_html=True,
 )
