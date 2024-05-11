@@ -302,17 +302,6 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-
-# --- Header ---
-st.markdown(
-    """
-    <div class="main-header">
-        <h1>Sentiment Analysis App <span>🚀</span></h1>
-    </div>
-    """,
-    unsafe_allow_html=True,
-)
-
 # --- Input Section ---
 st.markdown(
     """
@@ -355,7 +344,7 @@ with st.container():  # Wrap the entire input section in a container for better 
             satisfaction_container.selectbox("Overall Satisfaction", options=['Select Overall Satisfaction'] + list(range(1, 11)))
 
 
-st.markdown("</div>", unsafe_allow_html=True)  # Close the student-details-section div
+# st.markdown("</div>", unsafe_allow_html=True) 
 
 # Get values from sideboxes (after they have been set)
 course_code = course_code_container.selectbox("Course Code", ['Select Course Code', 'CPE 321', 'CPE 311', 'CPE 341', 'CPE 381', 'CPE 331', 'MEE 361', 'GSE 301'])
