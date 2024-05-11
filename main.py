@@ -291,31 +291,6 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# --- Styling ---
-st.markdown(
-  """
-  <style>
-    .selectbox-container {
-      background-color: #f5f5f5; /* Light gray background */
-      border: 1px solid #ddd; /* Subtle border */
-      padding: 20px;
-      border-radius: 10px; /* Rounded corners */
-      margin-bottom: 10px; /* Add spacing between containers */
-    }
-
-    .selectbox-container label {
-      font-weight: bold;
-      color: #333; /* Darker label color */
-    }
-
-    .stSelectbox {
-      width: 100%; /* Make selectboxes take full width */
-    }
-  </style>
-  """,
-  unsafe_allow_html=True,
-)
-
 # --- Input Section ---
 st.markdown("<h3 style='text-align: center;'>Refine Your Analysis</h3>", unsafe_allow_html=True)  
 
