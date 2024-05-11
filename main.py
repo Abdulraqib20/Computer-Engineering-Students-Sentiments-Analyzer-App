@@ -734,7 +734,7 @@ st.markdown(
         /* ... your existing styles ... */
 
         .summary-card {
-            background-color: #fff;
+            # background-color: #fff;
             border: 1px solid #ddd;
             padding: 20px;
             border-radius: 10px;
