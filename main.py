@@ -76,7 +76,7 @@ st.markdown(
         /* Existing styles ... */
 
         .intro-section, .get-started-section {
-            background-color: #fff; /* White background */
+            # background-color: #fff; /* White background */
             border: 1px solid #ddd; /* Subtle border */
             padding: 25px; /* More padding for better readability */
             border-radius: 10px; /* Rounded corners for a softer look */
