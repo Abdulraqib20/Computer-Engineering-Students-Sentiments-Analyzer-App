@@ -110,10 +110,10 @@ with st.container():
             """
             <div class="intro-section">
                 <p>
-                    This web app is a sentiment analysis tool developed by **raqibcodes**. It has the capability of detecting whether user-entered text has an underlying Positive, 
+                    This web app is a sentiment analysis tool developed by raqibcodes. It has the capability of detecting whether user-entered text has an underlying Positive, 
                     Neutral or Negative sentiment. The text classification model was trained on Feedback survey data collected from 300-level Undergraduate Computer Engineering 
-                    Students at the University of Ilorin (who are His's peers). The model underwent fine-tuning using the BERT model, **bert_tiny_en_uncased_sst2** and KerasNLP
-                    techniques, resulting in an impressive accuracy score of **96%**. The data was subsequently evaluated using a **RoBERTa-based model** 
+                    Students at the University of Ilorin (who are His's peers). The model underwent fine-tuning using the a BERT model and KerasNLP
+                    techniques, resulting in an impressive accuracy score of 96%. The data was subsequently evaluated using a RoBERTa-based model
                     which is a transformer-based model and it also showed strong performances in analyzing sentiments accurately.
                 </p>
             </div>
@@ -674,7 +674,17 @@ if st.button("Explore Visualizations"):
 df['percentage_confidence'] = df['percentage_confidence'].apply(lambda x: float(x.strip('%')))
 
 # --- Sentiment Summary ---
+positive_feedback_count = (df["sentiments_index"] == 3).sum()
+neutral_feedback_count = (df["sentiments_index"] == 2).sum()
+negative_feedback_count = (df["sentiments_index"] == 1).sum()
+
+# Calculate average confidence percentage for each sentiment
+average_confidence_positive = df.loc[df["sentiments_index"] == 3, "percentage_confidence"].mean()
+average_confidence_neutral = df.loc[df["sentiments_index"] == 2, "percentage_confidence"].mean()
+average_confidence_negative = df.loc[df["sentiments_index"] == 1, "percentage_confidence"].mean()
+
 st.markdown("<h3 style='text-align: center;'>Sentiment Summary</h3>", unsafe_allow_html=True)
+
 # Create columns for layout
 summary_col1, summary_col2, summary_col3 = st.columns(3)
 
