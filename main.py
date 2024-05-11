@@ -33,7 +33,7 @@ import streamlit as st
 # Configure Streamlit page
 st.set_page_config(
     page_title="SA App",
-    page_icon=":bar_chart:",  # Use a bar chart icon for a sentiment analysis app
+    page_icon=":bar_chart:",
     layout="wide",
 )
 
@@ -52,7 +52,6 @@ st.markdown(
         .section {
             margin-bottom: 30px; /* Add spacing between sections */
             padding: 20px;
-            background-color: #f5f5f5; /* Light gray background for sections */
             border-radius: 10px; /* Rounded corners */
         }
     </style>
