@@ -237,7 +237,7 @@ for key in ['course_code', 'previous_exp', 'gender', 'attendance', 'difficulty',
     if key not in st.session_state:
         st.session_state[key] = 'Select Option' if key != 'study_hours' else 0
 
-st.markdown("<h3 style='text-align: center;'>Refine Your Analysis</h3>", unsafe_allow_html=True)
+st.markdown("<h3 style='text-align: center;'>Student Details</h3>", unsafe_allow_html=True)
 
 with st.container():
     col1, col2, col3 = st.columns(3)
