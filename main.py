@@ -41,7 +41,8 @@ st.markdown(
     """
     <style>
         .main-header {
-            background: linear-gradient(to right, #007bff, #28a745); /* Gradient blue to green */
+            # background: linear-gradient(to right, #007bff, #28a745); /* Gradient blue to green */
+            background: linear-gradient(to right, #ff69b4, #9400d3); /* Vibrant pink/purple gradient */
             color: white; /* White text for the header */
             padding: 25px; /* Increased padding for more space */
             text-align: center;
