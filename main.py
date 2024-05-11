@@ -37,8 +37,8 @@ st.set_page_config(
 
 # --- Styling ---
 
-# --- Header ---
 
+# --- Header ---
 st.markdown(
     """
     <div class="main-header">
@@ -52,7 +52,6 @@ st.markdown(
     """
     <style>
         .main-header {
-            # background: linear-gradient(to right, #007bff, #28a745); /* Gradient blue to green */
             background: linear-gradient(to right, #ff69b4, #9400d3); /* Vibrant pink/purple gradient */
             color: white; /* White text for the header */
             padding: 25px; /* Increased padding for more space */
@@ -238,16 +237,6 @@ for key in ['course_code', 'previous_exp', 'gender', 'attendance', 'difficulty',
     if key not in st.session_state:
         st.session_state[key] = 'Select Option' if key != 'study_hours' else 0
 
-# # Initialize variables to store sidebox values
-# course_code = None
-# previous_exp = None
-# gender = None
-# attendance = None
-# difficulty = None
-# study_hours = None
-# satisfaction = None
-# department = None
-
 st.markdown("<h3 style='text-align: center;'>Refine Your Analysis</h3>", unsafe_allow_html=True)
 
 with st.container():
@@ -269,8 +258,6 @@ with st.container():
             st.session_state['attendance'] = st.selectbox("Attendance", ['Select Attendance', 'Regular', 'Irregular', 'Occasional'])
             st.session_state['study_hours'] = st.selectbox("Study Hours (per week)", options=['Select Study Hours'] + list(range(25)))
             st.session_state['satisfaction'] = st.selectbox("Overall Satisfaction", options=['Select Overall Satisfaction'] + list(range(1, 11)))
-
-
 
 # # Initialize variables to store sidebox values
 # course_code = None
