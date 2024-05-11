@@ -37,6 +37,17 @@ st.set_page_config(
 
 # --- Styling ---
 
+# --- Header ---
+
+st.markdown(
+    """
+    <div class="main-header">
+        <h1>Sentiment Analysis App <span>🚀</span></h1>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
+
 st.markdown(
     """
     <style>
@@ -69,16 +80,6 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# --- Header ---
-
-st.markdown(
-    """
-    <div class="main-header">
-        <h1>Sentiment Analysis App <span>🚀</span></h1>
-    </div>
-    """,
-    unsafe_allow_html=True,
-)
 
 st.markdown(
     """
@@ -205,41 +206,6 @@ if show_app_features:
     """)
 
 # --- Styling ---
-
-st.markdown(
-    """
-    <style>
-        /* Existing styles ... */
-
-        .main-header {
-            background: linear-gradient(to right, #007bff, #28a745); /* Gradient blue to green */
-            color: white; /* White text for the header */
-            padding: 25px; /* Increased padding for more space */
-            text-align: center;
-            border-radius: 10px; /* Rounded corners for a softer look */
-            box-shadow: 2px 2px 5px rgba(0,0,0,0.1); /* Subtle shadow for depth */
-        }
-
-        .main-header h1 {
-            font-size: 3rem; /* Larger font size for the header */
-        }
-
-        /* Style for the "rocket" emoji */
-        .main-header h1 span {
-            animation: rocket-animation 2s linear infinite; /* Add animation */
-        }
-
-        @keyframes rocket-animation {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0); }
-        }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
-
-# --- Styling ---
 st.markdown(
     """
     <style>
@@ -265,6 +231,7 @@ st.markdown(
 )
 
 # --- Input Section ---
+
 # Initialize variables to store sidebox values
 course_code = None
 previous_exp = None
