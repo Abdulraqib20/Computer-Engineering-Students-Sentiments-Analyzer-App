@@ -204,7 +204,7 @@ if show_app_features:
         - The app works in real-time, automatically saving prediction results and other insights generated.
     """)
 
-Initialize variables to store sidebox values
+# Initialize variables to store sidebox values
 course_code = None
 previous_exp = None
 gender = None
