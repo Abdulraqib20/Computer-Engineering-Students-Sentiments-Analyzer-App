@@ -763,7 +763,7 @@ st.markdown(
             align-items: center;
             padding: 25px; /* More padding for a comfortable feel */
             background: linear-gradient(to right, #ff69b4, #9400d3); /* Vibrant pink/purple gradient */
-            color: white;
+            color: #F5F5F5;
             font-size: 18px;
             border-radius: 15px; /* Softer rounded corners */
             margin-top: 40px;
@@ -775,7 +775,7 @@ st.markdown(
         }
 
         footer a {
-            color: #ffff;
+            color: #F5F5F5;
             text-decoration: none;
             font-weight: bold;
             position: relative; /* For positioning the pseudo-element */
@@ -800,7 +800,7 @@ st.markdown(
         }
 
         footer a:hover {
-            color: #f5f5f5; /* Slightly lighter color on hover */
+            color: #F5F5F5; /* Slightly lighter color on hover */
             letter-spacing: 1px; /* Subtle letter spacing increase on hover */
         }
     </style>
