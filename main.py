@@ -556,14 +556,16 @@ st.write(f"Average Confidence Percentage for Negative Feedback: {average_confide
 # footer
 
 # line separator
-st.markdown('<hr style="border: 2px solid #ddd;">', unsafe_allow_html=True)
+# st.markdown('<hr style="border: 2px solid #ddd;">', unsafe_allow_html=True)
 
 # footer text
-st.markdown(
-    """
-    <div style="text-align: center; padding: 10px;">
-        Developed by <a href="https://github.com/Abdulraqib20" target="_blank">raqibcodes</a>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+st.title(" ")
+st.title(" ")
+st.markdown("""
+    <footer style="display: flex; justify-content: center; align-items: center; text-align: center; padding: 15px; border-radius: 10px; margin-top: 20px; box-shadow: 2px 1px 4px rgba(188, 192, 198, 0.38)">
+        <p style="font-size: 16px; color: #f0f0f0;">App Developed by 
+            <a href="https://github.com/Abdulraqib20" target="_blank" style="color: #90caf9; text-decoration: none; font-weight: bold;">raqibcodes</a>
+        </p>
+    </footer>
+""",
+ unsafe_allow_html=True)
