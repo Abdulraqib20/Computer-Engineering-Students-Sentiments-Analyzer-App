@@ -292,29 +292,55 @@ st.markdown(
 )
 
 # --- Input Section ---
-st.markdown("<h3 style='text-align: center;'>Refine Your Analysis</h3>", unsafe_allow_html=True)  
+st.markdown(
+    """
+    <div class="student-details-section">
+        <h3>Student Details</h3>
+    """,
+    unsafe_allow_html=True,
+)
 
-with st.container(): # Wrap the selectboxes in a container for better visual grouping
-  # Create columns for layout
-  col1, col2, col3 = st.columns(3)
+# Create containers for selectboxes (to get values later)
+course_code_container = st.empty()
+previous_exp_container = st.empty()
+gender_container = st.empty()
+attendance_container = st.empty()
+difficulty_container = st.empty()
+study_hours_container = st.empty()
+satisfaction_container = st.empty()
+department_container = st.empty()
 
-  # Input fields in columns for better layout
-  with col1:
-    with st.expander("Course Information"):
-      course_code = st.selectbox("Course Code", ['Select Course Code', 'CPE 321', 'CPE 311', 'CPE 341', 'CPE 381', 'CPE 331', 'MEE 361', 'GSE 301'])
-      difficulty = st.selectbox("Course Difficulty", ['Select Difficulty', 'Easy', 'Difficult', 'Challenging', 'Moderate'])
+with st.container():  # Wrap the entire input section in a container for better visual grouping
+    # Create columns for layout
+    col1, col2, col3 = st.columns(3)
 
-  with col2:
-    with st.expander("Student Demographics"):
-      previous_exp = st.selectbox("Previous Experience", ['Select Option', "Yes", "No"])
-      gender = st.selectbox("Gender", ['Select Gender', 'Male', 'Female'])
-      department = st.selectbox("Department", ['Select Option', "Yes", "No"])
+    # Input fields in columns for better layout
+    with col1:
+        with st.expander("Course Information"):
+            course_code_container.selectbox("Course Code", ['Select Course Code', 'CPE 321', 'CPE 311', 'CPE 341', 'CPE 381', 'CPE 331', 'MEE 361', 'GSE 301'])
+            difficulty_container.selectbox("Course Difficulty", ['Select Difficulty', 'Easy', 'Difficult', 'Challenging', 'Moderate'])
 
-  with col3:
-    with st.expander("Additional Information"):
-      attendance = st.selectbox("Attendance", ['Select Attendance', 'Regular', 'Irregular', 'Occasional'])
-      study_hours = st.selectbox("Study Hours (per week)", options=['Select Study Hours'] + list(range(25)))
-      satisfaction = st.selectbox("Overall Satisfaction", options=['Select Overall Satisfaction'] + list(range(1, 11)))
+    with col2:
+        with st.expander("Student Demographics"):
+            previous_exp_container.selectbox("Previous Experience", ['Select Option', "Yes", "No"])
+            gender_container.selectbox("Gender", ['Select Gender', 'Male', 'Female'])
+            department_container.selectbox("Department", ['Select Option', "Yes", "No"])  # Replace "Yes" and "No" with appropriate department options
+
+    with col3:
+        with st.expander("Additional Information"):
+            attendance_container.selectbox("Attendance", ['Select Attendance', 'Regular', 'Irregular', 'Occasional'])
+            study_hours_container.selectbox("Study Hours (per week)", options=['Select Study Hours'] + list(range(25)))
+            satisfaction_container.selectbox("Overall Satisfaction", options=['Select Overall Satisfaction'] + list(range(1, 11)))
+
+# Get values from sideboxes (after they have been set)
+course_code = course_code_container.selectbox("Course Code", ['Select Course Code', 'CPE 321', 'CPE 311', 'CPE 341', 'CPE 381', 'CPE 331', 'MEE 361', 'GSE 301'])
+previous_exp = previous_exp_container.selectbox("Previous Experience", ['Select Option', "Yes", "No"])
+gender = gender_container.selectbox("Gender", ['Select Gender', 'Male', 'Female'])
+attendance = attendance_container.selectbox("Attendance", ['Select Attendance', 'Regular', 'Irregular', 'Occasional'])
+difficulty = difficulty_container.selectbox("Course Difficulty", ['Select Difficulty', 'Easy', 'Difficult', 'Challenging', 'Moderate'])
+study_hours = st.selectbox("Study Hours (per week)", options=['Select Study Hours'] + list(range(25)))
+satisfaction = st.selectbox("Overall Satisfaction", options=['Select Overall Satisfaction'] + list(range(1, 11)))
+department = department_container.selectbox("Department", ['Select Option', "Yes", "No"])
 
 
 
