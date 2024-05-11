@@ -238,52 +238,108 @@ if show_app_features:
 # satisfaction = st.selectbox("Overall Satisfaction", options=['Select Overall Satisfaction'] + list(range(1, 11)), key=selectbox_keys[6])
 # department = department_container.selectbox("Department", ['Select Option', "Yes", "No"],  key=selectbox_keys[7])
 
-from streamlit_option_menu import option_menu
-# Initialize session state variables if they don't exist
-if 'course_code' not in st.session_state:
-    st.session_state['course_code'] = 'Select Course Code'
-if 'difficulty' not in st.session_state:
-    st.session_state['difficulty'] = 'Select Difficulty'
-if 'previous_exp' not in st.session_state:
-    st.session_state['previous_exp'] = 'Select Option'
-if 'gender' not in st.session_state:
-    st.session_state['gender'] = 'Select Gender'
-if 'department' not in st.session_state:
-    st.session_state['department'] = 'Select Option'
-if 'attendance' not in st.session_state:
-    st.session_state['attendance'] = 'Select Attendance'
-if 'study_hours' not in st.session_state:
-    st.session_state['study_hours'] = 'Select Study Hours'
-if 'satisfaction' not in st.session_state:
-    st.session_state['satisfaction'] = 'Select Overall Satisfaction'
+# from streamlit_option_menu import option_menu
+# # Initialize session state variables if they don't exist
+# if 'course_code' not in st.session_state:
+#     st.session_state['course_code'] = 'Select Course Code'
+# if 'difficulty' not in st.session_state:
+#     st.session_state['difficulty'] = 'Select Difficulty'
+# if 'previous_exp' not in st.session_state:
+#     st.session_state['previous_exp'] = 'Select Option'
+# if 'gender' not in st.session_state:
+#     st.session_state['gender'] = 'Select Gender'
+# if 'department' not in st.session_state:
+#     st.session_state['department'] = 'Select Option'
+# if 'attendance' not in st.session_state:
+#     st.session_state['attendance'] = 'Select Attendance'
+# if 'study_hours' not in st.session_state:
+#     st.session_state['study_hours'] = 'Select Study Hours'
+# if 'satisfaction' not in st.session_state:
+#     st.session_state['satisfaction'] = 'Select Overall Satisfaction'
 
 
-st.markdown(
-    """
-    <style>
-        .selectbox-container {
-            background-color: #f5f5f5; /* Light gray background */
-            border: 1px solid #ddd; /* Subtle border */
-            padding: 20px;
-            border-radius: 10px; /* Rounded corners */
-            margin-bottom: 10px; /* Add spacing between containers */
-        }
+# st.markdown(
+#     """
+#     <style>
+#         .selectbox-container {
+#             background-color: #f5f5f5; /* Light gray background */
+#             border: 1px solid #ddd; /* Subtle border */
+#             padding: 20px;
+#             border-radius: 10px; /* Rounded corners */
+#             margin-bottom: 10px; /* Add spacing between containers */
+#         }
 
-        .selectbox-container label {
-            font-weight: bold;
-            color: #333; /* Darker label color */
-        }
+#         .selectbox-container label {
+#             font-weight: bold;
+#             color: #333; /* Darker label color */
+#         }
 
-        .stSelectbox {
-            width: 100%; /* Make selectboxes take full width */
-        }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
+#         .stSelectbox {
+#             width: 100%; /* Make selectboxes take full width */
+#         }
+#     </style>
+#     """,
+#     unsafe_allow_html=True,
+# )
+
+# # --- Input Section ---
+# st.markdown("<h3 style='text-align: center;'>Student Details</h3>", unsafe_allow_html=True)  
+
+# with st.container():
+#     # Create columns for layout
+#     col1, col2, col3 = st.columns(3)
+
+#     # Input fields in columns for better layout
+#     with col1:
+#         with st.expander("Course Information"):
+#             st.session_state['course_code'] = st.selectbox(
+#                 "Course Code",
+#                 ['Select Course Code', 'CPE 321', 'CPE 311', 'CPE 341', 'CPE 381', 'CPE 331', 'MEE 361', 'GSE 301'],
+#                 key='course_code',  # Key for session state
+#             )
+#             st.session_state['difficulty'] = st.selectbox(
+#                 "Course Difficulty", 
+#                 ['Select Difficulty', 'Easy', 'Difficult', 'Challenging', 'Moderate'],
+#                 key='difficulty',
+#             )
+
+#     with col2:
+#         with st.expander("Student Demographics"):
+#             st.session_state['previous_exp'] = st.selectbox("Previous Experience", ['Select Option', "Yes", "No"], key='previous_exp')
+#             st.session_state['gender'] = st.selectbox("Gender", ['Select Gender', 'Male', 'Female'], key='gender')
+#             st.session_state['department'] = st.selectbox("Department", ['Select Option', "Yes", "No"], key='department')
+
+#     with col3:
+#         with st.expander("Additional Information"):
+#             st.session_state['attendance'] = st.selectbox("Attendance", ['Select Attendance', 'Regular', 'Irregular', 'Occasional'], key='attendance')
+#             st.session_state['study_hours'] = st.selectbox("Study Hours (per week)", options=['Select Study Hours'] + list(range(25)), key='study_hours')
+#             st.session_state['satisfaction'] = st.selectbox("Overall Satisfaction", options=['Select Overall Satisfaction'] + list(range(1, 11)), key='satisfaction')
+
+# course_code = st.session_state.course_code  
+# difficulty = st.session_state.difficulty
+# previous_exp = st.session_state.previous_exp
+# gender = st.session_state.gender
+# department = st.session_state.department
+# attendance = st.session_state.attendance
+# study_hours = st.session_state.study_hours
+# satisfaction = st.session_state.satisfaction
+
 
 # --- Input Section ---
-st.markdown("<h3 style='text-align: center;'>Student Details</h3>", unsafe_allow_html=True)  
+st.markdown("<h3 style='text-align: center;'>Student Details</h3>", unsafe_allow_html=True)
+for key in ['course_code', 'difficulty', 'previous_exp', 'gender', 'department', 'attendance', 'study_hours', 'satisfaction']:
+    if key not in st.session_state:
+        st.session_state[key] = {
+            'course_code': 'Select Course Code',
+            'difficulty': 'Select Difficulty',
+            'previous_exp': 'Select Option',
+            'gender': 'Select Gender',
+            'department': 'Select Option',
+            'attendance': 'Select Attendance',
+            'study_hours': 'Select Study Hours',
+            'satisfaction': 'Select Overall Satisfaction'
+        }[key]
+
 
 with st.container():
     # Create columns for layout
@@ -295,12 +351,12 @@ with st.container():
             st.session_state['course_code'] = st.selectbox(
                 "Course Code",
                 ['Select Course Code', 'CPE 321', 'CPE 311', 'CPE 341', 'CPE 381', 'CPE 331', 'MEE 361', 'GSE 301'],
-                key='course_code',  # Key for session state
+                key='course_code'  # Pass the key here
             )
             st.session_state['difficulty'] = st.selectbox(
-                "Course Difficulty", 
+                "Course Difficulty",
                 ['Select Difficulty', 'Easy', 'Difficult', 'Challenging', 'Moderate'],
-                key='difficulty',
+                key='difficulty'
             )
 
     with col2:
