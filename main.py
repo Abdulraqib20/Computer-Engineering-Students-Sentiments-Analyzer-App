@@ -320,16 +320,6 @@ with st.container():
 
 st.markdown("</div>", unsafe_allow_html=True)
 
-# Get values from sideboxes
-course_code = course_code_container.selectbox("Course Code", ['Select Course Code', 'CPE 321', 'CPE 311', 'CPE 341', 'CPE 381', 'CPE 331', 'MEE 361', 'GSE 301'], key=selectbox_keys[0])
-previous_exp = previous_exp_container.selectbox("Previous Experience", ['Select Option', "Yes", "No"], key=selectbox_keys[1])
-gender = gender_container.selectbox("Gender", ['Select Gender', 'Male', 'Female'], key=selectbox_keys[2])
-attendance = attendance_container.selectbox("Attendance", ['Select Attendance', 'Regular', 'Irregular', 'Occasional'], key=selectbox_keys[3])
-difficulty = difficulty_container.selectbox("Course Difficulty", ['Select Difficulty', 'Easy', 'Difficult', 'Challenging', 'Moderate'], key=selectbox_keys[4])
-study_hours = st.selectbox("Study Hours (per week)", options=['Select Study Hours'] + list(range(25)), key=selectbox_keys[5])
-satisfaction = st.selectbox("Overall Satisfaction", options=['Select Overall Satisfaction'] + list(range(1, 11)), key=selectbox_keys[6])
-department = department_container.selectbox("Department", ['Select Option', "Yes", "No"], key=selectbox_keys[7])
-
 
 # Load the exported data using st.cache
 # @st.cache_data()
