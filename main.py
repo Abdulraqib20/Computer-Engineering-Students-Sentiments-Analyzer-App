@@ -265,6 +265,16 @@ st.markdown(
 )
 
 # --- Input Section ---
+# Initialize variables to store sidebox values
+course_code = None
+previous_exp = None
+gender = None
+attendance = None
+difficulty = None
+study_hours = None
+satisfaction = None
+department = None
+
 st.markdown("<h3 style='text-align: center;'>Refine Your Analysis</h3>", unsafe_allow_html=True)  
 
 with st.container():  # Wrap the selectboxes in a container for better visual grouping
