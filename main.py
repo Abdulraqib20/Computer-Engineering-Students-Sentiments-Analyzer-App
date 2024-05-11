@@ -205,14 +205,14 @@ if show_app_features:
     """)
 
 # Initialize variables to store sidebox values
-course_code = None
-previous_exp = None
-gender = None
-attendance = None
-difficulty = None
-study_hours = None
-satisfaction = None
-department = None
+# course_code = None
+# previous_exp = None
+# gender = None
+# attendance = None
+# difficulty = None
+# study_hours = None
+# satisfaction = None
+# department = None
 
 # # Create containers for sideboxes
 # course_code_container = st.empty()
