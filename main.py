@@ -91,7 +91,7 @@ st.markdown(
         }
 
         .intro-section h2, .get-started-section h3 {
-            color: #333; /* Darker heading color */
+            color: #fffff;
             margin-bottom: 15px;
         }
 
@@ -228,29 +228,83 @@ study_hours = None
 satisfaction = None
 department = None
 
-# Create containers for sideboxes
-course_code_container = st.empty()
-previous_exp_container = st.empty()
-gender_container = st.empty()
-attendance_container = st.empty()
-difficulty_container = st.empty()
-study_hours_container = st.empty()
-satisfaction_container = st.empty()
-department_container = st.empty()
+# # Create containers for sideboxes
+# course_code_container = st.empty()
+# previous_exp_container = st.empty()
+# gender_container = st.empty()
+# attendance_container = st.empty()
+# difficulty_container = st.empty()
+# study_hours_container = st.empty()
+# satisfaction_container = st.empty()
+# department_container = st.empty()
 
 
-# Unique identifier for each selectbox
-selectbox_keys = ['course_code', 'previous_exp', 'gender', 'attendance', 'difficulty', 'study_hours', 'satisfaction', 'department']
+# # Unique identifier for each selectbox
+# selectbox_keys = ['course_code', 'previous_exp', 'gender', 'attendance', 'difficulty', 'study_hours', 'satisfaction', 'department']
 
-# Get values from sideboxes
-course_code = course_code_container.selectbox("Course Code", ['Select Course Code', 'CPE 321', 'CPE 311', 'CPE 341', 'CPE 381', 'CPE 331', 'MEE 361', 'GSE 301'], key=selectbox_keys[0])
-previous_exp = previous_exp_container.selectbox("Previous Experience", ['Select Option', "Yes", "No"], key=selectbox_keys[1])
-gender = gender_container.selectbox("Gender", ['Select Gender', 'Male', 'Female'], key=selectbox_keys[2])
-attendance = attendance_container.selectbox("Attendance", ['Select Attendance', 'Regular', 'Irregular', 'Occasional'], key=selectbox_keys[3])
-difficulty = difficulty_container.selectbox("Course Difficulty", ['Select Difficulty', 'Easy', 'Difficult', 'Challenging', 'Moderate'], key=selectbox_keys[4])
-study_hours = st.selectbox("Study Hours (per week)", options=['Select Study Hours'] + list(range(25)), key=selectbox_keys[5])
-satisfaction = st.selectbox("Overall Satisfaction", options=['Select Overall Satisfaction'] + list(range(1, 11)), key=selectbox_keys[6])
-department = department_container.selectbox("Department", ['Select Option', "Yes", "No"],  key=selectbox_keys[7])
+# # Get values from sideboxes
+# course_code = course_code_container.selectbox("Course Code", ['Select Course Code', 'CPE 321', 'CPE 311', 'CPE 341', 'CPE 381', 'CPE 331', 'MEE 361', 'GSE 301'], key=selectbox_keys[0])
+# previous_exp = previous_exp_container.selectbox("Previous Experience", ['Select Option', "Yes", "No"], key=selectbox_keys[1])
+# gender = gender_container.selectbox("Gender", ['Select Gender', 'Male', 'Female'], key=selectbox_keys[2])
+# attendance = attendance_container.selectbox("Attendance", ['Select Attendance', 'Regular', 'Irregular', 'Occasional'], key=selectbox_keys[3])
+# difficulty = difficulty_container.selectbox("Course Difficulty", ['Select Difficulty', 'Easy', 'Difficult', 'Challenging', 'Moderate'], key=selectbox_keys[4])
+# study_hours = st.selectbox("Study Hours (per week)", options=['Select Study Hours'] + list(range(25)), key=selectbox_keys[5])
+# satisfaction = st.selectbox("Overall Satisfaction", options=['Select Overall Satisfaction'] + list(range(1, 11)), key=selectbox_keys[6])
+# department = department_container.selectbox("Department", ['Select Option', "Yes", "No"],  key=selectbox_keys[7])
+
+
+
+st.markdown(
+    """
+    <style>
+        .selectbox-container {
+            background-color: #f5f5f5; /* Light gray background */
+            border: 1px solid #ddd; /* Subtle border */
+            padding: 20px;
+            border-radius: 10px; /* Rounded corners */
+            margin-bottom: 10px; /* Add spacing between containers */
+        }
+
+        .selectbox-container label {
+            font-weight: bold;
+            color: #333; /* Darker label color */
+        }
+
+        .stSelectbox {
+            width: 100%; /* Make selectboxes take full width */
+        }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+# --- Input Section ---
+st.markdown("<h3 style='text-align: center;'>Refine Your Analysis</h3>", unsafe_allow_html=True)  
+
+with st.container():
+    # Create columns for layout
+    col1, col2, col3 = st.columns(3)
+
+    # Input fields in columns for better layout
+    with col1:
+        with st.expander("Course Information"):
+            course_code = st.selectbox("Course Code", ['Select Course Code', 'CPE 321', 'CPE 311', 'CPE 341', 'CPE 381', 'CPE 331', 'MEE 361', 'GSE 301'])
+            difficulty = st.selectbox("Course Difficulty", ['Select Difficulty', 'Easy', 'Difficult', 'Challenging', 'Moderate'])
+
+    with col2:
+        with st.expander("Student Demographics"):
+            previous_exp = st.selectbox("Previous Experience", ['Select Option', "Yes", "No"])
+            gender = st.selectbox("Gender", ['Select Gender', 'Male', 'Female'])
+            department = st.selectbox("Department", ['Select Option', "Yes", "No"])
+
+    with col3:
+        with st.expander("Additional Information"):
+            attendance = st.selectbox("Attendance", ['Select Attendance', 'Regular', 'Irregular', 'Occasional'])
+            study_hours = st.selectbox("Study Hours (per week)", options=['Select Study Hours'] + list(range(25)))
+            satisfaction = st.selectbox("Overall Satisfaction", options=['Select Overall Satisfaction'] + list(range(1, 11)))
+
+
+
 
 # Load the exported data using st.cache
 # @st.cache_data()
