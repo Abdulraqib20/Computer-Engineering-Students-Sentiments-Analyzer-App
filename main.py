@@ -42,17 +42,30 @@ st.set_page_config(
 st.markdown(
     """
     <style>
+        /* Existing styles ... */
+
         .main-header {
-            background-color: #007bff; /* Blue background for the header */
+            background: linear-gradient(to right, #007bff, #28a745); /* Gradient blue to green */
             color: white; /* White text for the header */
-            padding: 20px;
+            padding: 25px; /* Increased padding for more space */
             text-align: center;
+            border-radius: 10px; /* Rounded corners for a softer look */
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1); /* Subtle shadow for depth */
         }
 
-        .section {
-            margin-bottom: 30px; /* Add spacing between sections */
-            padding: 20px;
-            border-radius: 10px; /* Rounded corners */
+        .main-header h1 {
+            font-size: 3rem; /* Larger font size for the header */
+        }
+
+        /* Style for the "rocket" emoji */
+        .main-header h1 span {
+            animation: rocket-animation 2s linear infinite; /* Add animation */
+        }
+
+        @keyframes rocket-animation {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
         }
     </style>
     """,
@@ -64,7 +77,7 @@ st.markdown(
 st.markdown(
     """
     <div class="main-header">
-        <h1>Sentiment Analysis App 🚀</h1>
+        <h1>Sentiment Analysis App <span>🚀</span></h1>
     </div>
     """,
     unsafe_allow_html=True,
