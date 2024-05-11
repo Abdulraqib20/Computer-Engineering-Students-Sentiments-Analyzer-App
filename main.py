@@ -754,61 +754,122 @@ st.markdown(
 st.title(" ")
 st.title(" ")
 
+# st.markdown(
+#     """
+#     <style>
+#         footer {
+#             display: flex; 
+#             justify-content: center;
+#             align-items: center;
+#             padding: 25px; /* More padding for a comfortable feel */
+#             background: linear-gradient(to right, #ff69b4, #9400d3); /* Vibrant pink/purple gradient */
+#             color: #F5F5F5;
+#             font-size: 18px;
+#             border-radius: 15px; /* Softer rounded corners */
+#             margin-top: 40px;
+#             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+#         }
+
+#         footer p {
+#             margin: 0; /* Remove default margin for better control */
+#         }
+
+#         footer a {
+#             color: #F5F5F5;
+#             text-decoration: none;
+#             font-weight: bold;
+#             position: relative; /* For positioning the pseudo-element */
+#             transition: all 0.3s ease; /* Smoother transitions for all properties */
+#         }
+
+#         footer a::after {
+#             content: "";
+#             position: absolute;
+#             bottom: -4px; /* Adjust position of underline */
+#             left: 0;
+#             width: 100%;
+#             height: 2px;
+#             background-color: #fff; /* White underline */
+#             transform: scaleX(0); /* Initially hidden */
+#             transform-origin: left; /* Animate from the left */
+#             transition: transform 0.3s ease; /* Smooth transition */
+#         }
+
+#         footer a:hover::after {
+#             transform: scaleX(1); /* Show underline on hover */
+#         }
+
+#         footer a {
+#             color: white; 
+#         }
+
+#         footer a:hover {
+#             color: #F5F5F5; /* Slightly lighter color on hover */
+#             letter-spacing: 1px; /* Subtle letter spacing increase on hover */
+#         }
+#     </style>
+
+#     <footer>
+#         <p>
+#             Made with ❤️ by&nbsp;
+#             <a href="https://github.com/Abdulraqib20" target="_blank">raqibcodes</a>
+#         </p>
+#     </footer>
+#     """,
+#     unsafe_allow_html=True,
+# )
+
+
 st.markdown(
     """
     <style>
-        footer {
-            display: flex; 
+        div.stMarkdown footer {
+            display: flex;
             justify-content: center;
             align-items: center;
-            padding: 25px; /* More padding for a comfortable feel */
-            background: linear-gradient(to right, #ff69b4, #9400d3); /* Vibrant pink/purple gradient */
-            color: #F5F5F5;
+            padding: 25px;
+            background: linear-gradient(to right, #ff69b4, #9400d3); /* Vibrant pink/purple */
+            color: white;
             font-size: 18px;
-            border-radius: 15px; /* Softer rounded corners */
+            border-radius: 15px;
             margin-top: 40px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Subtle text shadow for depth */
         }
 
-        footer p {
-            margin: 0; /* Remove default margin for better control */
-        }
+        div.stMarkdown footer p { margin: 0; } 
 
-        footer a {
-            color: #F5F5F5;
-            text-decoration: none;
+        div.stMarkdown footer a {
+            color: inherit;
             font-weight: bold;
-            position: relative; /* For positioning the pseudo-element */
-            transition: all 0.3s ease; /* Smoother transitions for all properties */
+            position: relative;
+            transition: all 0.3s ease;
+            text-shadow: none; /* Remove text-shadow from link */
         }
 
-        footer a::after {
+        div.stMarkdown footer a::before { /* Glowing underline effect */
             content: "";
             position: absolute;
-            bottom: -4px; /* Adjust position of underline */
-            left: 0;
             width: 100%;
             height: 2px;
-            background-color: #fff; /* White underline */
-            transform: scaleX(0); /* Initially hidden */
-            transform-origin: left; /* Animate from the left */
-            transition: transform 0.3s ease; /* Smooth transition */
+            bottom: -5px;
+            left: 0;
+            background-color: #fff;
+            visibility: hidden;
+            transform: scaleX(0);
+            transition: all 0.3s ease-in-out 0s;
         }
 
-        footer a:hover::after {
-            transform: scaleX(1); /* Show underline on hover */
+        div.stMarkdown footer a:hover::before {
+            visibility: visible;
+            transform: scaleX(1);
         }
 
-        footer a {
-            color: white; 
-        }
-
-        footer a:hover {
-            color: #F5F5F5; /* Slightly lighter color on hover */
-            letter-spacing: 1px; /* Subtle letter spacing increase on hover */
+        div.stMarkdown footer a:hover {
+            color: #f0f0f0; /* Slightly lighter white on hover */
+            letter-spacing: 1px;
         }
     </style>
-
     <footer>
         <p>
             Made with ❤️ by&nbsp;
@@ -818,3 +879,4 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
+
