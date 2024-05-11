@@ -229,6 +229,7 @@ study_hours_container = st.empty()
 satisfaction_container = st.empty()
 department_container = st.empty()
 
+st.title(" ")
 # Unique identifier for each selectbox
 selectbox_keys = ['course_code', 'previous_exp', 'gender', 'attendance', 'difficulty', 'study_hours', 'satisfaction', 'department']
 
