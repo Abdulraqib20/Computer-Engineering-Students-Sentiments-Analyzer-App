@@ -775,7 +775,7 @@ st.markdown(
         }
 
         footer a {
-            color: #fff;
+            color: #ffff;
             text-decoration: none;
             font-weight: bold;
             position: relative; /* For positioning the pseudo-element */
