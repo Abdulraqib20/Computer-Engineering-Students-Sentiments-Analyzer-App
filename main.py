@@ -238,6 +238,7 @@ if show_app_features:
 # satisfaction = st.selectbox("Overall Satisfaction", options=['Select Overall Satisfaction'] + list(range(1, 11)), key=selectbox_keys[6])
 # department = department_container.selectbox("Department", ['Select Option', "Yes", "No"],  key=selectbox_keys[7])
 
+
 # --- Styling for the input section ---
 st.markdown(
     """
@@ -273,69 +274,51 @@ st.markdown(
 )
 
 # --- Input Section ---
-st.markdown("<h3 style='text-align: center;'>Student Details</h3>", unsafe_allow_html=True)
+st.markdown(
+    """
+    <div class="student-details-section">
+        <h3>Student Details</h3>
+    """,
+    unsafe_allow_html=True,
+)
 
-with st.form("student_details_form"):  # Create a form
+# Create containers for sideboxes
+course_code_container = st.empty()
+previous_exp_container = st.empty()
+gender_container = st.empty()
+attendance_container = st.empty()
+difficulty_container = st.empty()
+study_hours_container = st.empty()
+satisfaction_container = st.empty()
+department_container = st.empty()
+
+
+# Unique identifier for each selectbox
+selectbox_keys = ['course_code', 'previous_exp', 'gender', 'attendance', 'difficulty', 'study_hours', 'satisfaction', 'department']
+
+with st.container():
     # Create columns for layout
     col1, col2, col3 = st.columns(3)
 
+    # Input fields in columns for better layout
     with col1:
         with st.expander("Course Information"):
-            course_code = st.selectbox(
-                "Course Code",
-                ["Select Course Code", "CPE 321", "CPE 311", "CPE 341", "CPE 381", "CPE 331", "MEE 361", "GSE 301"],
-                key="course_code",
-            )
-            difficulty = st.selectbox(
-                "Course Difficulty",
-                ["Select Difficulty", "Easy", "Difficult", "Challenging", "Moderate"],
-                key="difficulty",
-            )
+            course_code = course_code_container.selectbox("Course Code", ['Select Course Code', 'CPE 321', 'CPE 311', 'CPE 341', 'CPE 381', 'CPE 331', 'MEE 361', 'GSE 301'], key=selectbox_keys[0])
+            difficulty = difficulty_container.selectbox("Course Difficulty", ['Select Difficulty', 'Easy', 'Difficult', 'Challenging', 'Moderate'], key=selectbox_keys[4])
 
     with col2:
         with st.expander("Student Demographics"):
-            previous_exp = st.selectbox("Previous Experience", ["Select Option", "Yes", "No"], key="previous_exp")
-            gender = st.selectbox("Gender", ["Select Gender", "Male", "Female"], key="gender")
-            department = st.selectbox("Department", ["Select Option", "Yes", "No"], key="department")  
+            previous_exp = previous_exp_container.selectbox("Previous Experience", ['Select Option', "Yes", "No"], key=selectbox_keys[1])
+            gender = gender_container.selectbox("Gender", ['Select Gender', 'Male', 'Female'], key=selectbox_keys[2])
+            department = department_container.selectbox("Department", ['Select Option', "Yes", "No"], key=selectbox_keys[7])  # Replace "Yes" and "No" with appropriate department options
 
     with col3:
         with st.expander("Additional Information"):
-            attendance = st.selectbox("Attendance", ["Select Attendance", "Regular", "Irregular", "Occasional"], key="attendance")
-            study_hours = st.selectbox("Study Hours (per week)", options=["Select Study Hours"] + list(range(25)), key="study_hours")
-            satisfaction = st.selectbox("Overall Satisfaction", options=["Select Overall Satisfaction"] + list(range(1, 11)), key="satisfaction")
+            attendance = attendance_container.selectbox("Attendance", ['Select Attendance', 'Regular', 'Irregular', 'Occasional'], key=selectbox_keys[3])
+            study_hours = study_hours_container.selectbox("Study Hours (per week)", options=['Select Study Hours'] + list(range(25)), key=selectbox_keys[5])
+            satisfaction = satisfaction_container.selectbox("Overall Satisfaction", options=['Select Overall Satisfaction'] + list(range(1, 11)), key=selectbox_keys[6])
 
-    submitted = st.form_submit_button("Apply Filters")
-
-# Update session state ONLY after the form is submitted
-if submitted:
-    st.session_state['course_code'] = course_code
-    st.session_state['difficulty'] = difficulty
-    st.session_state['previous_exp'] = previous_exp
-    st.session_state['gender'] = gender
-    st.session_state['department'] = department
-    st.session_state['attendance'] = attendance
-    st.session_state['study_hours'] = study_hours
-    st.session_state['satisfaction'] = satisfaction
-    
-# Access values from session state
-course_code = st.session_state.get('course_code', "Select Course Code")
-difficulty = st.session_state.get('difficulty', "Select Difficulty")
-previous_exp = st.session_state.get('previous_exp', "Select Option")
-gender = st.session_state.get('gender', "Select Gender")
-department = st.session_state.get('department', "Select Option")
-attendance = st.session_state.get('attendance', "Select Attendance")
-study_hours = st.session_state.get('study_hours', "Select Study Hours")
-satisfaction = st.session_state.get('satisfaction', "Select Overall Satisfaction")
-
-
-# course_code = st.session_state.course_code  
-# difficulty = st.session_state.difficulty
-# previous_exp = st.session_state.previous_exp
-# gender = st.session_state.gender
-# department = st.session_state.department
-# attendance = st.session_state.attendance
-# study_hours = st.session_state.study_hours
-# satisfaction = st.session_state.satisfaction
+st.markdown("</div>", unsafe_allow_html=True)
 
 
 
