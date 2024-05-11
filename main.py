@@ -110,7 +110,11 @@ with st.container():
             """
             <div class="intro-section">
                 <p>
-                    This web app, developed by raqibcodes, accurately detects the sentiment (Positive, Neutral, or Negative) of user-entered text. The model was trained on feedback from Computer Engineering students and fine-tuned using BERT, achieving 96% accuracy. Evaluation with a RoBERTa-based model also demonstrated strong performance.
+                    This web app is a sentiment analysis tool developed by **raqibcodes**. It has the capability of detecting whether user-entered text has an underlying Positive, 
+                    Neutral or Negative sentiment. The text classification model was trained on Feedback survey data collected from 300-level Undergraduate Computer Engineering 
+                    Students at the University of Ilorin (who are His's peers). The model underwent fine-tuning using the BERT model, **bert_tiny_en_uncased_sst2** and KerasNLP
+                    techniques, resulting in an impressive accuracy score of **96%**. The data was subsequently evaluated using a **RoBERTa-based model** 
+                    which is a transformer-based model and it also showed strong performances in analyzing sentiments accurately.
                 </p>
             </div>
             """,
@@ -124,7 +128,7 @@ with st.container():
         <div class="get-started-section">
             <h3>Get Started</h3>
             <p>
-                Simply fill in the prompts and enter your text to discover its underlying sentiment.
+                Just complete all the fields and type in your message, and it will quickly show you the underlying emotion and the percentage level of confidence.
             </p>
         </div>
         """,
@@ -279,7 +283,7 @@ st.markdown(
 )
 
 # --- Input Section ---
-st.markdown("<h3 style='text-align: center;'>Refine Your Analysis</h3>", unsafe_allow_html=True)  
+st.markdown("<h3 style='text-align: center;'>Student Details</h3>", unsafe_allow_html=True)  
 
 with st.container():
     # Create columns for layout
@@ -669,41 +673,101 @@ if st.button("Explore Visualizations"):
 
 df['percentage_confidence'] = df['percentage_confidence'].apply(lambda x: float(x.strip('%')))
 
-# Sentiment Summary
-st.header("Sentiment Summary")
-positive_feedback_count = (df["sentiments_index"] == 3).sum()
-neutral_feedback_count = (df["sentiments_index"] == 2).sum()
-negative_feedback_count = (df["sentiments_index"] == 1).sum()
+# --- Sentiment Summary ---
+st.markdown("<h3 style='text-align: center;'>Sentiment Summary</h3>", unsafe_allow_html=True)
+# Create columns for layout
+summary_col1, summary_col2, summary_col3 = st.columns(3)
 
-# Calculate average confidence percentage for each sentiment
-average_confidence_positive = df.loc[df["sentiments_index"] == 3, "percentage_confidence"].mean()
-average_confidence_neutral = df.loc[df["sentiments_index"] == 2, "percentage_confidence"].mean()
-average_confidence_negative = df.loc[df["sentiments_index"] == 1, "percentage_confidence"].mean()
+# Display positive feedback summary
+with summary_col1:
+    st.markdown(
+        f"""
+        <div class="summary-card">
+            <h4 style='text-align: center;'>Positive Feedback</h4>
+            <p style='text-align: center; font-size: 24px;'>{positive_feedback_count}</p>
+            <p style='text-align: center;'>Average Confidence: {average_confidence_positive:.2f}%</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
-# Display updated summary statistics
-st.write(f"Number of Positive Feedback: {positive_feedback_count}")
-st.write(f"Number of Neutral Feedback: {neutral_feedback_count}")
-st.write(f"Number of Negative Feedback: {negative_feedback_count}")
+# Display neutral feedback summary
+with summary_col2:
+    st.markdown(
+        f"""
+        <div class="summary-card">
+            <h4 style='text-align: center;'>Neutral Feedback</h4>
+            <p style='text-align: center; font-size: 24px;'>{neutral_feedback_count}</p>
+            <p style='text-align: center;'>Average Confidence: {average_confidence_neutral:.2f}%</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
-# Display average confidence percentage for each sentiment
-st.write(f"Average Confidence Percentage for Positive Feedback: {average_confidence_positive:.2f}%")
-st.write(f"Average Confidence Percentage for Neutral Feedback: {average_confidence_neutral:.2f}%")
-st.write(f"Average Confidence Percentage for Negative Feedback: {average_confidence_negative:.2f}%")
+# Display negative feedback summary
+with summary_col3:
+    st.markdown(
+        f"""
+        <div class="summary-card">
+            <h4 style='text-align: center;'>Negative Feedback</h4>
+            <p style='text-align: center; font-size: 24px;'>{negative_feedback_count}</p>
+            <p style='text-align: center;'>Average Confidence: {average_confidence_negative:.2f}%</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+# --- CSS Styling ---
+st.markdown(
+    """
+    <style>
+        /* ... your existing styles ... */
+
+        .summary-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
 
-# footer
-
-# line separator
-# st.markdown('<hr style="border: 2px solid #ddd;">', unsafe_allow_html=True)
+# ---Footer---
 
 # footer text
 st.title(" ")
 st.title(" ")
-st.markdown("""
-    <footer style="display: flex; justify-content: center; align-items: center; text-align: center; padding: 15px; border-radius: 10px; margin-top: 20px; box-shadow: 2px 1px 4px rgba(188, 192, 198, 0.38)">
-        <p style="font-size: 16px; color: #f0f0f0;">App Developed by 
-            <a href="https://github.com/Abdulraqib20" target="_blank" style="color: #90caf9; text-decoration: none; font-weight: bold;">raqibcodes</a>
+st.markdown(
+    """
+    <footer style="
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+        padding: 20px; /* Increased padding for more breathing space */
+        background: linear-gradient(to right, #007bff, #28a745); /* Gradient for visual interest */
+        color: white; 
+        font-size: 18px; /* Slightly larger font size */
+        border-radius: 10px; 
+        margin-top: 30px; /* More spacing above the footer */
+    ">
+        <p>
+            Made with ❤️ by&nbsp;
+            <a href="https://github.com/Abdulraqib20" target="_blank" style="
+                color: #fff; /* White link color */
+                text-decoration: none;
+                font-weight: bold;
+                border-bottom: 2px solid #fff; /* Subtle underline on hover */
+                transition: border-bottom 0.3s ease; /* Smooth transition for underline */
+            ">
+                raqibcodes
+            </a>
         </p>
     </footer>
-""",
- unsafe_allow_html=True)
+    """,
+    unsafe_allow_html=True
+)
