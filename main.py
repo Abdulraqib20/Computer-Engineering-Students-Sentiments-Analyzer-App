@@ -28,6 +28,9 @@ from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 from sklearn.model_selection import train_test_split
 
+from dicebear import Generator
+from dicebear.utils import svg_to_base64
+
 # Configure Streamlit page
 st.set_page_config(
     page_title="SA App",
@@ -35,21 +38,49 @@ st.set_page_config(
     layout="wide",
 )
 
-st.title(" ")
-st.markdown("<h1 style='text-align: center;'>Sentiment Analysis App 🚀</h1>", unsafe_allow_html=True)
-st.title(" ")
+# Create Dicebear avatar for the title
+generator = Generator('bottts', 5)
+avatar = generator.generate_avatar()
+avatar_base64 = svg_to_base64(avatar)
 
-st.markdown("""
-This web app is a sentiment analysis tool developed by raqibcodes. It has the capability of detecting whether user-entered text has an underlying Positive, Neutral or Negative sentiment. The text classification model was trained on Feedback survey data collected from 300 level Undergraduate Computer Engineering Students at the University of Ilorin (who are Raqib's peers). The model underwent fine-tuning using the BERT model, **bert_tiny_en_uncased_sst2** and KerasNLP techniques, resulting in an impressive accuracy score of **96%**. The data was subsequently evaluated using a **RoBERTa-based model** which is a transformer-based model and it also showed strong performances in analyzing sentiments accurately.
-""")
+# --- Styling ---
+with open('style.css') as f:  # Load custom CSS
+    st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
-st.markdown("""
-To utilize this app, simply fill in the prompts in the boxes and then input your text, and it will promptly reveal the underlying sentiment.
-""")
 
-st.markdown("""
-This web app not only provides sentiment analysis capabilities but also offers an intuitive visualization experience. Users can interact with various charts, including bar charts, pie charts, and word clouds, to gain deeper insights into sentiment trends. The app's interactive features enable users to explore feedback counts based on course difficulty, course code, and gender. Additionally, users can access real-time feedback data, download it for further analysis, and view visualizations that automatically update as new data is generated. This interactive and dynamic approach enhances the user experience, allowing for a more comprehensive understanding of sentiment patterns.
-""")
+# --- Header ---
+st.markdown(
+    f"""
+    <div style="display: flex; align-items: center; justify-content: center;">
+        <img src="data:image/svg+xml;base64,{avatar_base64}" style="height: 100px; margin-right: 20px;"/>
+        <h1 style='text-align: center; color: #007bff;'>Sentiment Analysis App 🚀</h1>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
+st.title(" ") 
+
+# --- Introduction ---
+with st.container():
+    st.markdown("""
+    This web app, developed by raqibcodes, accurately detects the sentiment (Positive, Neutral, or Negative) of user-entered text. The model was trained on feedback from Computer Engineering students and fine-tuned using BERT, achieving 96% accuracy. Evaluation with a RoBERTa-based model also demonstrated strong performance.
+    """)
+
+# --- How to Use ---
+with st.container():
+    st.markdown("### Get Started")
+    st.markdown("""
+    Simply fill in the prompts and enter your text to discover its underlying sentiment.
+    """)
+
+# --- Key Features ---
+with st.container():
+    st.markdown("### Key Features")
+    st.markdown("""
+    - **High Accuracy:**  96% accuracy achieved through BERT fine-tuning.
+    - **Interactive Visualizations:** Explore sentiment trends with charts and word clouds. Analyze feedback by course, gender, and more.
+    - **Real-Time Updates:**  Get instant feedback analysis and dynamic visualizations.
+    """)
 
 show_objectives = st.sidebar.checkbox(" Objectives")
 if show_objectives:
