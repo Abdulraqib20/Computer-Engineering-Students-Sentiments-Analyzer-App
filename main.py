@@ -28,9 +28,7 @@ from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 from sklearn.model_selection import train_test_split
 
-import streamlit as st
-
-# Configure Streamlit page
+# --- Configure Streamlit page ---
 st.set_page_config(
     page_title="SA App",
     page_icon=":bar_chart:",
@@ -42,8 +40,6 @@ st.set_page_config(
 st.markdown(
     """
     <style>
-        /* Existing styles ... */
-
         .main-header {
             background: linear-gradient(to right, #007bff, #28a745); /* Gradient blue to green */
             color: white; /* White text for the header */
@@ -77,7 +73,7 @@ st.markdown(
 st.markdown(
     """
     <div class="main-header">
-        <h1>Sentiment Analysis App <span>🚀</span></h1>
+        <h1>Sentiment Analyzer App <span>🤖</span></h1>
     </div>
     """,
     unsafe_allow_html=True,
@@ -86,8 +82,6 @@ st.markdown(
 st.markdown(
     """
     <style>
-        /* Existing styles ... */
-
         .intro-section, .get-started-section {
             # background-color: #fff; /* White background */
             border: 1px solid #ddd; /* Subtle border */
@@ -102,7 +96,7 @@ st.markdown(
         }
 
         .intro-section p, .get-started-section p {
-            line-height: 1.6; /* Adjust line height for better readability */
+            line-height: 1.6;
         }
     </style>
     """,
@@ -111,17 +105,17 @@ st.markdown(
 
 # --- Introduction ---
 with st.container():
-    st.markdown(
-        """
-        <div class="intro-section">
-            <h2>About the App</h2>
-            <p>
-                This web app, developed by raqibcodes, accurately detects the sentiment (Positive, Neutral, or Negative) of user-entered text. The model was trained on feedback from Computer Engineering students and fine-tuned using BERT, achieving 96% accuracy. Evaluation with a RoBERTa-based model also demonstrated strong performance.
-            </p>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
+    with st.expander("About the App"):
+        st.markdown(
+            """
+            <div class="intro-section">
+                <p>
+                    This web app, developed by raqibcodes, accurately detects the sentiment (Positive, Neutral, or Negative) of user-entered text. The model was trained on feedback from Computer Engineering students and fine-tuned using BERT, achieving 96% accuracy. Evaluation with a RoBERTa-based model also demonstrated strong performance.
+                </p>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
 
 # --- How to Use ---
 with st.container():
