@@ -193,6 +193,104 @@ if show_app_features:
         - The app works in real-time, automatically saving prediction results and other insights generated.
     """)
 
+# --- Styling ---
+
+st.markdown(
+    """
+    <style>
+        /* Existing styles ... */
+
+        .main-header {
+            background: linear-gradient(to right, #007bff, #28a745); /* Gradient blue to green */
+            color: white; /* White text for the header */
+            padding: 25px; /* Increased padding for more space */
+            text-align: center;
+            border-radius: 10px; /* Rounded corners for a softer look */
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+        }
+
+        .main-header h1 {
+            font-size: 3rem; /* Larger font size for the header */
+        }
+
+        /* Style for the "rocket" emoji */
+        .main-header h1 span {
+            animation: rocket-animation 2s linear infinite; /* Add animation */
+        }
+
+        @keyframes rocket-animation {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+# --- Header ---
+
+st.markdown(
+    """
+    <div class="main-header">
+        <h1>Sentiment Analysis App <span>🚀</span></h1>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
+
+# --- Styling ---
+st.markdown(
+    """
+    <style>
+        .selectbox-container {
+            background-color: #f5f5f5; /* Light gray background */
+            border: 1px solid #ddd; /* Subtle border */
+            padding: 20px;
+            border-radius: 10px; /* Rounded corners */
+            margin-bottom: 10px; /* Add spacing between containers */
+        }
+
+        .selectbox-container label {
+            font-weight: bold;
+            color: #333; /* Darker label color */
+        }
+
+        .stSelectbox {
+            width: 100%; /* Make selectboxes take full width */
+        }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+# --- Input Section ---
+st.markdown("<h3 style='text-align: center;'>Refine Your Analysis</h3>", unsafe_allow_html=True)  
+
+with st.container():  # Wrap the selectboxes in a container for better visual grouping
+    # Create columns for layout
+    col1, col2, col3 = st.columns(3)
+
+    # Input fields in columns for better layout
+    with col1:
+        with st.expander("Course Information"):
+            course_code = st.selectbox("Course Code", ['Select Course Code', 'CPE 321', 'CPE 311', 'CPE 341', 'CPE 381', 'CPE 331', 'MEE 361', 'GSE 301'])
+            difficulty = st.selectbox("Course Difficulty", ['Select Difficulty', 'Easy', 'Difficult', 'Challenging', 'Moderate'])
+
+    with col2:
+        with st.expander("Student Demographics"):
+            previous_exp = st.selectbox("Previous Experience", ['Select Option', "Yes", "No"])
+            gender = st.selectbox("Gender", ['Select Gender', 'Male', 'Female'])
+            department = st.selectbox("Department", ['Select Option', "Yes", "No"])
+
+    with col3:
+        with st.expander("Additional Information"):
+            attendance = st.selectbox("Attendance", ['Select Attendance', 'Regular', 'Irregular', 'Occasional'])
+            study_hours = st.selectbox("Study Hours (per week)", options=['Select Study Hours'] + list(range(25)))
+            satisfaction = st.selectbox("Overall Satisfaction", options=['Select Overall Satisfaction'] + list(range(1, 11)))
+
+
+
 # # Initialize variables to store sidebox values
 # course_code = None
 # previous_exp = None
@@ -226,122 +324,6 @@ if show_app_features:
 # study_hours = st.selectbox("Study Hours (per week)", options=['Select Study Hours'] + list(range(25)), key=selectbox_keys[5])
 # satisfaction = st.selectbox("Overall Satisfaction", options=['Select Overall Satisfaction'] + list(range(1, 11)), key=selectbox_keys[6])
 # department = department_container.selectbox("Department", ['Select Option', "Yes", "No"],  key=selectbox_keys[7])
-
-# --- Styling ---
-st.markdown(
-    """
-    <style>
-        .main-header {
-            background: linear-gradient(to right, #007bff, #28a745); 
-            color: white; 
-            padding: 25px; 
-            text-align: center;
-            border-radius: 10px; 
-            box-shadow: 2px 2px 5px rgba(0,0,0,0.1); 
-        }
-
-        .main-header h1 {
-            font-size: 3rem; 
-        }
-
-        /* Rocket Animation (Optional) */
-        .main-header h1 span {
-            animation: rocket-animation 2s linear infinite; 
-        }
-
-        @keyframes rocket-animation {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0); }
-        }
-
-        /* Student Details Section Styling */
-        .student-details-section {
-            background-color: #f5f5f5; 
-            border: 1px solid #ddd; 
-            padding: 25px; 
-            border-radius: 10px; 
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); 
-            margin-top: 20px; /* Add spacing above the section */
-        }
-
-        .student-details-section h3 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 20px; /* Add spacing below the heading */
-        }
-
-        .student-details-section .stExpander {
-            margin-bottom: 15px; 
-        }
-
-        .stExpanderHeader { 
-            background-color: #e9ecef; 
-            color: #333;
-            font-weight: bold;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .stSelectbox { 
-            width: 100%; 
-        }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
-
-# --- Input Section ---
-st.markdown(
-    """
-    <div class="student-details-section">
-        <h3>Student Details</h3>
-    """,
-    unsafe_allow_html=True,
-)
-
-# Create containers for selectboxes (to get values later)
-course_code_container = st.empty()
-previous_exp_container = st.empty()
-gender_container = st.empty()
-attendance_container = st.empty()
-difficulty_container = st.empty()
-study_hours_container = st.empty()
-satisfaction_container = st.empty()
-department_container = st.empty()
-
-with st.container():  # Wrap the entire input section in a container for better visual grouping
-    # Create columns for layout
-    col1, col2, col3 = st.columns(3)
-
-    # Input fields in columns for better layout
-    with col1:
-        with st.expander("Course Information"):
-            course_code_container.selectbox("Course Code", ['Select Course Code', 'CPE 321', 'CPE 311', 'CPE 341', 'CPE 381', 'CPE 331', 'MEE 361', 'GSE 301'])
-            difficulty_container.selectbox("Course Difficulty", ['Select Difficulty', 'Easy', 'Difficult', 'Challenging', 'Moderate'])
-
-    with col2:
-        with st.expander("Student Demographics"):
-            previous_exp_container.selectbox("Previous Experience", ['Select Option', "Yes", "No"])
-            gender_container.selectbox("Gender", ['Select Gender', 'Male', 'Female'])
-            department_container.selectbox("Department", ['Select Option', "Yes", "No"])  # Replace "Yes" and "No" with appropriate department options
-
-    with col3:
-        with st.expander("Additional Information"):
-            attendance_container.selectbox("Attendance", ['Select Attendance', 'Regular', 'Irregular', 'Occasional'])
-            study_hours_container.selectbox("Study Hours (per week)", options=['Select Study Hours'] + list(range(25)))
-            satisfaction_container.selectbox("Overall Satisfaction", options=['Select Overall Satisfaction'] + list(range(1, 11)))
-
-# Get values from sideboxes (after they have been set)
-course_code = course_code_container.selectbox("Course Code", ['Select Course Code', 'CPE 321', 'CPE 311', 'CPE 341', 'CPE 381', 'CPE 331', 'MEE 361', 'GSE 301'])
-previous_exp = previous_exp_container.selectbox("Previous Experience", ['Select Option', "Yes", "No"])
-gender = gender_container.selectbox("Gender", ['Select Gender', 'Male', 'Female'])
-attendance = attendance_container.selectbox("Attendance", ['Select Attendance', 'Regular', 'Irregular', 'Occasional'])
-difficulty = difficulty_container.selectbox("Course Difficulty", ['Select Difficulty', 'Easy', 'Difficult', 'Challenging', 'Moderate'])
-study_hours = st.selectbox("Study Hours (per week)", options=['Select Study Hours'] + list(range(25)))
-satisfaction = st.selectbox("Overall Satisfaction", options=['Select Overall Satisfaction'] + list(range(1, 11)))
-department = department_container.selectbox("Department", ['Select Option', "Yes", "No"])
-
 
 
 # Load the exported data using st.cache
