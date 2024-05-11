@@ -70,11 +70,37 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+st.markdown(
+    """
+    <style>
+        /* Existing styles ... */
+
+        .intro-section, .get-started-section {
+            background-color: #fff; /* White background */
+            border: 1px solid #ddd; /* Subtle border */
+            padding: 25px; /* More padding for better readability */
+            border-radius: 10px; /* Rounded corners for a softer look */
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+        }
+
+        .intro-section h2, .get-started-section h3 {
+            color: #333; /* Darker heading color */
+            margin-bottom: 15px;
+        }
+
+        .intro-section p, .get-started-section p {
+            line-height: 1.6; /* Adjust line height for better readability */
+        }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 # --- Introduction ---
 with st.container():
     st.markdown(
         """
-        <div class="section">
+        <div class="intro-section">
             <h2>About the App</h2>
             <p>
                 This web app, developed by raqibcodes, accurately detects the sentiment (Positive, Neutral, or Negative) of user-entered text. The model was trained on feedback from Computer Engineering students and fine-tuned using BERT, achieving 96% accuracy. Evaluation with a RoBERTa-based model also demonstrated strong performance.
@@ -88,7 +114,7 @@ with st.container():
 with st.container():
     st.markdown(
         """
-        <div class="section">
+        <div class="get-started-section">
             <h3>Get Started</h3>
             <p>
                 Simply fill in the prompts and enter your text to discover its underlying sentiment.
@@ -97,23 +123,7 @@ with st.container():
         """,
         unsafe_allow_html=True,
     )
-
-# --- Key Features ---
-with st.container():
-    st.markdown(
-        """
-        <div class="section">
-            <h3>Key Features</h3>
-            <ul>
-                <li>**High Accuracy:** 96% accuracy achieved through BERT fine-tuning.</li>
-                <li>**Interactive Visualizations:** Explore sentiment trends with charts and word clouds. Analyze feedback by course, gender, and more.</li>
-                <li>**Real-Time Updates:** Get instant feedback analysis and dynamic visualizations.</li>
-            </ul>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-
+    
 
 show_objectives = st.sidebar.checkbox(" Objectives")
 if show_objectives:
