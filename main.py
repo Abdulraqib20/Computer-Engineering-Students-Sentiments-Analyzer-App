@@ -799,6 +799,10 @@ st.markdown(
             transform: scaleX(1); /* Show underline on hover */
         }
 
+        footer a {
+            color: white; 
+        }
+
         footer a:hover {
             color: #F5F5F5; /* Slightly lighter color on hover */
             letter-spacing: 1px; /* Subtle letter spacing increase on hover */
