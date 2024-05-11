@@ -124,6 +124,8 @@ with st.container():
         unsafe_allow_html=True,
     )
     
+st.title(" ")
+st.title(" ")
 
 show_objectives = st.sidebar.checkbox(" Objectives")
 if show_objectives:
@@ -229,7 +231,7 @@ study_hours_container = st.empty()
 satisfaction_container = st.empty()
 department_container = st.empty()
 
-st.title(" ")
+
 # Unique identifier for each selectbox
 selectbox_keys = ['course_code', 'previous_exp', 'gender', 'attendance', 'difficulty', 'study_hours', 'satisfaction', 'department']
 
