@@ -28,59 +28,93 @@ from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 from sklearn.model_selection import train_test_split
 
-from dicebear import Generator
-from dicebear.utils import svg_to_base64
+import streamlit as st
 
 # Configure Streamlit page
 st.set_page_config(
     page_title="SA App",
-    page_icon="R.png",
+    page_icon=":bar_chart:",  # Use a bar chart icon for a sentiment analysis app
     layout="wide",
 )
 
-# Create Dicebear avatar for the title
-generator = Generator('bottts', 5)
-avatar = generator.generate_avatar()
-avatar_base64 = svg_to_base64(avatar)
-
 # --- Styling ---
-with open('style.css') as f:  # Load custom CSS
-    st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
+st.markdown(
+    """
+    <style>
+        .main-header {
+            background-color: #007bff; /* Blue background for the header */
+            color: white; /* White text for the header */
+            padding: 20px;
+            text-align: center;
+        }
+
+        .section {
+            margin-bottom: 30px; /* Add spacing between sections */
+            padding: 20px;
+            background-color: #f5f5f5; /* Light gray background for sections */
+            border-radius: 10px; /* Rounded corners */
+        }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
 # --- Header ---
+
 st.markdown(
-    f"""
-    <div style="display: flex; align-items: center; justify-content: center;">
-        <img src="data:image/svg+xml;base64,{avatar_base64}" style="height: 100px; margin-right: 20px;"/>
-        <h1 style='text-align: center; color: #007bff;'>Sentiment Analysis App 🚀</h1>
+    """
+    <div class="main-header">
+        <h1>Sentiment Analysis App 🚀</h1>
     </div>
     """,
     unsafe_allow_html=True,
 )
-st.title(" ") 
 
 # --- Introduction ---
 with st.container():
-    st.markdown("""
-    This web app, developed by raqibcodes, accurately detects the sentiment (Positive, Neutral, or Negative) of user-entered text. The model was trained on feedback from Computer Engineering students and fine-tuned using BERT, achieving 96% accuracy. Evaluation with a RoBERTa-based model also demonstrated strong performance.
-    """)
+    st.markdown(
+        """
+        <div class="section">
+            <h2>About the App</h2>
+            <p>
+                This web app, developed by raqibcodes, accurately detects the sentiment (Positive, Neutral, or Negative) of user-entered text. The model was trained on feedback from Computer Engineering students and fine-tuned using BERT, achieving 96% accuracy. Evaluation with a RoBERTa-based model also demonstrated strong performance.
+            </p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
 # --- How to Use ---
 with st.container():
-    st.markdown("### Get Started")
-    st.markdown("""
-    Simply fill in the prompts and enter your text to discover its underlying sentiment.
-    """)
+    st.markdown(
+        """
+        <div class="section">
+            <h3>Get Started</h3>
+            <p>
+                Simply fill in the prompts and enter your text to discover its underlying sentiment.
+            </p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
 # --- Key Features ---
 with st.container():
-    st.markdown("### Key Features")
-    st.markdown("""
-    - **High Accuracy:**  96% accuracy achieved through BERT fine-tuning.
-    - **Interactive Visualizations:** Explore sentiment trends with charts and word clouds. Analyze feedback by course, gender, and more.
-    - **Real-Time Updates:**  Get instant feedback analysis and dynamic visualizations.
-    """)
+    st.markdown(
+        """
+        <div class="section">
+            <h3>Key Features</h3>
+            <ul>
+                <li>**High Accuracy:** 96% accuracy achieved through BERT fine-tuning.</li>
+                <li>**Interactive Visualizations:** Explore sentiment trends with charts and word clouds. Analyze feedback by course, gender, and more.</li>
+                <li>**Real-Time Updates:** Get instant feedback analysis and dynamic visualizations.</li>
+            </ul>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
 
 show_objectives = st.sidebar.checkbox(" Objectives")
 if show_objectives:
