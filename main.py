@@ -204,25 +204,6 @@ if show_app_features:
         - The app works in real-time, automatically saving prediction results and other insights generated.
     """)
 
-
-# Initialize session state
-#if 'course_code' not in st.session_state:
-    # st.session_state.course_code = None
-#if 'previous_exp' not in st.session_state:
-    #st.session_state.previous_exp = None
-#if 'gender' not in st.session_state:
-    #st.session_state.gender = None
-#if 'attendance' not in st.session_state:
-    #st.session_state.attendance = None
-#if 'difficulty' not in st.session_state:
-    #st.session_state.difficulty = None
-#if 'study_hours' not in st.session_state:
-    #st.session_state.study_hours = None
-#if 'satisfaction' not in st.session_state:
-    #st.session_state.satisfaction = None
-#if 'department' not in st.session_state:
-    #st.session_state.department = None
-
 # Initialize variables to store sidebox values
 course_code = None
 previous_exp = None
@@ -257,6 +238,24 @@ department = None
 # satisfaction = st.selectbox("Overall Satisfaction", options=['Select Overall Satisfaction'] + list(range(1, 11)), key=selectbox_keys[6])
 # department = department_container.selectbox("Department", ['Select Option', "Yes", "No"],  key=selectbox_keys[7])
 
+from streamlit_option_menu import option_menu
+# Initialize session state variables if they don't exist
+if 'course_code' not in st.session_state:
+    st.session_state['course_code'] = 'Select Course Code'
+if 'difficulty' not in st.session_state:
+    st.session_state['difficulty'] = 'Select Difficulty'
+if 'previous_exp' not in st.session_state:
+    st.session_state['previous_exp'] = 'Select Option'
+if 'gender' not in st.session_state:
+    st.session_state['gender'] = 'Select Gender'
+if 'department' not in st.session_state:
+    st.session_state['department'] = 'Select Option'
+if 'attendance' not in st.session_state:
+    st.session_state['attendance'] = 'Select Attendance'
+if 'study_hours' not in st.session_state:
+    st.session_state['study_hours'] = 'Select Study Hours'
+if 'satisfaction' not in st.session_state:
+    st.session_state['satisfaction'] = 'Select Overall Satisfaction'
 
 
 st.markdown(
@@ -293,21 +292,37 @@ with st.container():
     # Input fields in columns for better layout
     with col1:
         with st.expander("Course Information"):
-            course_code = st.selectbox("Course Code", ['Select Course Code', 'CPE 321', 'CPE 311', 'CPE 341', 'CPE 381', 'CPE 331', 'MEE 361', 'GSE 301'])
-            difficulty = st.selectbox("Course Difficulty", ['Select Difficulty', 'Easy', 'Difficult', 'Challenging', 'Moderate'])
+            st.session_state['course_code'] = st.selectbox(
+                "Course Code",
+                ['Select Course Code', 'CPE 321', 'CPE 311', 'CPE 341', 'CPE 381', 'CPE 331', 'MEE 361', 'GSE 301'],
+                key='course_code',  # Key for session state
+            )
+            st.session_state['difficulty'] = st.selectbox(
+                "Course Difficulty", 
+                ['Select Difficulty', 'Easy', 'Difficult', 'Challenging', 'Moderate'],
+                key='difficulty',
+            )
 
     with col2:
         with st.expander("Student Demographics"):
-            previous_exp = st.selectbox("Previous Experience", ['Select Option', "Yes", "No"])
-            gender = st.selectbox("Gender", ['Select Gender', 'Male', 'Female'])
-            department = st.selectbox("Department", ['Select Option', "Yes", "No"])
+            st.session_state['previous_exp'] = st.selectbox("Previous Experience", ['Select Option', "Yes", "No"], key='previous_exp')
+            st.session_state['gender'] = st.selectbox("Gender", ['Select Gender', 'Male', 'Female'], key='gender')
+            st.session_state['department'] = st.selectbox("Department", ['Select Option', "Yes", "No"], key='department')
 
     with col3:
         with st.expander("Additional Information"):
-            attendance = st.selectbox("Attendance", ['Select Attendance', 'Regular', 'Irregular', 'Occasional'])
-            study_hours = st.selectbox("Study Hours (per week)", options=['Select Study Hours'] + list(range(25)))
-            satisfaction = st.selectbox("Overall Satisfaction", options=['Select Overall Satisfaction'] + list(range(1, 11)))
+            st.session_state['attendance'] = st.selectbox("Attendance", ['Select Attendance', 'Regular', 'Irregular', 'Occasional'], key='attendance')
+            st.session_state['study_hours'] = st.selectbox("Study Hours (per week)", options=['Select Study Hours'] + list(range(25)), key='study_hours')
+            st.session_state['satisfaction'] = st.selectbox("Overall Satisfaction", options=['Select Overall Satisfaction'] + list(range(1, 11)), key='satisfaction')
 
+course_code = st.session_state.course_code  
+difficulty = st.session_state.difficulty
+previous_exp = st.session_state.previous_exp
+gender = st.session_state.gender
+department = st.session_state.department
+attendance = st.session_state.attendance
+study_hours = st.session_state.study_hours
+satisfaction = st.session_state.satisfaction
 
 
 
