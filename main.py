@@ -69,6 +69,17 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+# --- Header ---
+
+st.markdown(
+    """
+    <div class="main-header">
+        <h1>Sentiment Analysis App <span>🚀</span></h1>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
+
 st.markdown(
     """
     <style>
@@ -224,17 +235,6 @@ st.markdown(
             100% { transform: translateY(0); }
         }
     </style>
-    """,
-    unsafe_allow_html=True,
-)
-
-# --- Header ---
-
-st.markdown(
-    """
-    <div class="main-header">
-        <h1>Sentiment Analysis App <span>🚀</span></h1>
-    </div>
     """,
     unsafe_allow_html=True,
 )
