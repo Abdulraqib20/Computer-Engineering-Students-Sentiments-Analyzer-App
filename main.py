@@ -204,19 +204,18 @@ st.title(" ")
 #         - The app works in real-time, automatically saving prediction results and other insights generated.
 #     """)
 
-
 # --- Styling ---
 st.markdown(
     """
     <style>
-        .tabs-container {
+        .button-container {
             display: flex;
             justify-content: center;
             margin-bottom: 20px;
         }
 
-        .tab-button {
-            background-color: #25D366; /* WhatsApp green */
+        .button {
+            background-color: #D13CC1;
             color: white;
             padding: 15px 30px;
             border: none;
@@ -227,26 +226,23 @@ st.markdown(
             transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition */
         }
 
-        .tab-button:hover {
+        .button:hover {
             transform: translateY(-3px);  /* Subtle lift on hover */
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hover shadow */
         }
 
-        .tab-button.active {
-            background-color: #128C7E; /* Darker green when active */
-        }
-
-        .tab-content {
+        .content {
+            background-color: #f5f5f5;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-            opacity: 0; /* Initially hidden */
-            max-height: 0; /* Initially collapsed */
+            opacity: 0;
+            max-height: 0;
             overflow: hidden;
-            transition: opacity 0.5s ease, max-height 0.5s ease; /* Smooth transition for height */
+            transition: opacity 0.5s ease, max-height 0.5s ease;
         }
 
-        .tab-content.active {
+        .content.active {
             opacity: 1;
             max-height: 500px; /* Adjust as needed for your content */
         }
@@ -255,31 +251,30 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# --- Tabbed Content ---
-if "current_tab" not in st.session_state:
-    st.session_state.current_tab = "Objectives"  # Set the default tab
+# --- Button Functionality ---
+if "current_content" not in st.session_state:
+    st.session_state.current_content = None
 
-def show_tab(tab_name):
-    st.session_state.current_tab = tab_name
+def show_content(content_key):
+    st.session_state.current_content = content_key
 
+# --- Buttons ---
 st.markdown(
     """
-    <div class="tabs-container">
-        <button class="tab-button {}" onclick="show_tab('Objectives')">🎯 Objectives</button>
-        <button class="tab-button {}" onclick="show_tab('App Features')">✨ App Features</button>
+    <div class="button-container">
+        <button class="button" onclick="show_content('objectives')">🎯 Objectives</button>
+        <button class="button" onclick="show_content('features')">✨ App Features</button>
     </div>
-    """.format(
-        "active" if st.session_state.current_tab == "Objectives" else "",
-        "active" if st.session_state.current_tab == "App Features" else "",
-    ),
+    """,
     unsafe_allow_html=True,
 )
 
-if st.session_state.current_tab == "Objectives":
-    with st.container():  # Add a container for styling
+# --- Content ---
+with st.container():  # Add a container for styling
+    if st.session_state.current_content == "objectives":
         st.markdown(
             """
-            <div class="tab-content active">
+            <div class="content active">
                 <ul> 
                     <li> To uncover sentiments expressed in the feedback and gain a comprehensive understanding of student perceptions, satisfaction and identifying areas of improvement.</li>
                     <li> To ensure real-time analysis to provide immediate insights into prevailing student sentiments.</li>
@@ -296,11 +291,10 @@ if st.session_state.current_tab == "Objectives":
             """,
             unsafe_allow_html=True,
         )
-elif st.session_state.current_tab == "App Features":
-    with st.container():  # Add a container for styling
+    elif st.session_state.current_content == "features":
         st.markdown(
             """
-            <div class="tab-content active">
+            <div class="content active">
             1. **Sentiment Analysis Functionality**
                 - Utilizes a sentiment analysis model to score feedback text.
                 - Analyzes sentiments as positive, neutral, or negative.
