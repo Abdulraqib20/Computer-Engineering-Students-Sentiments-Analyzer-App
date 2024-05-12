@@ -124,82 +124,18 @@ with st.container():
 
 #---Get Started ---
 
-# --- Styling ---
-st.markdown(
-    """
-    <style>
-    .get-started-section {
-        padding: 40px;
-        text-align: center;
-    }
-
-    .animated-heading {
-        font-size: 3em;
-        color: #333; 
-        font-weight: bold; 
-        text-transform: uppercase;
-        opacity: 0; /* Start hidden */
-        transform: scale(0.8);
-        animation: scaleAndFade 1.5s ease forwards; 
-    }
-
-    .animated-text {
-        font-size: 1.2em;
-        color: #555; 
-    }
-
-    .animated-text span {
-        display: inline-block;
-        opacity: 0;
-        transform: translateY(20px); 
-        animation: slideInUp 2s ease forwards;
-        animation-delay: calc(0.1s * var(--i)); 
-    }
-
-    @keyframes scaleAndFade {
-        to {
-            opacity: 1;
-            transform: scale(1);
-        }
-    }
-
-    @keyframes slideInUp {
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
-
-# --- Get Started Section ---
 with st.container():
-    st.markdown(
-        """
-        <div class="get-started-section">
-            <h3 class="animated-heading">Get Started</h3>
-            <p class="animated-text">
-                Just complete all the fields and type in your message, and it will quickly show you the underlying emotion and the percentage level of confidence.
-            </p>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-
-    # Separate component to run JavaScript after rendering
-    st.components.v1.html(
-        """
-        <script>
-        const text = document.querySelector('.animated-text');
-        text.innerHTML = text.textContent.replace(/\S+/g, "<span style='--i: $&'>$&</span>");
-        </script>
-        """,
-        height=0,  # Hide the component itself (we only need the script)
-    )
-
-
+  st.markdown(
+    """
+    <div class="get-started-section">
+      <h3>Get Started</h3>
+      <p>
+        Just complete all the fields and type in your message, and it will quickly show you the underlying emotion and the percentage level of confidence.
+      </p>
+    </div>
+    """,
+    unsafe_allow_html=True,
+  )
 
     
 st.title(" ")
