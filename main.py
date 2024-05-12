@@ -204,35 +204,52 @@ st.title(" ")
 #         - The app works in real-time, automatically saving prediction results and other insights generated.
 #     """)
 
-# --- Styling for the tabs ---
+
+# --- Styling ---
 st.markdown(
     """
     <style>
         .tabs-container {
             display: flex;
             justify-content: center;
-            margin-bottom: 20px; /* Add spacing below the tabs */
+            margin-bottom: 20px;
         }
 
         .tab-button {
-            background-color: #007bff; /* Blue background */
+            background-color: #25D366; /* WhatsApp green */
             color: white;
-            padding: 10px 20px;
+            padding: 15px 30px;
             border: none;
+            border-radius: 8px;
             cursor: pointer;
-            border-radius: 5px; /* Rounded corners */
-            margin: 0 5px; /* Add some spacing between tabs */
-            transition: background-color 0.3s ease; /* Smooth transition */
+            margin: 0 5px;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition */
         }
 
         .tab-button:hover {
-            background-color: #0056b3; /* Darker blue on hover */
+            transform: translateY(-3px);  /* Subtle lift on hover */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hover shadow */
+        }
+
+        .tab-button.active {
+            background-color: #128C7E; /* Darker green when active */
         }
 
         .tab-content {
-            # background-color: #f5f5f5; /* Light gray background */
+            background-color: #f5f5f5;
             padding: 20px;
-            border-radius: 10px; /* Rounded corners */
+            border-radius: 10px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+            opacity: 0; /* Initially hidden */
+            max-height: 0; /* Initially collapsed */
+            overflow: hidden;
+            transition: opacity 0.5s ease, max-height 0.5s ease; /* Smooth transition for height */
+        }
+
+        .tab-content.active {
+            opacity: 1;
+            max-height: 500px; /* Adjust as needed for your content */
         }
     </style>
     """,
@@ -240,39 +257,62 @@ st.markdown(
 )
 
 # --- Tabbed Content ---
-tab1, tab2 = st.tabs(["🎯 Objectives", "✨ App Features"])
+if "current_tab" not in st.session_state:
+    st.session_state.current_tab = "Objectives"  # Set the default tab
 
-with tab1:  # Objectives Tab
-    st.markdown(
-        """
-        <div class="tab-content">
-            - To uncover sentiments expressed in the feedback and gain a comprehensive understanding of student perceptions, satisfaction and identifying areas of improvement.
-            - To ensure real-time analysis to provide immediate insights into prevailing student sentiments.
-            - Creating interactive visualizations for dynamic displays of sentiment trends over time.
-            - Extracting insights into teaching methodologies, lecturers and departmental courses.
-            - Identifying and highlighting specific challenges faced by students for targeted improvements.
-            - Facilitating interactive exploration of sentiment analysis results for deeper understanding.
-            - Establishing a continuous feedback loop for ongoing improvement in educational practices.
-            - Enabling lecturers to download sentiment analysis data for in-depth analysis.
-            - Ensuring privacy and ethical handling of student feedback data in compliance with regulations.
-            - Aiding the lecturers in interpreting and utilizing sentiment analysis results.
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
+def show_tab(tab_name):
+    st.session_state.current_tab = tab_name
 
-with tab2:  # App Features Tab
-    st.markdown(
-        """
-        <div class="tab-content">
-        1. **Sentiment Analysis Functionality**
-            - Utilizes a sentiment analysis model to score feedback text.
-            - Analyzes sentiments as positive, neutral, or negative.
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
+st.markdown(
+    """
+    <div class="tabs-container">
+        <button class="tab-button {}" onclick="show_tab('Objectives')">🎯 Objectives</button>
+        <button class="tab-button {}" onclick="show_tab('App Features')">✨ App Features</button>
+    </div>
+    """.format(
+        "active" if st.session_state.current_tab == "Objectives" else "",
+        "active" if st.session_state.current_tab == "App Features" else "",
+    ),
+    unsafe_allow_html=True,
+)
 
+if st.session_state.current_tab == "Objectives":
+    with st.container():  # Add a container for styling
+        st.markdown(
+            """
+            <div class="tab-content active">
+                <ul> 
+                    <li> To uncover sentiments expressed in the feedback and gain a comprehensive understanding of student perceptions, satisfaction and identifying areas of improvement.</li>
+                    <li> To ensure real-time analysis to provide immediate insights into prevailing student sentiments.</li>
+                    <li> Creating interactive visualizations for dynamic displays of sentiment trends over time.</li>
+                    <li> Extracting insights into teaching methodologies, lecturers and departmental courses.</li>
+                    <li> Identifying and highlighting specific challenges faced by students for targeted improvements.</li>
+                    <li> Facilitating interactive exploration of sentiment analysis results for deeper understanding.</li>
+                    <li> Establishing a continuous feedback loop for ongoing improvement in educational practices.</li>
+                    <li> Enabling lecturers to download sentiment analysis data for in-depth analysis.</li>
+                    <li> Ensuring privacy and ethical handling of student feedback data in compliance with regulations.</li>
+                    <li> Aiding the lecturers in interpreting and utilizing sentiment analysis results.</li>
+                </ul>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+elif st.session_state.current_tab == "App Features":
+    with st.container():  # Add a container for styling
+        st.markdown(
+            """
+            <div class="tab-content active">
+            1. **Sentiment Analysis Functionality**
+                - Utilizes a sentiment analysis model to score feedback text.
+                - Analyzes sentiments as positive, neutral, or negative.
+            <br>
+        
+            2. **User Input Collection**
+                - Gathers user's feedback and related information based on various criteria (course code, previous experience, gender, etc.).
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
 
 
 # --- Styling ---
