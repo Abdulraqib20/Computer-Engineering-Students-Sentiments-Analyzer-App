@@ -122,55 +122,55 @@ with st.container():
             unsafe_allow_html=True,
         )
 
+#---Get Started ---
+
 # --- Styling ---
 st.markdown(
     """
     <style>
     .get-started-section {
-        background: linear-gradient(135deg, #f093fb, #f5576c);
         padding: 40px;
-        border-radius: 20px;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         text-align: center;
     }
 
     .animated-heading {
         font-size: 3em;
-        color: #fff;
-        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-        margin-bottom: 20px;
-        animation: slideInDown 1s ease;
+        color: #333; /* Dark gray for better contrast */
+        font-weight: bold; /* Make it bold for emphasis */
+        text-transform: uppercase; /* UPPERCASE for a modern look */
+        animation: scaleAndFade 1.5s ease; /* Scale and fade animation */
     }
 
     .animated-text {
         font-size: 1.2em;
-        color: #fff;
+        color: #555; /* Slightly lighter gray for text */
     }
 
     .animated-text span {
         display: inline-block;
         opacity: 0;
-        animation: fadeInUp 2s ease;
-        animation-delay: calc(0.1s * var(--i));
+        transform: translateY(20px); /* Start words higher for animation */
+        animation: slideInUp 2s ease; /* Slide words up and fade in */
+        animation-delay: calc(0.1s * var(--i)); /* Staggered delay */
     }
 
-    @keyframes slideInDown {
-        from {
-            transform: translateY(-100%);
+    @keyframes scaleAndFade {
+        0% {
             opacity: 0;
+            transform: scale(0.8);
         }
-        to {
-            transform: translateY(0);
+        100% {
             opacity: 1;
+            transform: scale(1);
         }
     }
 
-    @keyframes fadeInUp {
-        from {
+    @keyframes slideInUp {
+        0% {
             opacity: 0;
-            transform: translateY(50%);
+            transform: translateY(20px);
         }
-        to {
+        100% {
             opacity: 1;
             transform: translateY(0);
         }
@@ -197,6 +197,7 @@ with st.container():
         """,
         unsafe_allow_html=True,
     )
+
 
     
 st.title(" ")
