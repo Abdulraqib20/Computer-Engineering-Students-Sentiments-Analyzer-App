@@ -230,7 +230,7 @@ st.markdown(
         }
 
         .tab-content {
-            background-color: #f5f5f5; /* Light gray background */
+            # background-color: #f5f5f5; /* Light gray background */
             padding: 20px;
             border-radius: 10px; /* Rounded corners */
         }
