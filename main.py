@@ -122,19 +122,82 @@ with st.container():
             unsafe_allow_html=True,
         )
 
-# --- How to Use ---
+# --- Styling ---
+st.markdown(
+    """
+    <style>
+    .get-started-section {
+        background: linear-gradient(135deg, #f093fb, #f5576c);
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        text-align: center;
+    }
+
+    .animated-heading {
+        font-size: 3em;
+        color: #fff;
+        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+        margin-bottom: 20px;
+        animation: slideInDown 1s ease;
+    }
+
+    .animated-text {
+        font-size: 1.2em;
+        color: #fff;
+    }
+
+    .animated-text span {
+        display: inline-block;
+        opacity: 0;
+        animation: fadeInUp 2s ease;
+        animation-delay: calc(0.1s * var(--i));
+    }
+
+    @keyframes slideInDown {
+        from {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(50%);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+# --- Get Started Section ---
 with st.container():
     st.markdown(
         """
         <div class="get-started-section">
-            <h3>Get Started</h3>
-            <p>
+            <h3 class="animated-heading">Get Started</h3>
+            <p class="animated-text">
                 Just complete all the fields and type in your message, and it will quickly show you the underlying emotion and the percentage level of confidence.
             </p>
         </div>
+        <script>
+        const text = document.querySelector('.animated-text');
+        text.innerHTML = text.textContent.replace(/\S+/g, "<span style='--i: $&'>$&</span>");
+        </script>
         """,
         unsafe_allow_html=True,
     )
+
     
 st.title(" ")
 st.title(" ")
