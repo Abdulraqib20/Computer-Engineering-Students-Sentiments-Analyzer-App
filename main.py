@@ -219,7 +219,7 @@ st.markdown(
         }
 
         .stTabs [data-baseweb="tab"] {
-            color: #333; /* Default tab text color */
+            color: #E4E4E4; /* Default tab text color */
             padding: 15px 30px;
             border: none;
             border-radius: 8px;
@@ -241,7 +241,6 @@ st.markdown(
         }
 
         .stTabs [data-baseweb="tab-panel"] {
-            /* No background color */
             padding: 0; /* Remove default padding */
         }
 
@@ -258,11 +257,11 @@ st.markdown(
 
 
 # --- Tabs ---
-tab1, tab2 = st.tabs(["🎯 Objectives", "✨ App Features"])
+tab1, tab2 = st.tabs(["🎯 Objectives", "🎯 App Features"])
 
 # --- Content ---
 with tab1:
-    with st.expander("Click to see Objectives"):  # Create an expander
+    with st.expander(" "):
         st.markdown(
             """
             <ul>
@@ -282,7 +281,7 @@ with tab1:
         )
     
 with tab2:
-    with st.expander("Click to see App Features"):  # Create an expander
+    with st.expander(" "):
         st.markdown(
             """
             1. **Sentiment Analysis Functionality**
@@ -292,6 +291,32 @@ with tab2:
 
             2. **User Input Collection**
                 - Gathers user's feedback and related information based on various criteria (course code, previous experience, gender, etc.).
+            <br>
+            3. **Text Preprocessing**
+                - Preprocesses the user feedback text using Natural Language Processing techniques.
+            <br>
+            4. **Percentage Confidence**
+               - Percentage level of how confident the model is making the prediction.
+            <br>
+            5. **Interactive Visualization**
+               - Provides various interactive plots for visualizing sentiment analysis results and other key metrics.
+               - Displays sentiment distribution in various charts (bar chart, pie chart, word cloud).
+               - Presents feedback counts based on course difficulty, course code, and gender.
+               - Provides insights into word frequency and usage in feedback.
+               - Explores the distribution of study hours, word count, and overall satisfaction.
+            <br>
+            6. **Summary Statistics**
+               - Offers a sentiment summary with counts of positive, neutral, and negative feedback including the percentage confidence results.
+            <br>
+            8. **Interactive Exploration**
+               - Allows users to trigger the exploration of visualizations by clicking a button.
+            <br>
+            9. **Real-Time Feedback Data Access**
+                - The app allows users access to real-time feedback data after getting their prediction results.
+                - Users can download and view the data directly within the app.
+            <br>
+            10.  **Automatic Real-Time Saving**
+                - The app works in real-time, automatically saving prediction results and other insights generated.
             """,
             unsafe_allow_html=True,
         )
