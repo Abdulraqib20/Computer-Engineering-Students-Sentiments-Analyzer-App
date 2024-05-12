@@ -126,15 +126,15 @@ with st.container():
 
 with st.container():
     st.markdown(
-        """
-        <div class="get-started-section">
-          <h3>Get Started</h3>
-          <p>
-            Just complete all the fields and type in your message, and it will quickly show you the underlying emotion and the percentage level of confidence.
-          </p>
-        </div>
-        """,
-        unsafe_allow_html=True
+    """
+    <div class="get-started-section">
+      <h3>Get Started</h3>
+      <p>
+        Just complete all the fields and type in your message, and it will quickly show you the underlying emotion and the percentage level of confidence.
+      </p>
+    </div>
+    """,
+    unsafe_allow_html=True
     )
 
     
