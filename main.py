@@ -223,12 +223,12 @@ st.markdown(
             cursor: pointer;
             margin: 0 5px;
             font-weight: bold;
-            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
         }
 
         .button:hover {
-            transform: translateY(-3px);  /* Subtle lift on hover */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hover shadow */
+            transform: translateY(-3px); 
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
         }
 
         .content {
@@ -244,7 +244,7 @@ st.markdown(
 
         .content.active {
             opacity: 1;
-            max-height: 500px; /* Adjust as needed for your content */
+            max-height: 500px; 
         }
     </style>
     """,
@@ -256,7 +256,8 @@ if "current_content" not in st.session_state:
     st.session_state.current_content = None
 
 def show_content(content_key):
-    st.session_state.current_content = content_key
+    # Toggle visibility: hide current content if clicking the same button again
+    st.session_state.current_content = content_key if content_key != st.session_state.current_content else None 
 
 # --- Buttons ---
 st.markdown(
@@ -270,7 +271,7 @@ st.markdown(
 )
 
 # --- Content ---
-with st.container():  # Add a container for styling
+with st.container(): 
     if st.session_state.current_content == "objectives":
         st.markdown(
             """
@@ -278,15 +279,7 @@ with st.container():  # Add a container for styling
                 <ul> 
                     <li> To uncover sentiments expressed in the feedback and gain a comprehensive understanding of student perceptions, satisfaction and identifying areas of improvement.</li>
                     <li> To ensure real-time analysis to provide immediate insights into prevailing student sentiments.</li>
-                    <li> Creating interactive visualizations for dynamic displays of sentiment trends over time.</li>
-                    <li> Extracting insights into teaching methodologies, lecturers and departmental courses.</li>
-                    <li> Identifying and highlighting specific challenges faced by students for targeted improvements.</li>
-                    <li> Facilitating interactive exploration of sentiment analysis results for deeper understanding.</li>
-                    <li> Establishing a continuous feedback loop for ongoing improvement in educational practices.</li>
-                    <li> Enabling lecturers to download sentiment analysis data for in-depth analysis.</li>
-                    <li> Ensuring privacy and ethical handling of student feedback data in compliance with regulations.</li>
-                    <li> Aiding the lecturers in interpreting and utilizing sentiment analysis results.</li>
-                </ul>
+                    </ul>
             </div>
             """,
             unsafe_allow_html=True,
@@ -299,7 +292,7 @@ with st.container():  # Add a container for styling
                 - Utilizes a sentiment analysis model to score feedback text.
                 - Analyzes sentiments as positive, neutral, or negative.
             <br>
-        
+            
             2. **User Input Collection**
                 - Gathers user's feedback and related information based on various criteria (course code, previous experience, gender, etc.).
             </div>
