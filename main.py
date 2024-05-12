@@ -206,103 +206,83 @@ st.title(" ")
 
 
 
+
 # --- Styling ---
 st.markdown(
     """
     <style>
-        .button-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
+        .stTabs [data-baseweb="tab-list"] {
+            display: flex; /* Use flexbox for better alignment */
+            justify-content: center; /* Center the tabs */
+            border-bottom: none;
         }
 
-        .button {
+        .stTabs [data-baseweb="tab"] { /* Style the individual tabs */
             background-color: #D13CC1;
             color: white;
             padding: 15px 30px;
             border: none;
             border-radius: 8px;
+            margin: 0 5px; /* Add some margin between tabs */
             cursor: pointer;
-            margin: 0 5px;
             font-weight: bold;
-            transition: transform 0.3s ease, box-shadow 0.3s ease; 
         }
 
-        .button:hover {
-            transform: translateY(-3px); 
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+        .stTabs [data-baseweb="tab"]:hover { /* Add hover effect */
+            background-color: #D13CC1; 
         }
 
-        .content {
+        .stTabs [data-baseweb="tab-panel"] { /* Style the content areas */
+            background-color: #f5f5f5;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            max-height: 0;
-            overflow: hidden;
-            transition: opacity 0.5s ease, max-height 0.5s ease;
         }
 
-        .content.active {
-            opacity: 1;
-            max-height: 500px; 
+        .stTabs [data-baseweb="tab"][aria-selected="true"] { /* Active tab style */
+            background-color: #c529b1; /* Darker shade for active tab */
         }
     </style>
     """,
     unsafe_allow_html=True,
 )
 
-# --- Button Functionality ---
-if "current_content" not in st.session_state:
-    st.session_state.current_content = None
-
-def show_content(content_key):
-    if st.session_state.current_content == content_key:
-        st.session_state.current_content = None  # Toggle off if already on
-    else:
-        st.session_state.current_content = content_key  # Toggle on
-
-# --- Buttons ---
-st.button("🎯 Objectives", key="objectives_button", on_click=show_content, args=("objectives",))
-st.button("✨ App Features", key="features_button", on_click=show_content, args=("features",))
+# --- Tabs ---
+tab1, tab2 = st.tabs(["🎯 Objectives", "✨ App Features"])
 
 # --- Content ---
-with st.container():
-    if st.session_state.current_content == "objectives":
-        st.markdown(
-            """
-            <div class="content active">
-                <ul>
-                    <li>Uncover and interpret sentiments in student feedback to understand their perceptions, satisfaction, and areas where improvements are needed.</li>
-                    <li>Perform real-time sentiment analysis to provide immediate insights into current student opinions and feelings.</li>
-                    <li>Present sentiment trends over time using interactive visualizations to highlight changes and patterns.</li>
-                    <li>Extract valuable insights related to teaching methodologies, individual lecturers, and specific departmental courses.</li>
-                    <li>Identify and emphasize specific challenges students face, enabling targeted interventions and improvements.</li>
-                    <li>Create an interactive environment where users can explore and understand sentiment analysis results in depth.</li>
-                    <li>Establish a continuous feedback loop between students and faculty to foster ongoing improvement in educational practices.</li>
-                    <li>Allow lecturers to download sentiment analysis data for further, more detailed analysis outside the application.</li>
-                    <li>Ensure the privacy and ethical handling of all student feedback data, adhering to relevant regulations.</li>
-                    <li>Guide and support lecturers in interpreting and effectively utilizing sentiment analysis results to enhance their teaching.</li>
-                </ul>
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
-    elif st.session_state.current_content == "features":
-        st.markdown(
-            """
-            <div class="content active">
-            1. **Sentiment Analysis Functionality**
-                - Utilizes a sentiment analysis model to score feedback text.
-                - Analyzes sentiments as positive, neutral, or negative.
-            <br>
-            
-            2. **User Input Collection**
-                - Gathers user's feedback and related information based on various criteria (course code, previous experience, gender, etc.).
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
+with tab1:
+    st.markdown(
+        """
+        <ul>
+            <li>Uncover and interpret sentiments in student feedback to understand their perceptions, satisfaction, and areas where improvements are needed.</li>
+            <li>Perform real-time sentiment analysis to provide immediate insights into current student opinions and feelings.</li>
+            <li>Present sentiment trends over time using interactive visualizations to highlight changes and patterns.</li>
+            <li>Extract valuable insights related to teaching methodologies, individual lecturers, and specific departmental courses.</li>
+            <li>Identify and emphasize specific challenges students face, enabling targeted interventions and improvements.</li>
+            <li>Create an interactive environment where users can explore and understand sentiment analysis results in depth.</li>
+            <li>Establish a continuous feedback loop between students and faculty to foster ongoing improvement in educational practices.</li>
+            <li>Allow lecturers to download sentiment analysis data for further, more detailed analysis outside the application.</li>
+            <li>Ensure the privacy and ethical handling of all student feedback data, adhering to relevant regulations.</li>
+            <li>Guide and support lecturers in interpreting and effectively utilizing sentiment analysis results to enhance their teaching.</li>
+        </ul>
+        """,
+        unsafe_allow_html=True,
+    )
+with tab2:
+    st.markdown(
+        """
+        1. **Sentiment Analysis Functionality**
+            - Utilizes a sentiment analysis model to score feedback text.
+            - Analyzes sentiments as positive, neutral, or negative.
+        <br>
+
+        2. **User Input Collection**
+            - Gathers user's feedback and related information based on various criteria (course code, previous experience, gender, etc.).
+        """,
+        unsafe_allow_html=True,
+    )
+
 
 
 
