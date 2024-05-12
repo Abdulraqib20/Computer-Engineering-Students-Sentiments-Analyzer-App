@@ -207,81 +207,98 @@ st.title(" ")
 
 
 
+
+
 # --- Styling ---
 st.markdown(
     """
     <style>
         .stTabs [data-baseweb="tab-list"] {
-            display: flex; /* Use flexbox for better alignment */
-            justify-content: center; /* Center the tabs */
-            border-bottom: none;
+            display: flex;
+            justify-content: center;
         }
 
-        .stTabs [data-baseweb="tab"] { /* Style the individual tabs */
-            background-color: #D13CC1;
-            color: white;
+        .stTabs [data-baseweb="tab"] {
+            color: #333; /* Default tab text color */
             padding: 15px 30px;
             border: none;
             border-radius: 8px;
-            margin: 0 5px; /* Add some margin between tabs */
+            margin: 0 5px;
             cursor: pointer;
             font-weight: bold;
+            transition: color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .stTabs [data-baseweb="tab"]:hover { /* Add hover effect */
-            background-color: #D13CC1; 
+        .stTabs [data-baseweb="tab"]:hover {
+            color: #D13CC1; /* Hover color change */
+            transform: translateY(-2px); /* Lift on hover */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow on hover */
         }
 
-        .stTabs [data-baseweb="tab-panel"] { /* Style the content areas */
+        .stTabs [data-baseweb="tab"][aria-selected="true"] {
+            color: #D13CC1; /* Active tab text color */
+            border-bottom: 2px solid #D13CC1; /* Underline for active tab */
+        }
+
+        .stTabs [data-baseweb="tab-panel"] {
+            /* No background color */
+            padding: 0; /* Remove default padding */
+        }
+
+        .stExpanderHeader { /* Style the expander header */
             background-color: #f5f5f5;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .stTabs [data-baseweb="tab"][aria-selected="true"] { /* Active tab style */
-            background-color: #c529b1; /* Darker shade for active tab */
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px; /* Add some spacing */
         }
     </style>
     """,
     unsafe_allow_html=True,
 )
 
+
 # --- Tabs ---
 tab1, tab2 = st.tabs(["🎯 Objectives", "✨ App Features"])
 
 # --- Content ---
 with tab1:
-    st.markdown(
-        """
-        <ul>
-            <li>Uncover and interpret sentiments in student feedback to understand their perceptions, satisfaction, and areas where improvements are needed.</li>
-            <li>Perform real-time sentiment analysis to provide immediate insights into current student opinions and feelings.</li>
-            <li>Present sentiment trends over time using interactive visualizations to highlight changes and patterns.</li>
-            <li>Extract valuable insights related to teaching methodologies, individual lecturers, and specific departmental courses.</li>
-            <li>Identify and emphasize specific challenges students face, enabling targeted interventions and improvements.</li>
-            <li>Create an interactive environment where users can explore and understand sentiment analysis results in depth.</li>
-            <li>Establish a continuous feedback loop between students and faculty to foster ongoing improvement in educational practices.</li>
-            <li>Allow lecturers to download sentiment analysis data for further, more detailed analysis outside the application.</li>
-            <li>Ensure the privacy and ethical handling of all student feedback data, adhering to relevant regulations.</li>
-            <li>Guide and support lecturers in interpreting and effectively utilizing sentiment analysis results to enhance their teaching.</li>
-        </ul>
-        """,
-        unsafe_allow_html=True,
-    )
+    with st.expander("Click to see Objectives"):  # Create an expander
+        st.markdown(
+            """
+            <ul>
+                <li>Uncover and interpret sentiments in student feedback to understand their perceptions, satisfaction, and areas where improvements are needed.</li>
+                <li>Perform real-time sentiment analysis to provide immediate insights into current student opinions and feelings.</li>
+                <li>Present sentiment trends over time using interactive visualizations to highlight changes and patterns.</li>
+                <li>Extract valuable insights related to teaching methodologies, individual lecturers, and specific departmental courses.</li>
+                <li>Identify and emphasize specific challenges students face, enabling targeted interventions and improvements.</li>
+                <li>Create an interactive environment where users can explore and understand sentiment analysis results in depth.</li>
+                <li>Establish a continuous feedback loop between students and faculty to foster ongoing improvement in educational practices.</li>
+                <li>Allow lecturers to download sentiment analysis data for further, more detailed analysis outside the application.</li>
+                <li>Ensure the privacy and ethical handling of all student feedback data, adhering to relevant regulations.</li>
+                <li>Guide and support lecturers in interpreting and effectively utilizing sentiment analysis results to enhance their teaching.</li>
+            </ul>
+            """,
+            unsafe_allow_html=True,
+        )
+    
 with tab2:
-    st.markdown(
-        """
-        1. **Sentiment Analysis Functionality**
-            - Utilizes a sentiment analysis model to score feedback text.
-            - Analyzes sentiments as positive, neutral, or negative.
-        <br>
+    with st.expander("Click to see App Features"):  # Create an expander
+        st.markdown(
+            """
+            1. **Sentiment Analysis Functionality**
+                - Utilizes a sentiment analysis model to score feedback text.
+                - Analyzes sentiments as positive, neutral, or negative.
+            <br>
 
-        2. **User Input Collection**
-            - Gathers user's feedback and related information based on various criteria (course code, previous experience, gender, etc.).
-        """,
-        unsafe_allow_html=True,
-    )
+            2. **User Input Collection**
+                - Gathers user's feedback and related information based on various criteria (course code, previous experience, gender, etc.).
+            """,
+            unsafe_allow_html=True,
+        )
+
+
+
+
 
 
 
