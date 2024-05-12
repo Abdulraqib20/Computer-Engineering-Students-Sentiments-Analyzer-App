@@ -204,100 +204,74 @@ st.title(" ")
 #         - The app works in real-time, automatically saving prediction results and other insights generated.
 #     """)
 
-# --- Styling ---
+# --- Styling for the tabs ---
 st.markdown(
     """
     <style>
-        /* Existing styles... */
+        .tabs-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px; /* Add spacing below the tabs */
+        }
 
-        # Main sidebar container
-        .sidebar-container {
-            background-color: #202124; /* Dark background */
-            color: #fff;
+        .tab-button {
+            background-color: #007bff; /* Blue background */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px; /* Rounded corners */
+            margin: 0 5px; /* Add some spacing between tabs */
+            transition: background-color 0.3s ease; /* Smooth transition */
+        }
+
+        .tab-button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        .tab-content {
+            background-color: #f5f5f5; /* Light gray background */
+            padding: 20px;
             border-radius: 10px; /* Rounded corners */
-            padding: 25px;
-            margin-top: 20px;
-        }
-        .sidebar-container h2, .sidebar-container h3 {
-            color: #007bff; /* Blue heading color */
-            margin-bottom: 15px;
-        }
-
-        /* List styling */
-        .sidebar-container ul {
-            list-style: none;
-            padding-left: 0;
-        }
-        .sidebar-container li {
-            margin-bottom: 8px;
-        }
-
-        /* Link styling */
-        .sidebar-container a {
-            color: #f0f0f0;
-            text-decoration: none;
-        }
-        .sidebar-container a:hover {
-            text-decoration: underline;
         }
     </style>
     """,
     unsafe_allow_html=True,
 )
 
-# --- Sidebar Content ---
-with st.sidebar:
-    st.markdown("<div class='sidebar-container'>", unsafe_allow_html=True)
+# --- Tabbed Content ---
+tab1, tab2 = st.tabs(["🎯 Objectives", "✨ App Features"])
 
-    # Objectives Section
-    with st.expander("🎯 Objectives"):
-        st.markdown("""
-        - To uncover sentiments expressed in the feedback and gain a comprehensive understanding of student perceptions, satisfaction and identifying areas of improvement.
-        - To ensure real-time analysis to provide immediate insights into prevailing student sentiments.
-        - Creating interactive visualizations for dynamic displays of sentiment trends over time.
-        - Extracting insights into teaching methodologies, lecturers and departmental courses.
-        - Identifying and highlighting specific challenges faced by students for targeted improvements.
-        - Facilitating interactive exploration of sentiment analysis results for deeper understanding.
-        - Establishing a continuous feedback loop for ongoing improvement in educational practices.
-        - Enabling lecturers to download sentiment analysis data for in-depth analysis.
-        - Ensuring privacy and ethical handling of student feedback data in compliance with regulations.
-        - Aiding the lecturers in interpreting and utilizing sentiment analysis results.
-        """)
+with tab1:  # Objectives Tab
+    st.markdown(
+        """
+        <div class="tab-content">
+            - To uncover sentiments expressed in the feedback and gain a comprehensive understanding of student perceptions, satisfaction and identifying areas of improvement.
+            - To ensure real-time analysis to provide immediate insights into prevailing student sentiments.
+            - Creating interactive visualizations for dynamic displays of sentiment trends over time.
+            - Extracting insights into teaching methodologies, lecturers and departmental courses.
+            - Identifying and highlighting specific challenges faced by students for targeted improvements.
+            - Facilitating interactive exploration of sentiment analysis results for deeper understanding.
+            - Establishing a continuous feedback loop for ongoing improvement in educational practices.
+            - Enabling lecturers to download sentiment analysis data for in-depth analysis.
+            - Ensuring privacy and ethical handling of student feedback data in compliance with regulations.
+            - Aiding the lecturers in interpreting and utilizing sentiment analysis results.
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
-    # App Features Section
-    with st.expander("✨ App Features"):
-        st.markdown("""
+with tab2:  # App Features Tab
+    st.markdown(
+        """
+        <div class="tab-content">
         1. **Sentiment Analysis Functionality**
             - Utilizes a sentiment analysis model to score feedback text.
             - Analyzes sentiments as positive, neutral, or negative.
-
-        2. **User Input Collection**
-            - Gathers user's feedback and related information based on various criteria (course code, previous experience, gender, etc.).
-
-        3. **Text Preprocessing**
-            - Preprocesses the user feedback text using Natural Language Processing techniques.
-
-        4. **Percentage Confidence**
-            - Provides the percentage level of confidence for each sentiment prediction.
-
-        5. **Interactive Visualization**
-            - Offers various interactive plots for visualizing sentiment analysis results and other key metrics.
-            - Displays sentiment distribution, feedback counts, word frequency, study hours, and overall satisfaction.
-
-        6. **Summary Statistics**
-            - Presents a sentiment summary with counts and average confidence for each sentiment category.
-
-        7. **Interactive Exploration**
-            - Allows users to trigger the exploration of visualizations.
-
-        8. **Real-Time Feedback Data Access**
-            - Enables users to access and download real-time feedback data.
-
-        9. **Automatic Real-Time Saving**
-            - Automatically saves prediction results and other generated insights.
-        """)
-
-    st.markdown("</div>", unsafe_allow_html=True)  # Close the sidebar container
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
 
 
