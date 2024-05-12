@@ -330,7 +330,7 @@ with tab2:
             unsafe_allow_html=True,
         )
     if tab2.button("🎯 App Features"):
-    st.session_state.current_tab = "features"
+        st.session_state.current_tab = "features"
 
 
 
