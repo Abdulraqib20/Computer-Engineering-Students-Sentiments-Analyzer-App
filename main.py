@@ -135,42 +135,36 @@ st.markdown(
 
     .animated-heading {
         font-size: 3em;
-        color: #333; /* Dark gray for better contrast */
-        font-weight: bold; /* Make it bold for emphasis */
-        text-transform: uppercase; /* UPPERCASE for a modern look */
-        animation: scaleAndFade 1.5s ease; /* Scale and fade animation */
+        color: #333; 
+        font-weight: bold; 
+        text-transform: uppercase;
+        opacity: 0; /* Start hidden */
+        transform: scale(0.8);
+        animation: scaleAndFade 1.5s ease forwards; 
     }
 
     .animated-text {
         font-size: 1.2em;
-        color: #555; /* Slightly lighter gray for text */
+        color: #555; 
     }
 
     .animated-text span {
         display: inline-block;
         opacity: 0;
-        transform: translateY(20px); /* Start words higher for animation */
-        animation: slideInUp 2s ease; /* Slide words up and fade in */
-        animation-delay: calc(0.1s * var(--i)); /* Staggered delay */
+        transform: translateY(20px); 
+        animation: slideInUp 2s ease forwards;
+        animation-delay: calc(0.1s * var(--i)); 
     }
 
     @keyframes scaleAndFade {
-        0% {
-            opacity: 0;
-            transform: scale(0.8);
-        }
-        100% {
+        to {
             opacity: 1;
             transform: scale(1);
         }
     }
 
     @keyframes slideInUp {
-        0% {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        100% {
+        to {
             opacity: 1;
             transform: translateY(0);
         }
@@ -190,13 +184,21 @@ with st.container():
                 Just complete all the fields and type in your message, and it will quickly show you the underlying emotion and the percentage level of confidence.
             </p>
         </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    # Separate component to run JavaScript after rendering
+    st.components.v1.html(
+        """
         <script>
         const text = document.querySelector('.animated-text');
         text.innerHTML = text.textContent.replace(/\S+/g, "<span style='--i: $&'>$&</span>");
         </script>
         """,
-        unsafe_allow_html=True,
+        height=0,  # Hide the component itself (we only need the script)
     )
+
 
 
     
