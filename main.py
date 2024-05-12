@@ -258,30 +258,33 @@ if "current_content" not in st.session_state:
     st.session_state.current_content = None
 
 def show_content(content_key):
-    # Toggle visibility: hide current content if clicking the same button again
-    st.session_state.current_content = content_key if content_key != st.session_state.current_content else None 
+    if st.session_state.current_content == content_key:
+        st.session_state.current_content = None  # Toggle off if already on
+    else:
+        st.session_state.current_content = content_key  # Toggle on
 
 # --- Buttons ---
-st.markdown(
-    """
-    <div class="button-container">
-        <button class="button" onclick="show_content('objectives')">🎯 Objectives</button>
-        <button class="button" onclick="show_content('features')">✨ App Features</button>
-    </div>
-    """,
-    unsafe_allow_html=True,
-)
+st.button("🎯 Objectives", key="objectives_button", on_click=show_content, args=("objectives",))
+st.button("✨ App Features", key="features_button", on_click=show_content, args=("features",))
 
 # --- Content ---
-with st.container(): 
+with st.container():
     if st.session_state.current_content == "objectives":
         st.markdown(
             """
             <div class="content active">
-                <ul> 
-                    <li> To uncover sentiments expressed in the feedback and gain a comprehensive understanding of student perceptions, satisfaction and identifying areas of improvement.</li>
-                    <li> To ensure real-time analysis to provide immediate insights into prevailing student sentiments.</li>
-                    </ul>
+                <ul>
+                    <li>Uncover and interpret sentiments in student feedback to understand their perceptions, satisfaction, and areas where improvements are needed.</li>
+                    <li>Perform real-time sentiment analysis to provide immediate insights into current student opinions and feelings.</li>
+                    <li>Present sentiment trends over time using interactive visualizations to highlight changes and patterns.</li>
+                    <li>Extract valuable insights related to teaching methodologies, individual lecturers, and specific departmental courses.</li>
+                    <li>Identify and emphasize specific challenges students face, enabling targeted interventions and improvements.</li>
+                    <li>Create an interactive environment where users can explore and understand sentiment analysis results in depth.</li>
+                    <li>Establish a continuous feedback loop between students and faculty to foster ongoing improvement in educational practices.</li>
+                    <li>Allow lecturers to download sentiment analysis data for further, more detailed analysis outside the application.</li>
+                    <li>Ensure the privacy and ethical handling of all student feedback data, adhering to relevant regulations.</li>
+                    <li>Guide and support lecturers in interpreting and effectively utilizing sentiment analysis results to enhance their teaching.</li>
+                </ul>
             </div>
             """,
             unsafe_allow_html=True,
