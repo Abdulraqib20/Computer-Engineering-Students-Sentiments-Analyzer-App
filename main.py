@@ -204,6 +204,8 @@ st.title(" ")
 #         - The app works in real-time, automatically saving prediction results and other insights generated.
 #     """)
 
+
+
 # --- Styling ---
 st.markdown(
     """
@@ -299,6 +301,8 @@ with st.container():
             """,
             unsafe_allow_html=True,
         )
+
+
 
 
 # --- Styling ---
