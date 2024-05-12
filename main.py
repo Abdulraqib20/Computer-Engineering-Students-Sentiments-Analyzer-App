@@ -255,18 +255,12 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# --- State Management ---
-if "current_tab" not in st.session_state:
-    st.session_state.current_tab = None  # Start with no tab selected
-
 # --- Tabs ---
 tab1, tab2 = st.tabs(["🎯 Objectives", "🎯 App Features"])
 
 # --- Content ---
 with tab1:
-    # Use the session state to manage expander visibility
-    expanded1 = st.session_state.current_tab == "objectives"
-    with st.expander("Click to see Objectives", expanded=expanded1):
+    with st.expander(" "):
         st.markdown(
             """
             <ul>
@@ -284,13 +278,9 @@ with tab1:
             """,
             unsafe_allow_html=True,
         )
-    # Update session state when tab1 is clicked
-    if tab1.button("🎯 Objectives"):
-        st.session_state.current_tab = "objectives"
     
 with tab2:
-    expanded2 = st.session_state.current_tab == "features"
-    with st.expander("Click to see App Features", expanded=expanded2):
+    with st.expander(" "):
         st.markdown(
             """
             1. **Sentiment Analysis Functionality**
@@ -329,13 +319,6 @@ with tab2:
             """,
             unsafe_allow_html=True,
         )
-    if tab2.button("🎯 App Features"):
-        st.session_state.current_tab = "features"
-
-
-
-
-
 
 
 
