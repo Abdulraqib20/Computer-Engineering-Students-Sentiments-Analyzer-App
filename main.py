@@ -139,70 +139,167 @@ with st.container():
 st.title(" ")
 st.title(" ")
 
-show_objectives = st.sidebar.checkbox(" Objectives")
-if show_objectives:
-    st.sidebar.markdown("""
-    ## Objectives (Aims & Goals of this Project)
+# show_objectives = st.sidebar.checkbox(" Objectives")
+# if show_objectives:
+#     st.sidebar.markdown("""
+#     ## Objectives (Aims & Goals of this Project)
 
- - To uncover sentiments expressed in the feedback and gain a comprehensive understanding of student perceptions, satisfaction and identfying areas of improvement.
- - To ensure real-time analysis to provide immediate insights into prevailing student sentiments.
- - Creating interactive visualizations for dynamic displays of sentiment trends over time.
- - Extracting insights into teaching methodologies, lecturers and departmental courses.
- - Identifying and highlighting specific challenges faced by students for targeted improvements.
- - Facilitating interactive exploration of sentiment analysis results for deeper understanding.
- - Establishing a continuous feedback loop for ongoing improvement in educational practices.
- - Enabling lecturers to download sentiment analysis data for in-depth analysis.
- - Ensuring privacy and ethical handling of student feedback data in compliance with regulations.
-- Aiding the lecturers in interpreting and utilizing sentiment analysis results.
-    """)
+#  - To uncover sentiments expressed in the feedback and gain a comprehensive understanding of student perceptions, satisfaction and identfying areas of improvement.
+#  - To ensure real-time analysis to provide immediate insights into prevailing student sentiments.
+#  - Creating interactive visualizations for dynamic displays of sentiment trends over time.
+#  - Extracting insights into teaching methodologies, lecturers and departmental courses.
+#  - Identifying and highlighting specific challenges faced by students for targeted improvements.
+#  - Facilitating interactive exploration of sentiment analysis results for deeper understanding.
+#  - Establishing a continuous feedback loop for ongoing improvement in educational practices.
+#  - Enabling lecturers to download sentiment analysis data for in-depth analysis.
+#  - Ensuring privacy and ethical handling of student feedback data in compliance with regulations.
+# - Aiding the lecturers in interpreting and utilizing sentiment analysis results.
+#     """)
 
-show_app_features = st.sidebar.checkbox("Show App Features")
-if show_app_features:
-    st.sidebar.markdown("""
-    ## App Features
+# show_app_features = st.sidebar.checkbox("Show App Features")
+# if show_app_features:
+#     st.sidebar.markdown("""
+#     ## App Features
 
-    1. **Sentiment Analysis Functionality**
-       - Utilizes a sentiment analysis model to score feedback text.
-       - Analyzes sentiments as positive, neutral, or negative.
+#     1. **Sentiment Analysis Functionality**
+#        - Utilizes a sentiment analysis model to score feedback text.
+#        - Analyzes sentiments as positive, neutral, or negative.
 
-    2. **User Input Collection**
-       - Gathers user's feedback and related information based on the following:
-         - Course code ( The code for the Course)
-         - Previous experience (Whether the user has previous experience with the course, lecturer, etc)
-         - Gender (The gender of the user)
-         - Attendance (The attendance rate of the user)
-         - Course difficulty (Perceived difficulty of the course)
-         - Study hours per week (Number of hours devoted to studying per week for the course)
-         - Overall satisfaction (Metric used to evaluate user's satisfaction with the course, lecturer, teaching, etc)
-         - Department (Whether the user belongs to the department of Computer Engineering)
-         - Date and time of feedback submission (Date and time of feedback submission)
+#     2. **User Input Collection**
+#        - Gathers user's feedback and related information based on the following:
+#          - Course code ( The code for the Course)
+#          - Previous experience (Whether the user has previous experience with the course, lecturer, etc)
+#          - Gender (The gender of the user)
+#          - Attendance (The attendance rate of the user)
+#          - Course difficulty (Perceived difficulty of the course)
+#          - Study hours per week (Number of hours devoted to studying per week for the course)
+#          - Overall satisfaction (Metric used to evaluate user's satisfaction with the course, lecturer, teaching, etc)
+#          - Department (Whether the user belongs to the department of Computer Engineering)
+#          - Date and time of feedback submission (Date and time of feedback submission)
 
-    3. **Text Preprocessing**
-       - Preprocesses the user feedback text using Natural Language Processing techniques.
+#     3. **Text Preprocessing**
+#        - Preprocesses the user feedback text using Natural Language Processing techniques.
 
-    4. **Percentage Confidence**
-       - Percentage level of how confident the model is making the prediction.
+#     4. **Percentage Confidence**
+#        - Percentage level of how confident the model is making the prediction.
 
-    5. **Interactive Visualization**
-       - Provides various interactive plots for visualizing sentiment analysis results and other key metrics.
-       - Displays sentiment distribution in various charts (bar chart, pie chart, word cloud).
-       - Presents feedback counts based on course difficulty, course code, and gender.
-       - Provides insights into word frequency and usage in feedback.
-       - Explores the distribution of study hours, word count, and overall satisfaction.
+#     5. **Interactive Visualization**
+#        - Provides various interactive plots for visualizing sentiment analysis results and other key metrics.
+#        - Displays sentiment distribution in various charts (bar chart, pie chart, word cloud).
+#        - Presents feedback counts based on course difficulty, course code, and gender.
+#        - Provides insights into word frequency and usage in feedback.
+#        - Explores the distribution of study hours, word count, and overall satisfaction.
 
-    6. **Summary Statistics**
-       - Offers a sentiment summary with counts of positive, neutral, and negative feedback including the percentage confidence results.
+#     6. **Summary Statistics**
+#        - Offers a sentiment summary with counts of positive, neutral, and negative feedback including the percentage confidence results.
 
-    8. **Interactive Exploration**
-       - Allows users to trigger the exploration of visualizations by clicking a button.
+#     8. **Interactive Exploration**
+#        - Allows users to trigger the exploration of visualizations by clicking a button.
 
-    9. **Real-Time Feedback Data Access**
-        - The app allows users access to real-time feedback data after getting their prediction results.
-        - Users can download and view the data directly within the app.
+#     9. **Real-Time Feedback Data Access**
+#         - The app allows users access to real-time feedback data after getting their prediction results.
+#         - Users can download and view the data directly within the app.
 
-    10.  **Automatic Real-Time Saving**
-        - The app works in real-time, automatically saving prediction results and other insights generated.
-    """)
+#     10.  **Automatic Real-Time Saving**
+#         - The app works in real-time, automatically saving prediction results and other insights generated.
+#     """)
+
+# --- Styling ---
+st.markdown(
+    """
+    <style>
+        /* Existing styles... */
+
+        # Main sidebar container
+        .sidebar-container {
+            background-color: #202124; /* Dark background */
+            color: #fff;
+            border-radius: 10px; /* Rounded corners */
+            padding: 25px;
+            margin-top: 20px;
+        }
+        .sidebar-container h2, .sidebar-container h3 {
+            color: #007bff; /* Blue heading color */
+            margin-bottom: 15px;
+        }
+
+        /* List styling */
+        .sidebar-container ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .sidebar-container li {
+            margin-bottom: 8px;
+        }
+
+        /* Link styling */
+        .sidebar-container a {
+            color: #f0f0f0;
+            text-decoration: none;
+        }
+        .sidebar-container a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+# --- Sidebar Content ---
+with st.sidebar:
+    st.markdown("<div class='sidebar-container'>", unsafe_allow_html=True)
+
+    # Objectives Section
+    with st.expander("🎯 Objectives"):
+        st.markdown("""
+        - To uncover sentiments expressed in the feedback and gain a comprehensive understanding of student perceptions, satisfaction and identifying areas of improvement.
+        - To ensure real-time analysis to provide immediate insights into prevailing student sentiments.
+        - Creating interactive visualizations for dynamic displays of sentiment trends over time.
+        - Extracting insights into teaching methodologies, lecturers and departmental courses.
+        - Identifying and highlighting specific challenges faced by students for targeted improvements.
+        - Facilitating interactive exploration of sentiment analysis results for deeper understanding.
+        - Establishing a continuous feedback loop for ongoing improvement in educational practices.
+        - Enabling lecturers to download sentiment analysis data for in-depth analysis.
+        - Ensuring privacy and ethical handling of student feedback data in compliance with regulations.
+        - Aiding the lecturers in interpreting and utilizing sentiment analysis results.
+        """)
+
+    # App Features Section
+    with st.expander("✨ App Features"):
+        st.markdown("""
+        1. **Sentiment Analysis Functionality**
+            - Utilizes a sentiment analysis model to score feedback text.
+            - Analyzes sentiments as positive, neutral, or negative.
+
+        2. **User Input Collection**
+            - Gathers user's feedback and related information based on various criteria (course code, previous experience, gender, etc.).
+
+        3. **Text Preprocessing**
+            - Preprocesses the user feedback text using Natural Language Processing techniques.
+
+        4. **Percentage Confidence**
+            - Provides the percentage level of confidence for each sentiment prediction.
+
+        5. **Interactive Visualization**
+            - Offers various interactive plots for visualizing sentiment analysis results and other key metrics.
+            - Displays sentiment distribution, feedback counts, word frequency, study hours, and overall satisfaction.
+
+        6. **Summary Statistics**
+            - Presents a sentiment summary with counts and average confidence for each sentiment category.
+
+        7. **Interactive Exploration**
+            - Allows users to trigger the exploration of visualizations.
+
+        8. **Real-Time Feedback Data Access**
+            - Enables users to access and download real-time feedback data.
+
+        9. **Automatic Real-Time Saving**
+            - Automatically saves prediction results and other generated insights.
+        """)
+
+    st.markdown("</div>", unsafe_allow_html=True)  # Close the sidebar container
+
+
 
 # --- Styling ---
 st.markdown(
