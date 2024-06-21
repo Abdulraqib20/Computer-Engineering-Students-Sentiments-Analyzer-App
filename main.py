@@ -42,7 +42,7 @@ st.set_page_config(
 st.markdown(
     """
     <div class="main-header">
-        <h1>Sentiment Analysis App <span>🚀</span></h1>
+        <h1>CPE Sentiment Analysis App <span>🤖</span></h1>
     </div>
     """,
     unsafe_allow_html=True,
@@ -52,32 +52,118 @@ st.markdown(
     """
     <style>
         .main-header {
-            background: linear-gradient(to right, #ff69b4, #9400d3); /* Vibrant pink/purple gradient */
-            color: white; /* White text for the header */
-            padding: 25px; /* Increased padding for more space */
             text-align: center;
-            border-radius: 10px; /* Rounded corners for a softer look */
-            box-shadow: 2px 2px 5px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+            border-radius: 15px; /* More rounded corners for a softer look */
+            box-shadow: 4px 4px 15px rgba(0,0,0,0.1); /* Enhanced shadow for more depth */
+            font-family: 'Arial', sans-serif; /* Custom font family for a modern look */
+            margin: 20px 0; /* Margin to create space around the header */
         }
 
         .main-header h1 {
             font-size: 3rem; /* Larger font size for the header */
+            margin: 0; /* Remove default margin */
+            animation: fadeIn 2s ease-in-out; /* Add fade-in animation */
         }
 
-        /* Style for the "rocket" emoji */
+        /* Style for the emoji */
         .main-header h1 span {
-            animation: rocket-animation 2s linear infinite; /* Add animation */
+            display: inline-block;
+            animation: bounce 2s infinite; /* Add bounce animation */
         }
 
-        @keyframes rocket-animation {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0); }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
     </style>
     """,
     unsafe_allow_html=True,
 )
+
+## title
+st.markdown(
+    """
+    <style>
+        .developer-info {
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            border-radius: 15px;
+            padding: 10px;
+            text-align: center;
+            color: white;
+            font-size: 1.2rem;
+            font-family: 'Arial', sans-serif;
+            box-shadow: 4px 4px 15px rgba(0,0,0,0.2);
+            margin: 20px 0;
+            animation: slideIn 1s ease-out;
+        }
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+    <div class="developer-info">
+        <p><i>AI Application</i><span style="color:#ffdd57;">by raqibcodes</span></p>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
+
+st.title('')
+
+
+
+# st.markdown(
+#     """
+#     <style>
+#         .main-header {
+#             background: linear-gradient(to right, #ff69b4, #9400d3); /* Vibrant pink/purple gradient */
+#             color: white; /* White text for the header */
+#             padding: 25px; /* Increased padding for more space */
+#             text-align: center;
+#             border-radius: 10px; /* Rounded corners for a softer look */
+#             box-shadow: 2px 2px 5px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+#         }
+
+#         .main-header h1 {
+#             font-size: 3rem; /* Larger font size for the header */
+#         }
+
+#         /* Style for the "rocket" emoji */
+#         .main-header h1 span {
+#             animation: rocket-animation 2s linear infinite; /* Add animation */
+#         }
+
+#         @keyframes rocket-animation {
+#             0% { transform: translateY(0); }
+#             50% { transform: translateY(-10px); }
+#             100% { transform: translateY(0); }
+#         }
+#     </style>
+#     """,
+#     unsafe_allow_html=True,
+# )
 
 
 st.markdown(
