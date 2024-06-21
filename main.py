@@ -42,7 +42,7 @@ st.set_page_config(
 st.markdown(
     """
     <div class="main-header">
-        <h1>CPE Sentiment Analysis App <span>🤖</span></h1>
+        <h1>Sentiment Analyzer<span>🤖</span></h1>
     </div>
     """,
     unsafe_allow_html=True,
@@ -124,7 +124,7 @@ st.markdown(
         }
     </style>
     <div class="developer-info">
-        <p><i>AI Application</i><span style="color:#ffdd57;">by raqibcodes</span></p>
+        <p><i>Emotion Detection Application for Computer Engineering Students</i><span style="color:#ffdd57;"> by Computer Engineering Students</span></p>
     </div>
     """,
     unsafe_allow_html=True,
