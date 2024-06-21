@@ -101,7 +101,7 @@ st.markdown(
     """
     <style>
         .developer-info {
-            background: linear-gradient(to right, #6a11cb, #2575fc);
+            background: linear-gradient(to right, #ff69b4, #9400d3);
             border-radius: 15px;
             padding: 10px;
             text-align: center;
