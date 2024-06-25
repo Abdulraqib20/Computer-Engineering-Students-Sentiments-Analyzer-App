@@ -9,3 +9,4 @@ beautifulsoup4==4.11.1
 nltk==3.7
 scikit-learn
 streamlit-option-menu
+pandasai
