@@ -97,34 +97,35 @@ st.markdown(
 )
 
 ## title
+# Title and Developer Info
 st.markdown(
     """
     <style>
-        .developer-info {
-            background: linear-gradient(to right, #ff69b4, #9400d3);
-            border-radius: 15px;
-            padding: 10px;
+        .title-container {
+            background: linear-gradient(135deg, #9400d3, #ff69b4); /* Gradient with more dynamic angle */
+            border-radius: 20px; /* Softer, more rounded corners */
+            padding: 25px; /* More padding for spaciousness */
             text-align: center;
             color: white;
-            font-size: 1.2rem;
-            font-family: 'Arial', sans-serif;
-            box-shadow: 4px 4px 15px rgba(0,0,0,0.2);
-            margin: 20px 0;
-            animation: slideIn 1s ease-out;
+            font-size: 2rem; /* Larger, bolder title */
+            font-family: 'Montserrat', sans-serif; /* Modern font choice */
+            box-shadow: 5px 5px 20px rgba(0,0,0,0.3); /* Deeper, more realistic shadow */
         }
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(-100%);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+        .developer-info {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            font-style: italic; /* Italic for subtle emphasis */
+            color: #e6e6fa; /* Slightly lighter shade for contrast */
+        }
+        .highlight {
+            color: #ffdd57; /* Brighter yellow for better visibility */
         }
     </style>
-    <div class="developer-info">
-        <p><i>Emotion Detection Application for Computer Engineering Students</i><span style="color:#ffdd57;"> by Computer Engineering Students</span></p>
+    <div class="title-container">
+        Emotion Detection Application 
+        <div class="developer-info">
+            for Computer Engineering Students <span class="highlight">by Computer Engineering Students</span>
+        </div>
     </div>
     """,
     unsafe_allow_html=True,
