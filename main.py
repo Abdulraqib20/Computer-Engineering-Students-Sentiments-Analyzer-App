@@ -103,7 +103,7 @@ st.markdown(
     <style>
         .title-container {
             text-align: center;
-            color: #eee; /* Light gray for dark backgrounds */
+            color: #ffffe;
             font-family: 'Montserrat', sans-serif;
             transition: transform 0.2s ease; 
         }
