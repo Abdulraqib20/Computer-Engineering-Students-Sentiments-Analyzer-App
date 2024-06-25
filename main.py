@@ -97,36 +97,30 @@ st.markdown(
 )
 
 ## title
-# Title with Interactive Animation
 st.markdown(
     """
     <style>
         .title-container {
-            background: linear-gradient(135deg, #9400d3, #ff69b4);
-            border-radius: 20px;
-            padding: 30px;
             text-align: center;
-            color: white;
+            color: #333; /* Dark gray for better contrast */
             font-family: 'Montserrat', sans-serif;
-            box-shadow: 5px 5px 20px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transitions for smooth hover effects */
+            transition: transform 0.2s ease; /* Smoother transition */
         }
         .title-container:hover {
-            transform: translateY(-5px); /* Slight lift on hover */
-            box-shadow: 10px 10px 30px rgba(0,0,0,0.4); /* Deeper shadow on hover */
+            transform: translateY(-3px);  /* Smaller lift */
         }
         .title {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+            font-size: 2rem; /* Slightly reduced title size */
+            margin-bottom: 5px; 
         }
         .subtitle {
-            font-size: 1.5rem;
+            font-size: 1.2rem; /* Smaller subtitle size */
             font-weight: 300;
-            color: #e6e6fa;
+            color: #666; /* Lighter gray for subtitle */
         }
         .emoji {
-            font-size: 3rem;
-            margin-bottom: 20px;
+            font-size: 2.5rem; /* Smaller emoji size */
+            margin-bottom: 10px; 
         }
     </style>
     <div class="title-container">
