@@ -97,29 +97,30 @@ st.markdown(
 )
 
 ## title
+# Title with Subtle Animation (Dark Mode)
 st.markdown(
     """
     <style>
         .title-container {
             text-align: center;
-            color: #333; /* Dark gray for better contrast */
+            color: #eee; /* Light gray for dark backgrounds */
             font-family: 'Montserrat', sans-serif;
-            transition: transform 0.2s ease; /* Smoother transition */
+            transition: transform 0.2s ease; 
         }
         .title-container:hover {
-            transform: translateY(-3px);  /* Smaller lift */
+            transform: translateY(-3px);
         }
         .title {
-            font-size: 2rem; /* Slightly reduced title size */
+            font-size: 2rem; 
             margin-bottom: 5px; 
         }
         .subtitle {
-            font-size: 1.2rem; /* Smaller subtitle size */
+            font-size: 1.2rem; 
             font-weight: 300;
-            color: #666; /* Lighter gray for subtitle */
+            color: #aaa; /* Slightly darker gray for subtitle */
         }
         .emoji {
-            font-size: 2.5rem; /* Smaller emoji size */
+            font-size: 2.5rem; 
             margin-bottom: 10px; 
         }
     </style>
