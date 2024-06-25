@@ -97,7 +97,6 @@ st.markdown(
 )
 
 ## title
-# Title with Subtle Animation (Dark Mode)
 st.markdown(
     """
     <style>
