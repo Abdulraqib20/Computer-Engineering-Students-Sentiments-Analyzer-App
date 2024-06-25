@@ -30,7 +30,7 @@ from sklearn.model_selection import train_test_split
 
 # --- Configure Streamlit page ---
 st.set_page_config(
-    page_title="SA App",
+    page_title="CPE APP",
     page_icon=":bar_chart:",
     layout="wide",
 )
