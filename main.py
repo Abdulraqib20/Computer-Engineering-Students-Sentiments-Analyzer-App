@@ -97,35 +97,41 @@ st.markdown(
 )
 
 ## title
-# Title and Developer Info
+# Title with Interactive Animation
 st.markdown(
     """
     <style>
         .title-container {
-            background: linear-gradient(135deg, #9400d3, #ff69b4); /* Gradient with more dynamic angle */
-            border-radius: 20px; /* Softer, more rounded corners */
-            padding: 25px; /* More padding for spaciousness */
+            background: linear-gradient(135deg, #9400d3, #ff69b4);
+            border-radius: 20px;
+            padding: 30px;
             text-align: center;
             color: white;
-            font-size: 2rem; /* Larger, bolder title */
-            font-family: 'Montserrat', sans-serif; /* Modern font choice */
-            box-shadow: 5px 5px 20px rgba(0,0,0,0.3); /* Deeper, more realistic shadow */
+            font-family: 'Montserrat', sans-serif;
+            box-shadow: 5px 5px 20px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transitions for smooth hover effects */
         }
-        .developer-info {
-            font-size: 1.2rem;
-            margin-top: 10px;
-            font-style: italic; /* Italic for subtle emphasis */
-            color: #e6e6fa; /* Slightly lighter shade for contrast */
+        .title-container:hover {
+            transform: translateY(-5px); /* Slight lift on hover */
+            box-shadow: 10px 10px 30px rgba(0,0,0,0.4); /* Deeper shadow on hover */
         }
-        .highlight {
-            color: #ffdd57; /* Brighter yellow for better visibility */
+        .title {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: #e6e6fa;
+        }
+        .emoji {
+            font-size: 3rem;
+            margin-bottom: 20px;
         }
     </style>
     <div class="title-container">
-        Emotion Detection Application 
-        <div class="developer-info">
-            for Computer Engineering Students <span class="highlight">by Computer Engineering Students</span>
-        </div>
+        <span class="emoji">🧠</span> <span class="title">Emotion Detection</span>
+        <div class="subtitle">Unleash Your Emotional Intelligence</div>
     </div>
     """,
     unsafe_allow_html=True,
