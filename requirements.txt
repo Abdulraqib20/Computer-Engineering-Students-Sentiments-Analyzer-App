@@ -9,3 +9,11 @@ beautifulsoup4==4.11.1
 nltk==3.8.1
 scikit-learn
 streamlit-option-menu
+
+
+langchain-groq
+groq
+pandasai
+langchain_community
+python-dotenv
+langchain
