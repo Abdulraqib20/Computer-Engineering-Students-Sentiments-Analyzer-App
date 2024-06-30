@@ -5,19 +5,31 @@ import pandas as pd
 from bs4 import BeautifulSoup
 import re
 import string
+import nltk
+nltk.download('punkt')
+nltk.download('stopwords')
+nltk.download('wordnet')
+nltk.download('omw-1.4')
+
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+from nltk.stem import WordNetLemmatizer
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 import streamlit as st
+import yaml
 
 # Load configuration
-import yaml
 with open('config.yaml', 'r') as file:
     config = yaml.safe_load(file)
 
+DATA_FILE = config['data_file']
+RELEVANT_COLUMNS = config['relevant_columns']
 MODEL_NAME = config['model_name']
+SAVE_DIRECTORY = config['save_directory']
 
-# Load model and tokenizer (cached)
+# Load model and tokenizer from save_directory (cached)
 @st.cache_resource
 def load_model_and_tokenizer(model_name):
     tokenizer = AutoTokenizer.from_pretrained(model_name)
@@ -25,6 +37,16 @@ def load_model_and_tokenizer(model_name):
     return model, tokenizer
 
 model, tokenizer = load_model_and_tokenizer(MODEL_NAME)
+
+# Load from local directory (if you have a fine-tuned model)
+# @st.cache_resource
+# def load_model_and_tokenizer(save_directory):
+#     tokenizer = AutoTokenizer.from_pretrained(save_directory)
+#     model = AutoModelForSequenceClassification.from_pretrained(save_directory)
+#     return model, tokenizer
+
+# model, tokenizer = load_model_and_tokenizer(SAVE_DIRECTORY) 
+
 
 # Preprocessing function
 def preprocess_text(text):
@@ -84,7 +106,7 @@ def preprocess_text(text):
     
 
 # Sentiment scoring function
-def sentiment_score(text, model, tokenizer, label_mapping={1: 'Negative', 2: 'Neutral', 3: 'Positive'}):
+def sentiment_score(text, model=model, tokenizer=tokenizer, label_mapping={0: 'Negative', 1: 'Neutral', 2: 'Positive'}):
     try:
         # Tokenize the input text
         tokens = tokenizer.encode(text, return_tensors='pt')
@@ -107,7 +129,7 @@ def sentiment_score(text, model, tokenizer, label_mapping={1: 'Negative', 2: 'Ne
         # Return results
         return {
             'predicted_label': predicted_label,
-            'predicted_index': predicted_index + 1,
+            'predicted_index': predicted_index,
             'confidence_percentage': confidence_percentage
         }
 

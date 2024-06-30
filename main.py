@@ -10,26 +10,9 @@ import re
 import string
 import requests
 import datetime
-from bs4 import BeautifulSoup
-import yaml
 import sentiment_analysis as sa 
-
-from transformers import AutoTokenizer, AutoModelForSequenceClassification
-import torch.nn.functional as F
-from torch.nn.functional import softmax
-import torch
-
-import nltk
-nltk.download('punkt')
-nltk.download('stopwords')
-nltk.download('wordnet')
-nltk.download('omw-1.4')
-
-from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize
-from nltk.stem import WordNetLemmatizer
 from sklearn.model_selection import train_test_split
-
+import yaml
 
 # Load configuration
 with open('config.yaml', 'r') as file:
@@ -37,6 +20,7 @@ with open('config.yaml', 'r') as file:
 
 DATA_FILE = config['data_file']
 RELEVANT_COLUMNS = config['relevant_columns']
+
 
 # --- Configure Streamlit page ---
 st.set_page_config(
@@ -346,8 +330,7 @@ st.markdown(
 # --- Input Section ---
 
 # Initialize Session State Variables
-for key in ['course_code', 'previous_exp', 'gender', 'attendance', 'difficulty', 
-            'study_hours', 'satisfaction', 'department']:
+for key in RELEVANT_COLUMNS:
     if key not in st.session_state:
         st.session_state[key] = 'Select Option' if key != 'study_hours' else 0
 
@@ -384,19 +367,6 @@ def load_data(filename):
     return df
 
 df = load_data(DATA_FILE)
-
-# Text Preprocessing of the texts column using NLTK
-# X_preprocessed = [preprocess_text(text) for text in df['feedback']]
-
-
-# model name
-model_name = 'cardiffnlp/twitter-roberta-base-sentiment-latest'
-# load directory of saved model
-save_directory = r"C:\Users\user\Desktop\MACHINE LEARNING\Sentiment Analysis\New folder"
-# load model from the local directory
-tokenizer = AutoTokenizer.from_pretrained('cardiffnlp/twitter-roberta-base-sentiment-latest')
-model = AutoModelForSequenceClassification.from_pretrained('cardiffnlp/twitter-roberta-base-sentiment-latest')
-
 
 
 user_input = st.text_area("Enter Your Text Feedback Here:")
@@ -582,9 +552,9 @@ if st.button("Explore Visualizations"):
 df['percentage_confidence'] = df['percentage_confidence'].apply(lambda x: float(x.strip('%')))
 
 # --- Sentiment Summary ---
-positive_feedback_count = (df["sentiments_index"] == 3).sum()
-neutral_feedback_count = (df["sentiments_index"] == 2).sum()
-negative_feedback_count = (df["sentiments_index"] == 1).sum()
+positive_feedback_count = (df["sentiments_index"] == 2).sum()
+neutral_feedback_count = (df["sentiments_index"] == 1).sum()
+negative_feedback_count = (df["sentiments_index"] == 0).sum()
 
 # Calculate average confidence percentage for each sentiment
 average_confidence_positive = df.loc[df["sentiments_index"] == 3, "percentage_confidence"].mean()
