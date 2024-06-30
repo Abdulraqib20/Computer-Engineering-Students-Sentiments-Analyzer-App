@@ -355,7 +355,7 @@ with st.container():
             st.session_state['satisfaction'] = st.selectbox("Overall Satisfaction", options=['Select Overall Satisfaction'] + list(range(1, 11)))
 
 
-@st.cache_data
+@st.cache_data(show_spinner=False)
 def load_data(filename):
     df = pd.read_csv(filename)
     df['date'] = pd.to_datetime(df['date'], format='%d/%m/%Y', errors='coerce')
@@ -367,7 +367,8 @@ def load_data(filename):
 df = load_data(DATA_FILE)
 
 
-user_input = st.text_area("Enter Your Text Feedback Here:")
+user_input = ""
+user_input = st.text_area("Enter Your Text Feedback Here:", value=user_input)
 if st.button("Analyze Sentiment"):
     if not user_input.strip():  
         st.warning("Please enter your feedback.")
@@ -624,8 +625,6 @@ st.markdown(
 # ---Footer---
 
 # footer text
-st.title(" ")
-st.title(" ")
 
 st.markdown(
     """
