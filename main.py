@@ -668,9 +668,7 @@ if st.button("Analyze Sentiment") and user_input:
         'overall satisfaction': [satisfaction],
         'department': [department],
          'date': [pd.to_datetime('now').date()],
-        # 'date': [pd.to_datetime('now').date()], 
         'time': [pd.to_datetime('now').time()],
-        # 'time': [datetime.datetime.now().strftime('%H:%M:%S')], 
         'hour': [pd.to_datetime('now').hour],
         })
 
@@ -687,8 +685,9 @@ if st.button("Analyze Sentiment") and user_input:
         # Save the updated dataset to the CSV file
         try:
             df.to_csv('survey_data.csv', index=False)
-                
-        except Exception as e:
+        except PermissionError:  # Specific error when the file is open
+            st.error("Error saving data: Please close the 'survey_data.csv' file if it's open and try again.")
+        except Exception as e:  # Catch other potential errors
             st.error(f"Error saving data: {str(e)}")
                 
         # Display success message
