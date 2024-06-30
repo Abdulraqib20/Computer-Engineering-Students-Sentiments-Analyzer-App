@@ -7,8 +7,6 @@ from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
 import io
 import base64
 import re
-import string
-import requests
 import datetime
 import sentiment_analysis as sa 
 from sklearn.model_selection import train_test_split
@@ -361,7 +359,7 @@ with st.container():
 def load_data(filename):
     df = pd.read_csv(filename)
     df['date'] = pd.to_datetime(df['date'], format='%d/%m/%Y', errors='coerce')
-    df['processed_feedback'] = df['feedback'].astype(str).apply(sa.preprocess_text)  # Handle potential NaN values
+    df['processed_feedback'] = df['feedback'].astype(str).apply(sa.preprocess_text)
     df['char_count'] = df['processed_feedback'].apply(len)
     df['word_count'] = df['processed_feedback'].apply(lambda x: len(x.split()))
     return df
@@ -391,9 +389,9 @@ if st.button("Analyze Sentiment"):
                 'char_count': [len(user_input_processed)],
                 'word_count': [len(user_input_processed.split())],
             })
-
+            # Apply sentiment scoring to ONLY the new_feedback DataFrame
+            new_feedback = sa.apply_sentiment_scoring(new_feedback)
             df = pd.concat([df, new_feedback], ignore_index=True)  # Add to DataFrame
-            df = sa.apply_sentiment_scoring(df)  # Apply sentiment scoring to the updated DataFrame
             
 
             # --- Display Result ---
@@ -548,13 +546,14 @@ if st.button("Explore Visualizations"):
         fig.update_yaxes(title='Sentiment Index')
         st.plotly_chart(fig)
 
-
+df['percentage_confidence'] = df['percentage_confidence'].str.rstrip('%').astype(float)
+df['percentage_confidence'] = df['percentage_confidence'].apply(lambda x: f"{x}%")
 df['percentage_confidence'] = df['percentage_confidence'].apply(lambda x: float(x.strip('%')))
 
 # --- Sentiment Summary ---
-positive_feedback_count = (df["sentiments_index"] == 2).sum()
-neutral_feedback_count = (df["sentiments_index"] == 1).sum()
-negative_feedback_count = (df["sentiments_index"] == 0).sum()
+positive_feedback_count = (df["sentiments_index"] == 3).sum()
+neutral_feedback_count = (df["sentiments_index"] == 2).sum()
+negative_feedback_count = (df["sentiments_index"] == 1).sum()
 
 # Calculate average confidence percentage for each sentiment
 average_confidence_positive = df.loc[df["sentiments_index"] == 3, "percentage_confidence"].mean()
@@ -573,7 +572,6 @@ with summary_col1:
         <div class="summary-card">
             <h4 style='text-align: center;'>Positive Feedback</h4>
             <p style='text-align: center; font-size: 24px;'>{positive_feedback_count}</p>
-            <p style='text-align: center;'>Average Confidence: {average_confidence_positive:.2f}%</p>
         </div>
         """,
         unsafe_allow_html=True,
@@ -586,7 +584,6 @@ with summary_col2:
         <div class="summary-card">
             <h4 style='text-align: center;'>Neutral Feedback</h4>
             <p style='text-align: center; font-size: 24px;'>{neutral_feedback_count}</p>
-            <p style='text-align: center;'>Average Confidence: {average_confidence_neutral:.2f}%</p>
         </div>
         """,
         unsafe_allow_html=True,
@@ -599,7 +596,6 @@ with summary_col3:
         <div class="summary-card">
             <h4 style='text-align: center;'>Negative Feedback</h4>
             <p style='text-align: center; font-size: 24px;'>{negative_feedback_count}</p>
-            <p style='text-align: center;'>Average Confidence: {average_confidence_negative:.2f}%</p>
         </div>
         """,
         unsafe_allow_html=True,

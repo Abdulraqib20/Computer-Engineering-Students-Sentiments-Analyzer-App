@@ -3,5 +3,3 @@ relevant_columns: ['course code', 'feedback', 'previous experience', 'gender', '
                   'course difficulty', 'study hours (per week)', 'overall satisfaction', 'department']
 # model name
 model_name: 'cardiffnlp/twitter-roberta-base-sentiment-latest'
-# load directory of saved model
-save_directory: r"C:\Users\user\Desktop\MACHINE LEARNING\Sentiment Analysis\New folder"

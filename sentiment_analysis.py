@@ -27,9 +27,9 @@ with open('config.yaml', 'r') as file:
 DATA_FILE = config['data_file']
 RELEVANT_COLUMNS = config['relevant_columns']
 MODEL_NAME = config['model_name']
-SAVE_DIRECTORY = config['save_directory']
+# SAVE_DIRECTORY = config['save_directory']
 
-# Load model and tokenizer from save_directory (cached)
+# Load model and tokenizer from Hugging Face model hub cached)
 @st.cache_resource
 def load_model_and_tokenizer(model_name):
     tokenizer = AutoTokenizer.from_pretrained(model_name)
@@ -106,7 +106,7 @@ def preprocess_text(text):
     
 
 # Sentiment scoring function
-def sentiment_score(text, model=model, tokenizer=tokenizer, label_mapping={0: 'Negative', 1: 'Neutral', 2: 'Positive'}):
+def sentiment_score(text, model=model, tokenizer=tokenizer, label_mapping={1: 'Negative', 2: 'Neutral', 3: 'Positive'}): 
     try:
         # Tokenize the input text
         tokens = tokenizer.encode(text, return_tensors='pt')
@@ -115,12 +115,15 @@ def sentiment_score(text, model=model, tokenizer=tokenizer, label_mapping={0: 'N
         with torch.no_grad():
             result = model(tokens)
 
-        # Obtain predicted class index
+        # Obtain predicted class index (no increment)
         predicted_index = torch.argmax(result.logits).item()
-
+        
         # Map scores to labels
         if label_mapping is not None:
             predicted_label = label_mapping.get(predicted_index + 1, f'Class {predicted_index + 1}')
+
+        # Map scores to labels
+        # predicted_label = label_mapping.get(predicted_index, f'Class {predicted_index}') 
 
         # Calculate confidence percentage
         probabilities = softmax(result.logits, dim=1)
@@ -129,7 +132,7 @@ def sentiment_score(text, model=model, tokenizer=tokenizer, label_mapping={0: 'N
         # Return results
         return {
             'predicted_label': predicted_label,
-            'predicted_index': predicted_index,
+            'predicted_index': predicted_index + 1, 
             'confidence_percentage': confidence_percentage
         }
 
@@ -138,7 +141,21 @@ def sentiment_score(text, model=model, tokenizer=tokenizer, label_mapping={0: 'N
             'error': str(e)
         }
 
+
+# Apply sentiment scoring to a DataFrame (corrected)
+# def apply_sentiment_scoring(df):
+#     # Apply sentiment scoring 
+#     df[['sentiments', 'sentiments_index', 'percentage_confidence']] = df['processed_feedback'].apply(sentiment_score)
+
+#     return df
+
 # Apply sentiment scoring to a DataFrame
 def apply_sentiment_scoring(df):
-    df[['sentiments', 'sentiments_index', 'percentage_confidence']] = df['processed_feedback'].apply(sentiment_score)
+    results = df['processed_feedback'].apply(sentiment_score)
+
+    # Extract results into separate Series
+    df['sentiments'] = results.apply(lambda x: x.get('predicted_label'))
+    df['sentiments_index'] = results.apply(lambda x: x.get('predicted_index'))
+    df['percentage_confidence'] = results.apply(lambda x: x.get('confidence_percentage'))
+
     return df
