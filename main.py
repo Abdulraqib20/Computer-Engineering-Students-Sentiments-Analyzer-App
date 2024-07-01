@@ -1,16 +1,22 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
-from datetime import datetime
 import plotly.express as px
 from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
-import io
-import base64
-import re
-import datetime
 import sentiment_analysis as sa 
-from sklearn.model_selection import train_test_split
 import yaml
+from sqlalchemy import create_engine, inspect
+from sqlalchemy.types import Integer, Text, Date, Time, Float
+
+# --- Configure Streamlit page ---
+st.set_page_config(
+    page_title="CPE APP",
+    page_icon=":bar_chart:",
+    layout="wide",
+    initial_sidebar_state="auto",
+    menu_items={
+        'About': "Made with 💖 by raqibcodes"
+    }
+)
 
 # Load configuration
 with open('config.yaml', 'r') as file:
@@ -18,14 +24,7 @@ with open('config.yaml', 'r') as file:
 
 DATA_FILE = config['data_file']
 RELEVANT_COLUMNS = config['relevant_columns']
-
-
-# --- Configure Streamlit page ---
-st.set_page_config(
-    page_title="CPE APP",
-    page_icon=":bar_chart:",
-    layout="wide",
-)
+DB_URI = config['db_uri']
 
 # --- Styling ---
 
@@ -330,59 +329,224 @@ st.markdown(
 # Initialize Session State Variables
 for key in RELEVANT_COLUMNS:
     if key not in st.session_state:
-        st.session_state[key] = 'Select Option' if key != 'study_hours' else 0
+        st.session_state[key] = 'Select Option' if key != 'study_hours (per week)' else 0
 
 st.markdown("<h3 style='text-align: center;'>Student Details</h3>", unsafe_allow_html=True)
+
+# Define callback functions for each selectbox
+def update_course_code():
+    st.session_state.course_code = st.session_state["course_code"]
+
+def update_difficulty():
+    st.session_state.difficulty = st.session_state["difficulty"]
+
+def update_previous_exp():
+    st.session_state.previous_exp = st.session_state["previous_exp"]
+
+def update_gender():
+    st.session_state.gender = st.session_state["gender"]
+
+def update_department():
+    st.session_state.department = st.session_state["department"]
+
+def update_attendance():
+    st.session_state.attendance = st.session_state["attendance"]
+
+def update_study_hours():
+    st.session_state.study_hours = st.session_state["study_hours (per week)"]
+
+def update_satisfaction():
+    st.session_state.satisfaction = st.session_state["satisfaction"]
+
+# Streamlit form to capture user input
 
 with st.container():
     col1, col2, col3 = st.columns(3)
 
     with col1:
         with st.expander("Course Information"):
-            st.session_state['course_code'] = st.selectbox("Course Code", ['Select Course Code', 'CPE 321', 'CPE 311', 'CPE 341', 'CPE 381', 'CPE 331', 'MEE 361', 'GSE 301'])
-            st.session_state['difficulty'] = st.selectbox("Course Difficulty", ['Select Difficulty', 'Easy', 'Difficult', 'Challenging', 'Moderate'])
+            st.session_state['course_code'] = st.selectbox("Course Code", 
+                                                           ['Select Course Code', 'CPE 321', 
+                                                            'CPE 311', 'CPE 341', 'CPE 381', 
+                                                            'CPE 331', 'MEE 361', 'GSE 301'])
+            
+            st.session_state['difficulty'] = st.selectbox("Course Difficulty", 
+                                                          ['Select Difficulty', 'Easy', 'Difficult', 
+                                                           'Challenging', 'Moderate'])
+
 
     with col2:
         with st.expander("Student Demographics"):
-            st.session_state['previous_exp'] = st.selectbox("Previous Experience", ['Select Option', "Yes", "No"])
-            st.session_state['gender'] = st.selectbox("Gender", ['Select Gender', 'Male', 'Female'])
-            st.session_state['department'] = st.selectbox("Department", ['Select Option', "Yes", "No"])  # Assuming this is a yes/no question
-
+            st.session_state['previous_experience'] = st.selectbox("Previous Experience", [
+                'Select Option', "Yes", "No"])
+            
+            st.session_state['gender'] = st.selectbox("Gender", 
+                                                      ['Select Gender', 'Male', 'Female'])
+            
+            st.session_state['department'] = st.selectbox("Department", 
+                                                          ['Select Option', "Yes", "No"]) 
+            
+            
     with col3:
         with st.expander("Additional Information"):
-            st.session_state['attendance'] = st.selectbox("Attendance", ['Select Attendance', 'Regular', 'Irregular', 'Occasional'])
-            st.session_state['study_hours'] = st.selectbox("Study Hours (per week)", options=['Select Study Hours'] + list(range(25)))
-            st.session_state['satisfaction'] = st.selectbox("Overall Satisfaction", options=['Select Overall Satisfaction'] + list(range(1, 11)))
+            st.session_state['attendance'] = st.selectbox("Attendance", 
+                                                          ['Select Attendance', 'Regular', 
+                                                           'Irregular', 'Occasional'])
+            
+            st.session_state['study_hours (per week)'] = st.selectbox("Study Hours (per week)", 
+                                                                      options=['Select Study Hours'] + list(range(25)))
+            
+            st.session_state['overall_satisfaction'] = st.selectbox("Overall Satisfaction", 
+                                                                    options=['Select Overall Satisfaction']
+                                                                    + list(range(1, 11)))
 
 
-@st.cache_data(show_spinner=False)
-def load_data(filename):
-    df = pd.read_csv(filename)
+# Database connection
+engine = create_engine(DB_URI)
+# Check if the table exists
+inspector = inspect(engine)
+table_exists = inspector.has_table('feedback')
+
+# Load data from CSV and save to database
+@st.cache_resource
+def load_data(file_path):
+    df = pd.read_csv(file_path)
     df['date'] = pd.to_datetime(df['date'], format='%d/%m/%Y', errors='coerce')
     df['processed_feedback'] = df['feedback'].astype(str).apply(sa.preprocess_text)
     df['char_count'] = df['processed_feedback'].apply(len)
     df['word_count'] = df['processed_feedback'].apply(lambda x: len(x.split()))
+    df.to_sql('feedback', engine, if_exists='replace', index=False, dtype={
+        'course_code': Text,
+        'feedback': Text,
+        'previous_experience': Text,
+        'gender': Text,
+        'attendance': Text,
+        'course_difficulty': Text,
+        'study_hours (per week)': Integer,
+        'overall_satisfaction': Integer,
+        'department': Text,
+        'date': Date,
+        'time': Time,
+        'hour': Integer,
+        'processed_feedback': Text,
+        'char_count': Integer,
+        'word_count': Integer,
+        'sentiments': Text,
+        'sentiments_index': Integer,
+        'percentage_confidence': Text
+    })
     return df
 
-df = load_data(DATA_FILE)
+# Load data from database
+@st.cache_resource
+def load_data_from_db():
+    query = "SELECT * FROM feedback"
+    df = pd.read_sql(query, engine)
+    return df
+
+# Save results to database
+def save_to_db(df):
+    df.to_sql('feedback', engine, if_exists='replace', index=False, dtype={
+        'course_code': Text,
+        'feedback': Text,
+        'previous_experience': Text,
+        'gender': Text,
+        'attendance': Text,
+        'course_difficulty': Text,
+        'study_hours (per week)': Integer,
+        'overall_satisfaction': Integer,
+        'department': Text,
+        'date': Date,
+        'time': Time,
+        'hour': Integer,
+        'processed_feedback': Text,
+        'char_count': Integer,
+        'word_count': Integer,
+        'sentiments': Text,
+        'sentiments_index': Integer,
+        'percentage_confidence': Text
+    })
+
+# @st.cache_data(show_spinner=False)
+# def load_data(filename):
+#     df = pd.read_csv(filename)
+#     df['date'] = pd.to_datetime(df['date'], format='%d/%m/%Y', errors='coerce')
+#     df['processed_feedback'] = df['feedback'].astype(str).apply(sa.preprocess_text)
+#     df['char_count'] = df['processed_feedback'].apply(len)
+#     df['word_count'] = df['processed_feedback'].apply(lambda x: len(x.split()))
+#     return df
+
+# df = load_data(DATA_FILE)
+
+# Load data
+try:
+    df = load_data_from_db()
+    st.write("Data loaded successfully from the database!")
+except Exception as e:
+    st.write("No data in database. Loading from CSV file...")
+    df = load_data(DATA_FILE)
+    st.write("Data loaded successfully from CSV and saved to the database!")
+
 
 
 user_input = ""
 user_input = st.text_area("Enter Your Text Feedback Here:", value=user_input)
 if st.button("Analyze Sentiment"):
+     # Define the placeholder options for the relevant columns
+    # placeholders = {
+    #     'course_code': 'Select Course Code',
+    #     'previous_experience': 'Select Option',
+    #     'gender': 'Select Gender',
+    #     'attendance': 'Select Attendance',
+    #     'difficulty': 'Select Difficulty',
+    #     'study_hours (per week)': 'Select Study Hours',
+    #     'satisfaction': 'Select Overall Satisfaction',
+    #     'department': 'Select Option'
+    # }
     if not user_input.strip():  
         st.warning("Please enter your feedback.")
-    # Check if all relevant fields (excluding 'course code' and 'feedback') are filled
-    elif not all(st.session_state.get(key, None) is not None for key in RELEVANT_COLUMNS):
-        st.warning("Please complete all the fields.")
+    # Check if all fields are completed
+    # elif any(st.session_state.get(key, placeholders[key]) == placeholders[key] for key in RELEVANT_COLUMNS):
+    #     st.warning("Please complete all the fields.")
     else:
         with st.spinner("Analyzing sentiment..."):  # Progress indicator
+            # Retrieve values from the sideboxes only when there is user input
+            course_code = st.session_state.course_code or 'Select Course Code'
+            previous_experience = st.session_state.previous_experience
+            gender = st.session_state.gender
+            attendance = st.session_state.attendance
+            difficulty = st.session_state.difficulty
+            study_hours = st.session_state['study_hours (per week)']
+            satisfaction = st.session_state.overall_satisfaction
+            department = st.session_state.department
+            
             user_input_processed = sa.preprocess_text(user_input)
             result = sa.sentiment_score(user_input_processed)
             
+                        # --- Display Result ---
+            st.subheader("Sentiment Analysis Result:")
+            st.write(f"Predicted Sentiment: {result.get('predicted_label', 'N/A')}")
+            st.write(f"Percentage Confidence of Prediction: {result.get('confidence_percentage', 'N/A')}")
+            # Display interpreted emotions
+            emotion_interpretation = sa.interpret_emotions(result.get('emotions', {}))
+            st.write(f"Emotions Expressed: {emotion_interpretation}")
+            
+            # Display explanation based on keywords and emotions
+            explanation = sa.get_explanation(user_input_processed, result)
+            st.write("Explanation:", explanation)
+            
             # --- Update DataFrame (use st.session_state here) ---
             new_feedback = pd.DataFrame({
-                **{col: [st.session_state.get(col, 'Select Option')] for col in RELEVANT_COLUMNS}, 
+                # **{col: [st.session_state.get(col, 'Select Option')] for col in RELEVANT_COLUMNS}, 
+                'course_code': [course_code], 
+                'feedback': [user_input],
+                'previous_experience': [previous_experience],
+                'gender': [gender],
+                'attendance': [attendance],
+                'course_difficulty': [difficulty],
+                'study_hours (per week)': [study_hours],
+                'overall_satisfaction': [satisfaction],
+                'department': [department],
                 'date': [pd.to_datetime('now').date()],
                 'time': [pd.to_datetime('now').time()],
                 'hour': [pd.to_datetime('now').hour],
@@ -393,23 +557,32 @@ if st.button("Analyze Sentiment"):
             # Apply sentiment scoring to ONLY the new_feedback DataFrame
             new_feedback = sa.apply_sentiment_scoring(new_feedback)
             df = pd.concat([df, new_feedback], ignore_index=True)  # Add to DataFrame
-            
-
-            # --- Display Result ---
-            st.subheader("Sentiment Analysis Result:")
-            st.write(f"Predicted Sentiment: {result.get('predicted_label', 'N/A')}")
-            st.write(f"Percentage Confidence of Prediction: {result.get('confidence_percentage', 'N/A')}")
            
-            # --- Save updated data ---
+            # # --- Save updated data ---
+            # try:
+            #     df.to_csv(DATA_FILE, index=False)  
+            #     st.success("Sentiment analysis completed!")
+            # except PermissionError:
+            #     st.error("Error saving data: Please close the 'survey_data.csv' file if it's open and try again.")
+            # except Exception as e:  # Catch other potential errors
+            #     st.error(f"Error saving data: {str(e)}")
+            
+            # --- Save updated data to the database ---
             try:
-                df.to_csv(DATA_FILE, index=False)  
-                st.success("Sentiment analysis completed!")
-            except PermissionError:
-                st.error("Error saving data: Please close the 'survey_data.csv' file if it's open and try again.")
-            except Exception as e:  # Catch other potential errors
+                save_to_db(df)
+                st.success("Sentiment analysis completed and data saved to the database!")
+            except Exception as e:
                 st.error(f"Error saving data: {str(e)}")
 
 
+            # # --- Download button ---
+            # st.download_button(
+            #     label="Download Updated Dataset",
+            #     data=df.to_csv(index=False).encode(),
+            #     file_name='survey_data_updated.csv',
+            #     mime='text/csv'
+            # )
+            
             # --- Download button ---
             st.download_button(
                 label="Download Updated Dataset",
@@ -547,9 +720,10 @@ if st.button("Explore Visualizations"):
         fig.update_yaxes(title='Sentiment Index')
         st.plotly_chart(fig)
 
-df['percentage_confidence'] = df['percentage_confidence'].str.rstrip('%').astype(float)
-df['percentage_confidence'] = df['percentage_confidence'].apply(lambda x: f"{x}%")
-df['percentage_confidence'] = df['percentage_confidence'].apply(lambda x: float(x.strip('%')))
+# df['percentage_confidence'] = df['percentage_confidence'].str.rstrip('%').astype(float)
+# df['percentage_confidence'] = df['percentage_confidence'].apply(lambda x: f"{x}%")
+# df['percentage_confidence'] = df['percentage_confidence'].apply(lambda x: float(x.strip('%')))
+df['percentage_confidence'] = df['percentage_confidence'].astype(str).str.rstrip('%').astype(float)
 
 # --- Sentiment Summary ---
 positive_feedback_count = (df["sentiments_index"] == 3).sum()

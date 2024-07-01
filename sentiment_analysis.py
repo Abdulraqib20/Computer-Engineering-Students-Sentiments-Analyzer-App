@@ -19,15 +19,17 @@ from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 import streamlit as st
 import yaml
+from nrclex import NRCLex
 
 # Load configuration
 with open('config.yaml', 'r') as file:
     config = yaml.safe_load(file)
 
-DATA_FILE = config['data_file']
-RELEVANT_COLUMNS = config['relevant_columns']
-MODEL_NAME = config['model_name']
+# DATA_FILE = config['data_file']
+# RELEVANT_COLUMNS = config['relevant_columns']
 # SAVE_DIRECTORY = config['save_directory']
+MODEL_NAME = config['model_name']
+
 
 # Load model and tokenizer from Hugging Face model hub cached)
 @st.cache_resource
@@ -37,15 +39,6 @@ def load_model_and_tokenizer(model_name):
     return model, tokenizer
 
 model, tokenizer = load_model_and_tokenizer(MODEL_NAME)
-
-# Load from local directory (if you have a fine-tuned model)
-# @st.cache_resource
-# def load_model_and_tokenizer(save_directory):
-#     tokenizer = AutoTokenizer.from_pretrained(save_directory)
-#     model = AutoModelForSequenceClassification.from_pretrained(save_directory)
-#     return model, tokenizer
-
-# model, tokenizer = load_model_and_tokenizer(SAVE_DIRECTORY) 
 
 
 # Preprocessing function
@@ -104,6 +97,12 @@ def preprocess_text(text):
     # Join tokens back into a single string
     return ' '.join(tokens)
     
+    
+def detect_emotions(text):
+    emotion_analyzer = NRCLex(text)
+    top_emotions = emotion_analyzer.top_emotions
+    return {emotion[0]: emotion[1] for emotion in top_emotions}
+
 
 # Sentiment scoring function
 def sentiment_score(text, model=model, tokenizer=tokenizer, label_mapping={1: 'Negative', 2: 'Neutral', 3: 'Positive'}): 
@@ -128,12 +127,16 @@ def sentiment_score(text, model=model, tokenizer=tokenizer, label_mapping={1: 'N
         # Calculate confidence percentage
         probabilities = softmax(result.logits, dim=1)
         confidence_percentage = str(probabilities[0, predicted_index].item() * 100) + '%'
+        
+        # emotion detection
+        emotions = detect_emotions(text)
 
         # Return results
         return {
             'predicted_label': predicted_label,
             'predicted_index': predicted_index + 1, 
-            'confidence_percentage': confidence_percentage
+            'confidence_percentage': confidence_percentage,
+            'emotions': emotions 
         }
 
     except Exception as e:
@@ -141,13 +144,6 @@ def sentiment_score(text, model=model, tokenizer=tokenizer, label_mapping={1: 'N
             'error': str(e)
         }
 
-
-# Apply sentiment scoring to a DataFrame (corrected)
-# def apply_sentiment_scoring(df):
-#     # Apply sentiment scoring 
-#     df[['sentiments', 'sentiments_index', 'percentage_confidence']] = df['processed_feedback'].apply(sentiment_score)
-
-#     return df
 
 # Apply sentiment scoring to a DataFrame
 def apply_sentiment_scoring(df):
@@ -159,3 +155,53 @@ def apply_sentiment_scoring(df):
     df['percentage_confidence'] = results.apply(lambda x: x.get('confidence_percentage'))
 
     return df
+
+def get_keywords(text, result):
+    words = text.split()
+    if result['predicted_label'] == 'Positive':
+        top_words = sorted(result['emotions'].items(), key=lambda x: x[1], reverse=True)[:3]
+        return ', '.join([word[0] for word in top_words])
+    elif result['predicted_label'] == 'Negative':
+        bottom_words = sorted(result['emotions'].items(), key=lambda x: x[1])[:3]
+        return ', '.join([word[0] for word in bottom_words])
+    else:
+        return "Neutral sentiment, no specific keywords identified"
+
+# ... (rest of sentiment_analysis.py code) ...
+
+def interpret_emotions(emotions):
+    """
+    Interprets the detected emotions and returns a user-friendly message.
+
+    Args:
+        emotions: A dictionary containing detected emotions and their scores.
+
+    Returns:
+        A string message describing the most prominent emotions.
+    """
+    
+    # Filter out emotions with zero scores
+    non_zero_emotions = {emotion: score for emotion, score in emotions.items() if score > 0}
+    
+    if not non_zero_emotions:
+        return "No specific emotions were detected in your feedback."
+
+    # Sort emotions by score
+    sorted_emotions = sorted(non_zero_emotions.items(), key=lambda x: x[1], reverse=True)
+    
+    # Take top 3 emotions
+    top_emotions = sorted_emotions[:3]
+    
+    if len(top_emotions) == 1:
+        return f"Your feedback seems to express {top_emotions[0][0]}."
+    else:
+        emotion_list = ", ".join([emotion[0] for emotion in top_emotions[:-1]])
+        last_emotion = top_emotions[-1][0]
+        return f"Your feedback seems to express {emotion_list}, and {last_emotion}."
+
+# Add a get_explanation function
+def get_explanation(text, result):
+    emotion_explanation = interpret_emotions(result['emotions'])
+    return f"Based on the emotions detected, {emotion_explanation} This aligns with the overall sentiment of '{result['predicted_label']}'."
+
+

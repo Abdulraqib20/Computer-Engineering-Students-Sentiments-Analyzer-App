@@ -9,6 +9,8 @@ beautifulsoup4==4.11.1
 nltk==3.8.1
 scikit-learn
 streamlit-option-menu
+NRCLex==3.0.0
+psycopg2-binary==2.9.9
 
 
 langchain-groq
