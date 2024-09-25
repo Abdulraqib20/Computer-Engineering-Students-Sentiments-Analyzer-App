@@ -13,10 +13,13 @@ NRCLex==3.0.0
 
 
 groq
-langchain-groq
-langchain-community
+# langchain-groq
+# langchain-community
+# langchain-core
+langchain-groq==0.0.1
+langchain-community==0.3.1
+langchain-core==0.3.6
 langchain-huggingface
-langchain-core
 langchain
 python-dotenv
 sqlalchemy
