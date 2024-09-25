@@ -16,11 +16,11 @@ groq
 # langchain-groq
 # langchain-community
 # langchain-core
-langchain-groq==0.0.1
-langchain-community==0.3.1
-langchain-core==0.1.9
+langchain-groq==0.1.5
+langchain-community==0.2.5
+langchain-core==0.2.7
 langchain-huggingface
-langchain
+langchain==0.2.5
 python-dotenv
 sqlalchemy
 watchdog
