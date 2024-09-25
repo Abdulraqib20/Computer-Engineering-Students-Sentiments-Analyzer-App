@@ -1,4 +1,4 @@
-streamlit==1.35.0
+streamlit
 pandas==2.1.0
 numpy==1.22.4
 plotly==5.6.0
@@ -6,14 +6,20 @@ wordcloud==1.9.3
 transformers==4.25.1
 torch==2.0.1
 beautifulsoup4==4.11.1
-nltk==3.8.1
+nltk==3.9.1
 scikit-learn
 streamlit-option-menu
+NRCLex==3.0.0
 
 
 langchain-groq
 groq
-pandasai
 langchain_community
 python-dotenv
 langchain
+langchain_core
+langchain_huggingface
+sqlalchemy
+watchdog
+pydantic
+chromadb
