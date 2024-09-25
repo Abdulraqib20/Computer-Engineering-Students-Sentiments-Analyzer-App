@@ -513,6 +513,7 @@ st.markdown(
 for key in RELEVANT_COLUMNS:
     if key not in st.session_state:
         st.session_state[key] = 'Select Option' if key != 'study_hours (per week)' else 0
+        st.session_state[key] = 'Select Option' if key != 'study_hours (per week)' else 0
 
 st.markdown("<h3 style='text-align: center;'>Student Details</h3>", unsafe_allow_html=True)
 

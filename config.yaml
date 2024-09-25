@@ -1,0 +1,9 @@
+data_file: survey_data.csv
+# relevant_columns: ['course_code', 'feedback', 'previous_experience', 'gender', 'attendance', 
+#                   'course_difficulty', 'study_hours (per week)', 'overall_satisfaction', 'department']
+
+relevant_columns: ['course_code', 'previous_experience', 'gender', 'attendance', 'course_difficulty', 
+                  'study_hours (per week)', 'overall_satisfaction', 'department']
+# model name
+model_name: 'cardiffnlp/twitter-roberta-base-sentiment-latest'
+db_uri: 'postgresql://postgres:admin@localhost:5432/cpe'
