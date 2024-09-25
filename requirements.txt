@@ -12,13 +12,13 @@ streamlit-option-menu
 NRCLex==3.0.0
 
 
-langchain-groq
 groq
-langchain_community
-python-dotenv
+langchain-groq
+langchain-community
+langchain-huggingface
+langchain-core
 langchain
-langchain_core
-langchain_huggingface
+python-dotenv
 sqlalchemy
 watchdog
 pydantic
