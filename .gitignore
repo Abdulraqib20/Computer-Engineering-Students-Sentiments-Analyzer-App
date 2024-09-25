@@ -1,0 +1,5 @@
+.env
+.csv
+./src/data
+./application2.py
+./application.py
