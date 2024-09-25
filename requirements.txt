@@ -18,7 +18,7 @@ groq
 # langchain-core
 langchain-groq==0.0.1
 langchain-community==0.3.1
-langchain-core==0.3.6
+langchain-core==0.1.9
 langchain-huggingface
 langchain
 python-dotenv
