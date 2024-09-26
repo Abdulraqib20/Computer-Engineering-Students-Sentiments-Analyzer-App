@@ -17,7 +17,7 @@ NRCLex==3.0.0
 
 langchain-core==0.2.0  # Pin version that satisfies both dependencies
 # langchain-groq==0.0.1
-langchain-community==0.3.1  # Choose compatible version with langchain-core==0.2.0
+# langchain-community==0.3.1  # Choose compatible version with langchain-core==0.2.0
 langchain-huggingface
 langchain
 groq
