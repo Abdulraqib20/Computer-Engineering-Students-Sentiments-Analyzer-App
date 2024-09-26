@@ -4,6 +4,8 @@ from torch.nn.functional import softmax
 import pandas as pd
 from bs4 import BeautifulSoup
 import re
+import os
+import sys
 import string
 import nltk
 nltk.download('punkt')
@@ -23,7 +25,7 @@ import yaml
 from nrclex import NRCLex
 
 # Load configuration
-with open(r'src\config\config.yaml', 'r') as file:
+with open('./src/config/config.yaml', 'r') as file:
     config = yaml.safe_load(file)
 
 # DATA_FILE = config['data_file']
