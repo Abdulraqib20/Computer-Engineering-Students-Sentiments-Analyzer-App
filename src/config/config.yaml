@@ -1,4 +1,4 @@
-data_file: ./src/data/survey_data.csv
+data_file: "./src/data/survey_data.csv"
 # relevant_columns: ['course_code', 'feedback', 'previous_experience', 'gender', 'attendance', 
 #                   'course_difficulty', 'study_hours (per week)', 'overall_satisfaction', 'department']
 
