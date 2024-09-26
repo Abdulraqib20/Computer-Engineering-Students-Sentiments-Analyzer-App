@@ -16,7 +16,7 @@ NRCLex==3.0.0
 # langchain-groq
 
 langchain-core>=0.3,<0.4
-langchain-groq>=0.1.5
+langchain-groq
 langchain-community>=0.0.1
 langchain-huggingface
 langchain
