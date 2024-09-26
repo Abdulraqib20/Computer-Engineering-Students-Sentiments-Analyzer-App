@@ -11,16 +11,16 @@ scikit-learn
 streamlit-option-menu
 NRCLex==3.0.0
 
-
-groq
+# langchain-community
+# langchain-core
 # langchain-groq
-langchain-community
-langchain-core
-langchain-groq==0.1.5
-# langchain-community==0.2.5
-# langchain-core==0.2.7
+
+langchain-core>=0.3,<0.4
+langchain-groq>=0.1.5
+langchain-community>=0.0.1
 langchain-huggingface
 langchain
+groq
 python-dotenv
 sqlalchemy
 watchdog
