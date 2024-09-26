@@ -1,10 +1,14 @@
 import streamlit as st
 import streamlit.components.v1 as components
 import pandas as pd
+import os
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 import sentiment_analysis as sa 
 import yaml
 import time
 from src.viz.visuals import show_viz
+from src.config.config import DATA_FILE, RELEVANT_COLUMNS, MODEL_NAME
 
 
 # --- Configure Streamlit page ---
@@ -18,12 +22,6 @@ st.set_page_config(
     }
 )
 
-# Load configuration
-with open(r'src\config\config.yaml', 'r') as file:
-    config = yaml.safe_load(file)
-
-DATA_FILE = config['data_file']
-RELEVANT_COLUMNS = config['relevant_columns']
 
 # --- Styling ---
 
