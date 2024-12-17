@@ -28,12 +28,12 @@ from src.tools.eduai_query_gen import get_columns_descriptions
 
 from rag import RAG
 #---------------------------------------------Create a Streamlit app-----------------------------------------------
-# st.set_page_config(
-#     page_title="EduAI",
-#     page_icon="📚",
-#     layout="centered",
-#     # initial_sidebar_state="collapsed"
-# )
+st.set_page_config(
+    page_title="EduAI",
+    page_icon="📚",
+    layout="centered",
+    # initial_sidebar_state="collapsed"
+)
 
 # Define a color scheme
 PRIMARY_COLOR = "#4A90E2"

@@ -17344,3 +17344,465 @@
 2024-09-25 21:32:50,666 - rag - INFO - Loading and preprocessing document
 2024-09-25 21:32:50,669 - rag - INFO - Successfully loaded CSV file data
 2024-09-25 21:32:50,669 - rag - INFO - Successfully loaded CSV file data
+2024-09-25 22:26:06,699 - rag - INFO - Loading and preprocessing document
+2024-09-25 22:26:06,699 - rag - INFO - Loading and preprocessing document
+2024-09-25 22:26:06,709 - rag - INFO - Successfully loaded CSV file data
+2024-09-25 22:26:06,709 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:42:36,763 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:42:36,763 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:42:36,774 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:42:36,774 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:44:54,670 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:44:54,670 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:44:54,694 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:44:54,694 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:44:55,101 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:44:55,101 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:44:55,128 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:44:55,128 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:45:24,637 - rag - INFO - Vector store created with 104 chunks.
+2024-12-17 06:45:24,637 - rag - INFO - Vector store created with 104 chunks.
+2024-12-17 06:45:24,649 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:45:24,649 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:45:38,598 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:45:38,598 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:45:38,598 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:45:38,598 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:45:38,616 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:45:38,616 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:45:38,616 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:45:38,616 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:45:38,640 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:45:38,640 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:45:38,640 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:45:38,640 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:45:44,752 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:45:44,752 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:45:44,752 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:45:44,752 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:45:44,752 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:45:44,752 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:45:44,789 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:45:44,789 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:45:44,789 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:45:44,789 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:45:44,789 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:45:44,789 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:45:44,814 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:45:44,814 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:45:44,814 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:45:44,814 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:45:44,814 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:45:44,814 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:46:04,788 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:46:04,788 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:46:04,788 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:46:04,788 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:46:04,788 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:46:04,788 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:46:04,788 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:46:04,788 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:46:04,803 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:46:04,803 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:46:04,803 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:46:04,803 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:46:04,803 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:46:04,803 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:46:04,803 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:46:04,803 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:46:04,809 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:46:04,809 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:46:04,809 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:46:04,809 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:46:04,809 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:46:04,809 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:46:04,809 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:46:04,809 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:46:07,631 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:46:07,631 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:46:07,631 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:46:07,631 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:46:07,631 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:46:07,631 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:46:07,631 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:46:07,631 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:46:07,631 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:46:07,631 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:46:07,646 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:46:07,646 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:46:07,646 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:46:07,646 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:46:07,646 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:46:07,646 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:46:07,646 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:46:07,646 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:46:07,646 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:46:07,646 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:46:07,660 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:46:07,660 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:46:07,660 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:46:07,660 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:46:07,660 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:46:07,660 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:46:07,660 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:46:07,660 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:46:07,660 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:46:07,660 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:49:32,139 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:49:32,139 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:49:32,139 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:49:32,139 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:49:32,139 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:49:32,139 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:49:32,139 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:49:32,139 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:49:32,139 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:49:32,139 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:49:32,139 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:49:32,139 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:49:32,156 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:49:32,156 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:49:32,156 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:49:32,156 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:49:32,156 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:49:32,156 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:49:32,156 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:49:32,156 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:49:32,156 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:49:32,156 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:49:32,156 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:49:32,156 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:49:32,182 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:49:32,182 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:49:32,182 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:49:32,182 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:49:32,182 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:49:32,182 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:49:32,182 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:49:32,182 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:49:32,182 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:49:32,182 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:49:32,182 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:49:32,182 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:49:33,352 - rag - INFO - Retrieving Relevant Documents
+2024-12-17 06:49:33,352 - rag - INFO - Retrieving Relevant Documents
+2024-12-17 06:49:33,352 - rag - INFO - Retrieving Relevant Documents
+2024-12-17 06:49:33,352 - rag - INFO - Retrieving Relevant Documents
+2024-12-17 06:49:33,352 - rag - INFO - Retrieving Relevant Documents
+2024-12-17 06:49:33,352 - rag - INFO - Retrieving Relevant Documents
+2024-12-17 06:49:33,352 - rag - INFO - Retrieving Relevant Documents
+2024-12-17 06:49:33,352 - rag - INFO - Retrieving Relevant Documents
+2024-12-17 06:49:33,352 - rag - INFO - Retrieving Relevant Documents
+2024-12-17 06:49:33,352 - rag - INFO - Retrieving Relevant Documents
+2024-12-17 06:49:33,352 - rag - INFO - Retrieving Relevant Documents
+2024-12-17 06:49:33,352 - rag - INFO - Retrieving Relevant Documents
+2024-12-17 06:49:33,520 - rag - INFO - Retrieved 4 relevant documents.
+2024-12-17 06:49:33,520 - rag - INFO - Retrieved 4 relevant documents.
+2024-12-17 06:49:33,520 - rag - INFO - Retrieved 4 relevant documents.
+2024-12-17 06:49:33,520 - rag - INFO - Retrieved 4 relevant documents.
+2024-12-17 06:49:33,520 - rag - INFO - Retrieved 4 relevant documents.
+2024-12-17 06:49:33,520 - rag - INFO - Retrieved 4 relevant documents.
+2024-12-17 06:49:33,520 - rag - INFO - Retrieved 4 relevant documents.
+2024-12-17 06:49:33,520 - rag - INFO - Retrieved 4 relevant documents.
+2024-12-17 06:49:33,520 - rag - INFO - Retrieved 4 relevant documents.
+2024-12-17 06:49:33,520 - rag - INFO - Retrieved 4 relevant documents.
+2024-12-17 06:49:33,520 - rag - INFO - Retrieved 4 relevant documents.
+2024-12-17 06:49:33,520 - rag - INFO - Retrieved 4 relevant documents.
+2024-12-17 06:49:34,279 - rag - INFO - Retrieving Relevant Documents
+2024-12-17 06:49:34,279 - rag - INFO - Retrieving Relevant Documents
+2024-12-17 06:49:34,279 - rag - INFO - Retrieving Relevant Documents
+2024-12-17 06:49:34,279 - rag - INFO - Retrieving Relevant Documents
+2024-12-17 06:49:34,279 - rag - INFO - Retrieving Relevant Documents
+2024-12-17 06:49:34,279 - rag - INFO - Retrieving Relevant Documents
+2024-12-17 06:49:34,279 - rag - INFO - Retrieving Relevant Documents
+2024-12-17 06:49:34,279 - rag - INFO - Retrieving Relevant Documents
+2024-12-17 06:49:34,279 - rag - INFO - Retrieving Relevant Documents
+2024-12-17 06:49:34,279 - rag - INFO - Retrieving Relevant Documents
+2024-12-17 06:49:34,279 - rag - INFO - Retrieving Relevant Documents
+2024-12-17 06:49:34,279 - rag - INFO - Retrieving Relevant Documents
+2024-12-17 06:49:34,415 - rag - INFO - Retrieved 4 relevant documents.
+2024-12-17 06:49:34,415 - rag - INFO - Retrieved 4 relevant documents.
+2024-12-17 06:49:34,415 - rag - INFO - Retrieved 4 relevant documents.
+2024-12-17 06:49:34,415 - rag - INFO - Retrieved 4 relevant documents.
+2024-12-17 06:49:34,415 - rag - INFO - Retrieved 4 relevant documents.
+2024-12-17 06:49:34,415 - rag - INFO - Retrieved 4 relevant documents.
+2024-12-17 06:49:34,415 - rag - INFO - Retrieved 4 relevant documents.
+2024-12-17 06:49:34,415 - rag - INFO - Retrieved 4 relevant documents.
+2024-12-17 06:49:34,415 - rag - INFO - Retrieved 4 relevant documents.
+2024-12-17 06:49:34,415 - rag - INFO - Retrieved 4 relevant documents.
+2024-12-17 06:49:34,415 - rag - INFO - Retrieved 4 relevant documents.
+2024-12-17 06:49:34,415 - rag - INFO - Retrieved 4 relevant documents.
+2024-12-17 06:49:37,031 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:49:37,031 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:49:37,031 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:49:37,031 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:49:37,031 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:49:37,031 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:49:37,031 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:49:37,031 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:49:37,031 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:49:37,031 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:49:37,031 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:49:37,031 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:49:37,031 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:49:37,031 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:49:37,042 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:49:37,042 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:49:37,042 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:49:37,042 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:49:37,042 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:49:37,042 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:49:37,042 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:49:37,042 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:49:37,042 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:49:37,042 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:49:37,042 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:49:37,042 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:49:37,042 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:49:37,042 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:49:37,055 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:49:37,055 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:49:37,055 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:49:37,055 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:49:37,055 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:49:37,055 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:49:37,055 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:49:37,055 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:49:37,055 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:49:37,055 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:49:37,055 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:49:37,055 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:49:37,055 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:49:37,055 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:50:30,852 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:50:30,852 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:50:30,852 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:50:30,852 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:50:30,852 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:50:30,852 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:50:30,852 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:50:30,852 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:50:30,852 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:50:30,852 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:50:30,852 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:50:30,852 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:50:30,852 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:50:30,852 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:50:30,852 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:50:30,852 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:50:30,863 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:50:30,863 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:50:30,863 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:50:30,863 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:50:30,863 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:50:30,863 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:50:30,863 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:50:30,863 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:50:30,863 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:50:30,863 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:50:30,863 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:50:30,863 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:50:30,863 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:50:30,863 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:50:30,863 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:50:30,863 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:50:30,883 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:50:30,883 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:50:30,883 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:50:30,883 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:50:30,883 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:50:30,883 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:50:30,883 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:50:30,883 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:50:30,883 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:50:30,883 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:50:30,883 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:50:30,883 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:50:30,883 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:50:30,883 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:50:30,883 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:50:30,883 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:50:34,113 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:50:34,113 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:50:34,113 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:50:34,113 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:50:34,113 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:50:34,113 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:50:34,113 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:50:34,113 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:50:34,113 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:50:34,113 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:50:34,113 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:50:34,113 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:50:34,113 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:50:34,113 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:50:34,113 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:50:34,113 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:50:34,113 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:50:34,113 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:50:34,128 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:50:34,128 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:50:34,128 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:50:34,128 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:50:34,128 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:50:34,128 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:50:34,128 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:50:34,128 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:50:34,128 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:50:34,128 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:50:34,128 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:50:34,128 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:50:34,128 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:50:34,128 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:50:34,128 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:50:34,128 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:50:34,128 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:50:34,128 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:50:34,149 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:50:34,149 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:50:34,149 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:50:34,149 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:50:34,149 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:50:34,149 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:50:34,149 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:50:34,149 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:50:34,149 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:50:34,149 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:50:34,149 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:50:34,149 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:50:34,149 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:50:34,149 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:50:34,149 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:50:34,149 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:50:34,149 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:50:34,149 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:51:32,454 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:51:32,454 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:51:32,454 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:51:32,454 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:51:32,454 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:51:32,454 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:51:32,454 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:51:32,454 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:51:32,454 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:51:32,454 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:51:32,454 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:51:32,454 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:51:32,454 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:51:32,454 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:51:32,454 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:51:32,454 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:51:32,454 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:51:32,454 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:51:32,454 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:51:32,454 - rag - INFO - Loading and preprocessing document
+2024-12-17 06:51:32,470 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:51:32,470 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:51:32,470 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:51:32,470 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:51:32,470 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:51:32,470 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:51:32,470 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:51:32,470 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:51:32,470 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:51:32,470 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:51:32,470 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:51:32,470 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:51:32,470 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:51:32,470 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:51:32,470 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:51:32,470 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:51:32,470 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:51:32,470 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:51:32,470 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:51:32,470 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 06:51:32,481 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:51:32,481 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:51:32,481 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:51:32,481 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:51:32,481 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:51:32,481 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:51:32,481 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:51:32,481 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:51:32,481 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:51:32,481 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:51:32,481 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:51:32,481 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:51:32,481 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:51:32,481 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:51:32,481 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:51:32,481 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:51:32,481 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:51:32,481 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:51:32,481 - rag - INFO - Vector store initialized successfully.
+2024-12-17 06:51:32,481 - rag - INFO - Vector store initialized successfully.
+2024-12-17 07:00:21,465 - rag - INFO - Loading and preprocessing document
+2024-12-17 07:00:21,465 - rag - INFO - Loading and preprocessing document
+2024-12-17 07:00:21,499 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 07:00:21,499 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 07:37:32,134 - rag - INFO - Loading and preprocessing document
+2024-12-17 07:37:32,134 - rag - INFO - Loading and preprocessing document
+2024-12-17 07:37:32,134 - rag - INFO - Loading and preprocessing document
+2024-12-17 07:37:32,134 - rag - INFO - Loading and preprocessing document
+2024-12-17 07:37:32,134 - rag - INFO - Loading and preprocessing document
+2024-12-17 07:37:32,134 - rag - INFO - Loading and preprocessing document
+2024-12-17 07:37:32,134 - rag - INFO - Loading and preprocessing document
+2024-12-17 07:37:32,134 - rag - INFO - Loading and preprocessing document
+2024-12-17 07:37:32,134 - rag - INFO - Loading and preprocessing document
+2024-12-17 07:37:32,134 - rag - INFO - Loading and preprocessing document
+2024-12-17 07:37:32,134 - rag - INFO - Loading and preprocessing document
+2024-12-17 07:37:32,134 - rag - INFO - Loading and preprocessing document
+2024-12-17 07:37:32,134 - rag - INFO - Loading and preprocessing document
+2024-12-17 07:37:32,134 - rag - INFO - Loading and preprocessing document
+2024-12-17 07:37:32,134 - rag - INFO - Loading and preprocessing document
+2024-12-17 07:37:32,134 - rag - INFO - Loading and preprocessing document
+2024-12-17 07:37:32,134 - rag - INFO - Loading and preprocessing document
+2024-12-17 07:37:32,134 - rag - INFO - Loading and preprocessing document
+2024-12-17 07:37:32,134 - rag - INFO - Loading and preprocessing document
+2024-12-17 07:37:32,134 - rag - INFO - Loading and preprocessing document
+2024-12-17 07:37:32,134 - rag - INFO - Loading and preprocessing document
+2024-12-17 07:37:32,134 - rag - INFO - Loading and preprocessing document
+2024-12-17 07:37:32,145 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 07:37:32,145 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 07:37:32,145 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 07:37:32,145 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 07:37:32,145 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 07:37:32,145 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 07:37:32,145 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 07:37:32,145 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 07:37:32,145 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 07:37:32,145 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 07:37:32,145 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 07:37:32,145 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 07:37:32,145 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 07:37:32,145 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 07:37:32,145 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 07:37:32,145 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 07:37:32,145 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 07:37:32,145 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 07:37:32,145 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 07:37:32,145 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 07:37:32,145 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 07:37:32,145 - rag - INFO - Successfully loaded CSV file data
+2024-12-17 07:37:32,172 - rag - INFO - Vector store initialized successfully.
+2024-12-17 07:37:32,172 - rag - INFO - Vector store initialized successfully.
+2024-12-17 07:37:32,172 - rag - INFO - Vector store initialized successfully.
+2024-12-17 07:37:32,172 - rag - INFO - Vector store initialized successfully.
+2024-12-17 07:37:32,172 - rag - INFO - Vector store initialized successfully.
+2024-12-17 07:37:32,172 - rag - INFO - Vector store initialized successfully.
+2024-12-17 07:37:32,172 - rag - INFO - Vector store initialized successfully.
+2024-12-17 07:37:32,172 - rag - INFO - Vector store initialized successfully.
+2024-12-17 07:37:32,172 - rag - INFO - Vector store initialized successfully.
+2024-12-17 07:37:32,172 - rag - INFO - Vector store initialized successfully.
+2024-12-17 07:37:32,172 - rag - INFO - Vector store initialized successfully.
+2024-12-17 07:37:32,172 - rag - INFO - Vector store initialized successfully.
+2024-12-17 07:37:32,172 - rag - INFO - Vector store initialized successfully.
+2024-12-17 07:37:32,172 - rag - INFO - Vector store initialized successfully.
+2024-12-17 07:37:32,172 - rag - INFO - Vector store initialized successfully.
+2024-12-17 07:37:32,172 - rag - INFO - Vector store initialized successfully.
+2024-12-17 07:37:32,172 - rag - INFO - Vector store initialized successfully.
+2024-12-17 07:37:32,172 - rag - INFO - Vector store initialized successfully.
+2024-12-17 07:37:32,172 - rag - INFO - Vector store initialized successfully.
+2024-12-17 07:37:32,172 - rag - INFO - Vector store initialized successfully.
+2024-12-17 07:37:32,172 - rag - INFO - Vector store initialized successfully.
+2024-12-17 07:37:32,172 - rag - INFO - Vector store initialized successfully.
