@@ -834,13 +834,15 @@ with sec1:
     show_viz(df)
 
 #----------------------------------------------CHATGPT SECTION----------------------------------------------------------#
-# with sec2:
+with sec2:
 
-#     from app import main
-#     main()
+    # from app import main
+    # main()
 
-#     if __name__ == "__main__":
-#         main()
+    # if __name__ == "__main__":
+    #     main()
+    
+    st.info("Unavailable in Cloud at This Time. Check with Local....")
     
     
     
