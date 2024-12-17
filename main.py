@@ -842,7 +842,7 @@ with sec2:
     # if __name__ == "__main__":
     #     main()
     
-    st.info("Unavailable in Cloud at This Time. Check with Local....")
+    st.info("Unavailable in Cloud at This Time. Check with Local For The Time Being 🔃.....")
     
     
     
